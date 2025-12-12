@@ -7,32 +7,89 @@
   <meta name="theme-color" content="#0b1020" />
   <title>Quantum Etz Chaim</title>
 
-  <link rel="icon" href="/assets/img/favicon.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 
+  <!-- Page-only polish: cover glow + featured strip -->
   <style>
-    .book-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .book-card { display:flex; flex-direction:column; gap: 10px; }
-    .book-cover {
+    .shine-wrap{
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .shine-wrap::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(closest-side at 30% 25%, rgba(121,214,255,0.30), transparent 55%),
+        radial-gradient(closest-side at 70% 55%, rgba(191,168,255,0.26), transparent 55%),
+        conic-gradient(from 180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.00), rgba(255,255,255,0.10), rgba(255,255,255,0.00));
+      filter: blur(18px);
+      opacity: 0.9;
+      pointer-events:none;
+      transform: rotate(8deg);
+    }
+    .shine-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0.0) 35%, rgba(255,255,255,0.10) 70%, rgba(255,255,255,0.0));
+      opacity: 0.20;
+      pointer-events:none;
+    }
+    .book-cover{
+      position: relative;
+      z-index: 1;
       width: 100%;
       aspect-ratio: 2 / 3;
       object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      display:block;
     }
-    .book-meta { display:flex; flex-direction:column; gap: 6px; }
-    .book-title { margin: 0; font-size: 1.1rem; letter-spacing: -0.01em; }
-    .book-byline { margin: 0; color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.92rem; }
-    .book-actions { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-    @media (max-width: 920px){ .book-grid { grid-template-columns: 1fr; } }
+    .book-tag{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      color: rgba(255,255,255,0.75);
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+    }
+    .badge-dot{
+      width: 8px; height: 8px; border-radius: 99px;
+      background: rgba(121,214,255,0.75);
+      box-shadow: 0 0 14px rgba(121,214,255,0.45);
+    }
+    .featured-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .featured-head h2{ margin:0; }
+    .featured-cta{ display:flex; gap:10px; flex-wrap:wrap; }
+    .micro{
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.68);
+      margin: 0;
+      max-width: 70ch;
+    }
+    .book-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/" aria-label="Quantum Etz Chaim home">
@@ -58,6 +115,7 @@
   </header>
 
   <main id="main">
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
@@ -99,65 +157,113 @@
       </div>
     </section>
 
+    <!-- Featured Books -->
     <section class="section">
       <div class="container">
-        <div class="section-head">
-          <h2>Featured books</h2>
-          <p class="muted">Available in print on Amazon. (We can add direct eBook bundles later.)</p>
+        <div class="featured-head">
+          <div>
+            <div class="book-tag"><span class="badge-dot" aria-hidden="true"></span> Featured books • Print on Amazon</div>
+            <h2>Three gates to begin</h2>
+            <p class="micro">
+              These are the current pillars of the shelf. Each one is a doorway—study it, mark it, return to it.
+            </p>
+          </div>
+          <div class="featured-cta">
+            <a class="btn small ghost" href="/pages/library.html">Enter the Library</a>
+            <a class="btn small primary" href="/pages/books.html">View all Books</a>
+          </div>
         </div>
 
-        <div class="book-grid">
-          <article class="card book-card">
-            <img class="book-cover" src="/assets/img/books/tower-of-daat.jpg" alt="Cover of The Tower of Da’at" loading="lazy" />
-            <div class="book-meta">
-              <h3 class="book-title">The Tower of Da’at</h3>
-              <p class="book-byline">By Kiah Aviyu</p>
-              <p class="muted">A doorway into Da’at—where knowledge becomes living connection.</p>
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/books.html">See details</a>
-              </div>
+        <div class="grid-3">
+          <!-- Tower of Da'at -->
+          <article class="card">
+            <div class="shine-wrap">
+              <img class="book-cover" src="/assets/img/books/Tower_of_Da'at_cover.jpg" alt="Cover of The Tower of Da’at" loading="lazy" />
+            </div>
+            <h3 style="margin:12px 0 6px;">The Tower of Da’at</h3>
+            <p class="muted" style="margin:0 0 10px;">By Kiah Aviyu</p>
+            <p class="muted" style="margin:0 0 12px;">
+              A doorway into Da’at—where knowledge becomes living connection.
+            </p>
+            <div class="book-actions">
+              <a class="btn primary small" target="_blank" rel="noopener"
+                 href="https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/">
+                Buy on Amazon
+              </a>
+              <a class="btn ghost small" href="/pages/books.html">Details</a>
             </div>
           </article>
 
-          <article class="card book-card">
-            <img class="book-cover" src="/assets/img/books/quantum-etz-chaim.jpg" alt="Cover of Quantum Etz Chaim" loading="lazy" />
-            <div class="book-meta">
-              <h3 class="book-title">Quantum Etz Chaim</h3>
-              <p class="book-byline">By Kiah Aviyu</p>
-              <p class="muted">A bridge-language between modern field intuition and the Tree of Life as a map of meaning.</p>
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659254/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/books.html">See details</a>
-              </div>
+          <!-- Quantum Etz Chaim -->
+          <article class="card">
+            <div class="shine-wrap">
+              <img class="book-cover" src="/assets/img/books/Quantum_Etz_Chaim_cover.jpg" alt="Cover of Quantum Etz Chaim" loading="lazy" />
+            </div>
+            <h3 style="margin:12px 0 6px;">Quantum Etz Chaim</h3>
+            <p class="muted" style="margin:0 0 10px;">By Kiah Aviyu</p>
+            <p class="muted" style="margin:0 0 12px;">
+              A bridge-language between modern field intuition and the Tree of Life as a map of meaning.
+            </p>
+            <div class="book-actions">
+              <a class="btn primary small" target="_blank" rel="noopener"
+                 href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659254/">
+                Buy on Amazon
+              </a>
+              <a class="btn ghost small" href="/pages/books.html">Details</a>
             </div>
           </article>
 
-          <article class="card book-card">
-            <img class="book-cover" src="/assets/img/books/tiferet.jpg" alt="Cover of Tiferet" loading="lazy" />
-            <div class="book-meta">
-              <h3 class="book-title">Tiferet</h3>
-              <p class="book-byline">By Kiah Aviyu</p>
-              <p class="muted">Beauty as balance—where compassion and strength become one clear centerline.</p>
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659394/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/books.html">See details</a>
-              </div>
+          <!-- Tiferet -->
+          <article class="card">
+            <div class="shine-wrap">
+              <img class="book-cover" src="/assets/img/books/Tiferet_cover.jpg" alt="Cover of Tiferet" loading="lazy" />
+            </div>
+            <h3 style="margin:12px 0 6px;">Tiferet</h3>
+            <p class="muted" style="margin:0 0 10px;">By Kiah Aviyu</p>
+            <p class="muted" style="margin:0 0 12px;">
+              Beauty as balance—where compassion and strength become one clear centerline.
+            </p>
+            <div class="book-actions">
+              <a class="btn primary small" target="_blank" rel="noopener"
+                 href="https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659394/">
+                Buy on Amazon
+              </a>
+              <a class="btn ghost small" href="/pages/books.html">Details</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- Doorways -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Choose your doorway</h2>
+          <p class="muted">Three ways to enter: buy, learn, or walk a guided path.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Books</h3>
+            <p>The commercial shelf—print and digital. Each book comes with previews and companion notes.</p>
+            <a class="card-link" href="/pages/books.html">Browse the bookstore →</a>
+          </article>
+
+          <article class="card">
+            <h3>Library</h3>
+            <p>Free teachings, definitions, and study notes. Written for seekers, Noahides, and the curious.</p>
+            <a class="card-link" href="/pages/library.html">Enter the library →</a>
+          </article>
+
+          <article class="card">
+            <h3>Paths</h3>
+            <p>Guided sequences—short lessons in order, like walking a trail through the forest of meaning.</p>
+            <a class="card-link" href="/pages/paths.html">Start a path →</a>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -178,11 +284,21 @@
       </div>
 
       <div class="footer-note muted">
-        © <span id="year"></span> QuantumEtzChaim.com • Built with reverence and curiosity.
+        © <span id="year"></span> QuantumEtzChaim.com
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/site.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const btn = document.getElementById("navToggle");
+    const nav = document.getElementById("siteNav");
+    if (btn && nav) {
+      btn.addEventListener("click", () => {
+        const open = nav.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+    }
+  </script>
 </body>
 </html>
