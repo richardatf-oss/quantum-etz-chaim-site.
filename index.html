@@ -10,7 +10,6 @@
   <link rel="icon" href="/assets/img/favicon.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- Tiny page-only styles for book covers (keeps your main CSS clean) -->
   <style>
     .book-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .book-card { display:flex; flex-direction:column; gap: 10px; }
@@ -27,16 +26,13 @@
     .book-title { margin: 0; font-size: 1.1rem; letter-spacing: -0.01em; }
     .book-byline { margin: 0; color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.92rem; }
     .book-actions { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-    @media (max-width: 920px){
-      .book-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 920px){ .book-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/" aria-label="Quantum Etz Chaim home">
@@ -61,9 +57,7 @@
     </div>
   </header>
 
-  <!-- Main -->
   <main id="main">
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
@@ -105,7 +99,6 @@
       </div>
     </section>
 
-    <!-- Featured Books (with cover images) -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -114,7 +107,6 @@
         </div>
 
         <div class="book-grid">
-          <!-- Tower of Da'at -->
           <article class="card book-card">
             <img class="book-cover" src="/assets/img/books/tower-of-daat.jpg" alt="Cover of The Tower of Da’at" loading="lazy" />
             <div class="book-meta">
@@ -131,7 +123,6 @@
             </div>
           </article>
 
-          <!-- Quantum Etz Chaim -->
           <article class="card book-card">
             <img class="book-cover" src="/assets/img/books/quantum-etz-chaim.jpg" alt="Cover of Quantum Etz Chaim" loading="lazy" />
             <div class="book-meta">
@@ -148,7 +139,6 @@
             </div>
           </article>
 
-          <!-- Tiferet -->
           <article class="card book-card">
             <img class="book-cover" src="/assets/img/books/tiferet.jpg" alt="Cover of Tiferet" loading="lazy" />
             <div class="book-meta">
@@ -168,55 +158,8 @@
       </div>
     </section>
 
-    <!-- Choose doorway -->
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Choose your doorway</h2>
-          <p class="muted">Three ways to enter: buy, learn, or walk a guided path.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Books</h3>
-            <p>The commercial shelf—print and digital. Each book comes with previews and companion notes.</p>
-            <a class="card-link" href="/pages/books.html">Browse the bookstore →</a>
-          </article>
-
-          <article class="card">
-            <h3>Library</h3>
-            <p>Free teachings, definitions, and study notes. Written for seekers, Noahides, and the curious.</p>
-            <a class="card-link" href="/pages/library.html">Enter the library →</a>
-          </article>
-
-          <article class="card">
-            <h3>Paths</h3>
-            <p>Guided sequences—short lessons in order, like walking a trail through the forest of meaning.</p>
-            <a class="card-link" href="/pages/paths.html">Start a path →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Email / CTA -->
-    <section class="section">
-      <div class="container cta">
-        <div>
-          <h2>Get new gates as they open</h2>
-          <p class="muted">Occasional updates. No spam. Just releases and learning.</p>
-        </div>
-
-        <form class="cta-form" name="newsletter" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="newsletter" />
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-          <button class="btn primary" type="submit">Subscribe</button>
-        </form>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
@@ -241,16 +184,5 @@
   </footer>
 
   <script src="/assets/js/site.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const btn = document.getElementById("navToggle");
-    const nav = document.getElementById("siteNav");
-    if (btn && nav) {
-      btn.addEventListener("click", () => {
-        const open = nav.classList.toggle("open");
-        btn.setAttribute("aria-expanded", String(open));
-      });
-    }
-  </script>
 </body>
 </html>
