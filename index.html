@@ -9,6 +9,28 @@
 
   <link rel="icon" href="/assets/img/favicon.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Tiny page-only styles for book covers (keeps your main CSS clean) -->
+  <style>
+    .book-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .book-card { display:flex; flex-direction:column; gap: 10px; }
+    .book-cover {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .book-meta { display:flex; flex-direction:column; gap: 6px; }
+    .book-title { margin: 0; font-size: 1.1rem; letter-spacing: -0.01em; }
+    .book-byline { margin: 0; color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.92rem; }
+    .book-actions { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    @media (max-width: 920px){
+      .book-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
@@ -74,7 +96,6 @@
         </div>
 
         <div class="hero-art" aria-hidden="true">
-          <!-- Replace with an image later if you want -->
           <div class="sigil">
             <div class="sigil-ring"></div>
             <div class="sigil-core">א</div>
@@ -84,8 +105,71 @@
       </div>
     </section>
 
-    <!-- Featured -->
+    <!-- Featured Books (with cover images) -->
     <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured books</h2>
+          <p class="muted">Available in print on Amazon. (We can add direct eBook bundles later.)</p>
+        </div>
+
+        <div class="book-grid">
+          <!-- Tower of Da'at -->
+          <article class="card book-card">
+            <img class="book-cover" src="/assets/img/books/tower-of-daat.jpg" alt="Cover of The Tower of Da’at" loading="lazy" />
+            <div class="book-meta">
+              <h3 class="book-title">The Tower of Da’at</h3>
+              <p class="book-byline">By Kiah Aviyu</p>
+              <p class="muted">A doorway into Da’at—where knowledge becomes living connection.</p>
+              <div class="book-actions">
+                <a class="btn primary small" target="_blank" rel="noopener"
+                   href="https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/">
+                  Buy on Amazon
+                </a>
+                <a class="btn ghost small" href="/pages/books.html">See details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Quantum Etz Chaim -->
+          <article class="card book-card">
+            <img class="book-cover" src="/assets/img/books/quantum-etz-chaim.jpg" alt="Cover of Quantum Etz Chaim" loading="lazy" />
+            <div class="book-meta">
+              <h3 class="book-title">Quantum Etz Chaim</h3>
+              <p class="book-byline">By Kiah Aviyu</p>
+              <p class="muted">A bridge-language between modern field intuition and the Tree of Life as a map of meaning.</p>
+              <div class="book-actions">
+                <a class="btn primary small" target="_blank" rel="noopener"
+                   href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659254/">
+                  Buy on Amazon
+                </a>
+                <a class="btn ghost small" href="/pages/books.html">See details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tiferet -->
+          <article class="card book-card">
+            <img class="book-cover" src="/assets/img/books/tiferet.jpg" alt="Cover of Tiferet" loading="lazy" />
+            <div class="book-meta">
+              <h3 class="book-title">Tiferet</h3>
+              <p class="book-byline">By Kiah Aviyu</p>
+              <p class="muted">Beauty as balance—where compassion and strength become one clear centerline.</p>
+              <div class="book-actions">
+                <a class="btn primary small" target="_blank" rel="noopener"
+                   href="https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659394/">
+                  Buy on Amazon
+                </a>
+                <a class="btn ghost small" href="/pages/books.html">See details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choose doorway -->
+    <section class="section alt">
       <div class="container">
         <div class="section-head">
           <h2>Choose your doorway</h2>
@@ -95,60 +179,20 @@
         <div class="grid-3">
           <article class="card">
             <h3>Books</h3>
-            <p>
-              The commercial shelf—print and digital. Each book comes with previews and companion notes.
-            </p>
+            <p>The commercial shelf—print and digital. Each book comes with previews and companion notes.</p>
             <a class="card-link" href="/pages/books.html">Browse the bookstore →</a>
           </article>
 
           <article class="card">
             <h3>Library</h3>
-            <p>
-              Free teachings, definitions, and study notes. Written for seekers, Noahides, and the curious.
-            </p>
+            <p>Free teachings, definitions, and study notes. Written for seekers, Noahides, and the curious.</p>
             <a class="card-link" href="/pages/library.html">Enter the library →</a>
           </article>
 
           <article class="card">
             <h3>Paths</h3>
-            <p>
-              Guided sequences—short lessons in order, like walking a trail through the forest of meaning.
-            </p>
+            <p>Guided sequences—short lessons in order, like walking a trail through the forest of meaning.</p>
             <a class="card-link" href="/pages/paths.html">Start a path →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest / Announcements -->
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>What’s new</h2>
-          <p class="muted">Quick updates, releases, and the next lessons being added.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>New release</h3>
-            <p class="muted">Add your newest book announcement here.</p>
-            <ul class="bullets">
-              <li>Short hook sentence</li>
-              <li>Who it’s for</li>
-              <li>What the reader will gain</li>
-            </ul>
-            <a class="btn small" href="/pages/books.html">See books</a>
-          </article>
-
-          <article class="card">
-            <h3>Library drop</h3>
-            <p class="muted">Add your newest lesson or glossary collection here.</p>
-            <ul class="bullets">
-              <li>Foundations (Noahide-friendly)</li>
-              <li>Tree of Life as a map of mind</li>
-              <li>Light, fields, and meaning</li>
-            </ul>
-            <a class="btn small ghost" href="/pages/library.html">Read in the library</a>
           </article>
         </div>
       </div>
@@ -159,10 +203,9 @@
       <div class="container cta">
         <div>
           <h2>Get new gates as they open</h2>
-          <p class="muted">Occasional updates. No spam. No weirdness. Just releases and learning.</p>
+          <p class="muted">Occasional updates. No spam. Just releases and learning.</p>
         </div>
 
-        <!-- If you use Netlify Forms later, this is already compatible -->
         <form class="cta-form" name="newsletter" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="newsletter" />
           <label class="sr-only" for="email">Email</label>
@@ -199,7 +242,6 @@
 
   <script src="/assets/js/site.js"></script>
   <script>
-    // Tiny fallback if site.js isn't there yet
     document.getElementById("year").textContent = new Date().getFullYear();
     const btn = document.getElementById("navToggle");
     const nav = document.getElementById("siteNav");
