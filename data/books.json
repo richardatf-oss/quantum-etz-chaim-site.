@@ -1,0 +1,39 @@
+[
+  {
+    "id": "quantum-etz-chaim",
+    "title": "Quantum Etz Chaim",
+    "subtitle": "One Excitation • Ten Emanations • Ten Trees",
+    "blurb": "Torah and the quantum world in one living framework—Sefirot as structure.",
+    "tags": ["Mystical Nonfiction", "Project World"],
+    "format": "Paperback / Kindle",
+    "cover": "/assets/img/books/Quantum_Etz_Chaim_cover.jpg",
+    "amazon": "https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659262/"
+  },
+  {
+    "id": "tower-of-daat",
+    "title": "The Tower of Da’at",
+    "blurb": "A gate of Da’at—structure, ascent, and the hidden join between worlds.",
+    "tags": ["Fiction & Myth", "Da’at Gate"],
+    "format": "Paperback",
+    "cover": "/assets/img/books/Tower_of_Da'at_cover.jpg",
+    "amazon": "https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/"
+  },
+  {
+    "id": "tiferet",
+    "title": "Tiferet",
+    "blurb": "Beauty as balance—centerline harmony, compassion, and radiance.",
+    "tags": ["Sefirot Volumes", "Tiferet"],
+    "format": "Paperback",
+    "cover": "/assets/img/books/Tiferet_cover.jpg",
+    "amazon": "https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659408/"
+  },
+  {
+    "id": "adversarys-prayer",
+    "title": "The Adversary’s Prayer",
+    "blurb": "Thanking HaShem while the adversary tries—steadfastness in the fire.",
+    "tags": ["Prayers & Devotional Works", "Kindle"],
+    "format": "Kindle",
+    "cover": "/assets/img/books/Adversarys_Prayer_cover.jpg",
+    "amazon": "https://www.amazon.com/ADVERSARYS-PRAYER-Thanking-HaShem-Tries-ebook/dp/B0G96BGXFF/"
+  }
+]
