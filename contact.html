@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Quantum Etz Chaim</title>
+  <meta name="description" content="Contact Quantum Etz Chaim." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div class="brand">
+        <div class="brand-mark">ק</div>
+        <div class="brand-text">
+          <div class="brand-title">Quantum Etz Chaim</div>
+          <div class="brand-subtitle">Contact</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link" href="index.html">Tree</a>
+        <a class="nav-link" href="trees.html">Trees</a>
+        <a class="nav-link" href="book.html">Book</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="wrap">
+      <h1 class="page-title">Contact</h1>
+      <p class="lead">Reader notes, collaboration, publishing inquiries—welcome.</p>
+
+      <div class="contact-grid">
+        <div class="card">
+          <div class="card-label">Email</div>
+          <p class="card-text">Fastest way to reach me:</p>
+          <p><strong>kiahaviyu@proton.me</strong></p>
+        </div>
+
+        <div class="card">
+          <div class="card-label glow">Send a message</div>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </p>
+
+            <label class="field">
+              <span>Name</span>
+              <input name="name" type="text" required />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" required />
+            </label>
+
+            <label class="field">
+              <span>Subject</span>
+              <input name="subject" type="text" />
+            </label>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="6" required></textarea>
+            </label>
+
+            <div class="card-actions">
+              <button class="btn primary" type="submit">Send</button>
+              <button class="btn" type="reset">Clear</button>
+            </div>
+
+            <p class="muted" style="margin-top:10px">After deploy: Netlify Dashboard → Forms.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-title">Quantum Etz Chaim</div>
+      <div class="footer-links">
+        <a href="index.html">Tree</a>
+        <a href="trees.html">Trees</a>
+        <a href="book.html">Book</a>
+      </div>
+      <div class="footer-small muted"><span id="year"></span></div>
+    </div>
+    <script src="js/site.js"></script>
+  </footer>
+</body>
+</html>
