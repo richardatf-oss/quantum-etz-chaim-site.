@@ -5,43 +5,110 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Books — Quantum Etz Chaim</title>
   <meta name="description" content="Published titles connected to the Quantum Etz Chaim project." />
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="wrap header-row">
       <div class="brand">
-        <div class="brand-mark">◈</div>
+        <div class="brand-mark">✶</div>
         <div class="brand-text">
           <div class="brand-title">Quantum Etz Chaim</div>
           <div class="brand-subtitle">One Excitation • Ten Emanations • Ten Trees</div>
         </div>
       </div>
+
       <nav class="nav" aria-label="Primary">
-        <a href="/index.html">Tree</a>
-        <a href="/trees.html">Trees</a>
-        <a href="/book.html?id=quantum-etz-chaim">Book</a>
-        <a class="active" href="/books.html">Books</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
+        <a class="nav-link" href="index.html">Tree</a>
+        <a class="nav-link" href="trees.html">Trees</a>
+        <a class="nav-link" href="book.html">Book</a>
+        <a class="nav-link active" href="books.html">Books</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="section">
-    <div class="wrap">
-      <p class="kicker">TORAH • PHYSICS • THE LIVING DIAGRAM</p>
-      <h1 class="page-title">Books</h1>
-      <p class="lead">Published titles connected to the project. Covers are served locally for speed; Amazon buttons go to the exact listings.</p>
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker">TORAH • PHYSICS • THE LIVING DIAGRAM</p>
+        <h1 class="page-title">Books</h1>
+        <p class="lead">
+          Published titles connected to the project. Covers are served locally; “Amazon” buttons go to the exact listings.
+        </p>
 
-      <div id="filters" class="filters" aria-label="Book filters"></div>
+        <!-- FEATURED BIG BOOK -->
+        <div class="feature-card" style="margin-top:16px;">
+          <div class="card-label">Featured</div>
 
-      <section id="bookGrid" class="book-grid" aria-label="Books list">
-        <!-- JS renders here -->
-      </section>
-    </div>
+          <div class="feature-row">
+            <a class="feature-cover" href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659262/">
+              <img
+                src="assets/img/books/Quantum_Etz_Chaim_cover.jpg"
+                alt="Quantum Etz Chaim cover"
+                loading="eager"
+              />
+            </a>
+
+            <div class="feature-meta">
+              <h2 class="feature-title">Quantum Etz Chaim</h2>
+              <p class="feature-text">
+                Torah-first language, modern physics metaphors, and a navigable map of Sefirot—built to expand.
+              </p>
+
+              <div class="feature-actions">
+                <a class="btn primary" href="tree.html">Open the Map</a>
+                <a class="btn" href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659262/">Amazon</a>
+              </div>
+
+              <p class="muted tiny">Paperback • Kindle</p>
+            </div>
+          </div>
+
+          <div class="mini-shelf">
+            <div class="mini-shelf-title">Other titles</div>
+
+            <a class="mini-book" href="https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/">
+              <img src="assets/img/books/Tower_of_Da'at_cover.jpg" alt="The Tower of Da’at cover" loading="lazy" />
+              <div>
+                <div class="mini-book-name">The Tower of Da’at</div>
+                <div class="mini-book-meta">Paperback</div>
+              </div>
+            </a>
+
+            <a class="mini-book" href="https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659408/">
+              <img src="assets/img/books/Tiferet_cover.jpg" alt="Tiferet cover" loading="lazy" />
+              <div>
+                <div class="mini-book-name">Tiferet</div>
+                <div class="mini-book-meta">Paperback</div>
+              </div>
+            </a>
+
+            <a class="mini-book" href="https://www.amazon.com/ADVERSARYS-PRAYER-Thanking-HaShem-Tries-ebook/dp/B0G96BGXFF/">
+              <img src="assets/img/books/Adversarys_Prayer_cover.jpg" alt="The Adversary’s Prayer cover" loading="lazy" />
+              <div>
+                <div class="mini-book-name">The Adversary’s Prayer</div>
+                <div class="mini-book-meta">Kindle</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- OPTIONAL: if you still want filters + full grid later -->
+        <div class="card subtle" style="margin-top:14px;">
+          <div class="card-label">Catalog</div>
+          <p class="card-text">
+            Want this page to become a full searchable catalog later? We can turn on the JS grid again once
+            <code>/data/books.json</code> is clean and paths are stable.
+          </p>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -51,14 +118,15 @@
         <div class="muted">A luminous diagram • Torah first</div>
       </div>
       <div class="footer-links">
-        <a href="/index.html">Tree</a>
-        <a href="/trees.html">Trees</a>
-        <a href="/books.html">Books</a>
+        <a href="index.html">Tree</a>
+        <a href="trees.html">Trees</a>
+        <a href="books.html">Books</a>
       </div>
       <div class="footer-small muted">2025 • Built with care.</div>
     </div>
   </footer>
 
-  <script src="/js/site.js" defer></script>
+  <!-- If you want JS later, keep it. For now, it’s not needed. -->
+  <!-- <script src="js/site.js" defer></script> -->
 </body>
 </html>
