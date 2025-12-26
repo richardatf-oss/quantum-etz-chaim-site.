@@ -2,227 +2,360 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Books by Kiah Aviyu — Quantum Etz Chaim bookstore." />
-  <meta name="theme-color" content="#0b1020" />
-  <title>Books • Quantum Etz Chaim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books — Quantum Etz Chaim</title>
+  <meta name="description" content="Published titles connected to the Quantum Etz Chaim project. Covers served locally; Amazon links go to exact listings." />
 
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <!-- Existing site styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
 
+  <!-- Bright overrides (page-scoped) -->
   <style>
-    .shine-wrap{
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    :root{
+      --bg0:#f6fbff;
+      --bg1:#ffffff;
+      --ink:#0b1220;
+      --muted:#4b5563;
+      --line:rgba(15, 23, 42, 0.12);
+      --shadow:0 12px 30px rgba(2, 6, 23, 0.08);
+      --shadow2:0 8px 18px rgba(2, 6, 23, 0.10);
+      --brand:#0ea5e9;
+      --brand2:#22c55e;
+      --chip:#eef2ff;
+      --chipInk:#1f2a44;
     }
-    .shine-wrap::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
+
+    body{
       background:
-        radial-gradient(closest-side at 30% 25%, rgba(121,214,255,0.30), transparent 55%),
-        radial-gradient(closest-side at 70% 55%, rgba(191,168,255,0.26), transparent 55%),
-        conic-gradient(from 180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.00), rgba(255,255,255,0.10), rgba(255,255,255,0.00));
-      filter: blur(18px);
-      opacity: 0.9;
-      pointer-events:none;
-      transform: rotate(8deg);
+        radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 45%, #ffffff);
+      color: var(--ink);
     }
-    .shine-wrap::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0.0) 35%, rgba(255,255,255,0.10) 70%, rgba(255,255,255,0.0));
-      opacity: 0.20;
-      pointer-events:none;
+
+    /* Top bar / nav */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    .book-cover{
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
-      display:block;
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
     }
-    .page-hero{
+    .navrow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .brand .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
+      box-shadow: 0 0 0 6px rgba(14,165,233,0.12);
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+    }
+    .nav a{
+      text-decoration:none;
+      color: rgba(11,18,32,0.78);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      background: rgba(14,165,233,0.08);
+      border-color: rgba(14,165,233,0.18);
+      color: rgba(11,18,32,0.95);
+    }
+    .nav a.active{
+      background: rgba(14,165,233,0.12);
+      border-color: rgba(14,165,233,0.22);
+      color: rgba(11,18,32,0.98);
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .hero{
       padding: 34px 0 10px;
     }
-    .page-hero h1{
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+    .hEyebrow{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: rgba(11,18,32,0.55);
+      margin-bottom: 10px;
+    }
+    h1{
       margin: 0 0 10px;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      font-size: clamp(1.8rem, 3.3vw, 2.6rem);
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
     }
-    .page-hero p{
+    .lead{
       margin: 0;
-      max-width: 78ch;
+      color: rgba(11,18,32,0.68);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 66ch;
     }
-    .book-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .book-meta{ margin-top: 12px; }
-    .book-meta h3{ margin: 0 0 6px; }
-    .book-meta .byline{ margin: 0 0 10px; color: rgba(255,255,255,0.68); font-weight: 650; font-size: 0.92rem; }
-    .book-meta .desc{ margin: 0; color: rgba(255,255,255,0.72); }
-    .mini-note{
-      margin-top: 14px;
-      color: rgba(255,255,255,0.62);
-      font-size: 0.92rem;
+    .heroCard{
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .heroCard strong{
+      display:block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: rgba(11,18,32,0.9);
+    }
+    .heroCard p{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(11,18,32,0.62);
+      line-height: 1.6;
+    }
+
+    /* Filters */
+    .filters{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+    }
+    #filterBar{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .pill{
+      appearance:none;
+      border: 1px solid rgba(15, 23, 42, 0.14);
+      background: rgba(255,255,255,0.7);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      color: rgba(11,18,32,0.78);
+      font-weight: 600;
+      font-size: 13px;
+      box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .pill:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.30); }
+    .pill.active{
+      background: linear-gradient(90deg, rgba(14,165,233,0.16), rgba(34,197,94,0.12));
+      border-color: rgba(14,165,233,0.35);
+      color: rgba(11,18,32,0.92);
+    }
+
+    /* Grid */
+    #bookGrid{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      padding-bottom: 34px;
+    }
+    @media (max-width: 980px){
+      #bookGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px){
+      #bookGrid{ grid-template-columns: 1fr; }
+    }
+
+    /* Book card (matches JS output) */
+    .book-card{
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+    .book-cover{
+      display:block;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(14,165,233,0.08), rgba(34,197,94,0.04));
+      border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+    }
+    .book-cover-img{
+      width: 100%;
+      height: auto;
+      display:block;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.18);
+    }
+    .book-meta{
+      padding: 14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      flex: 1;
+    }
+    .book-title{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .book-tagline{
+      margin: 0;
+      color: rgba(11,18,32,0.68);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .tags{ display:flex; flex-wrap:wrap; gap: 8px; }
+    .tag{
+      background: rgba(14,165,233,0.10);
+      color: rgba(11,18,32,0.80);
+      border: 1px solid rgba(14,165,233,0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .book-actions{
+      margin-top:auto;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      border: 1px solid rgba(14,165,233,0.28);
+      background: rgba(14,165,233,0.12);
+      color: rgba(11,18,32,0.92);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
+    .btn.secondary{
+      border-color: rgba(15, 23, 42, 0.14);
+      background: rgba(255,255,255,0.7);
+      color: rgba(11,18,32,0.82);
+    }
+    .btn.secondary:hover{
+      border-color: rgba(34,197,94,0.35);
+      background: rgba(34,197,94,0.10);
+    }
+
+    /* Footer */
+    .footer{
+      border-top: 1px solid var(--line);
+      color: rgba(11,18,32,0.55);
+      font-size: 12px;
+      padding: 18px 0 26px;
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Top nav -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="navrow">
+        <a class="brand" href="/index.html" aria-label="Quantum Etz Chaim home">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Quantum Etz Chaim</span>
+        </a>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/" aria-label="Quantum Etz Chaim home">
-        <span class="brand-mark" aria-hidden="true">א</span>
-        <span class="brand-text">
-          <span class="brand-title">Quantum Etz Chaim</span>
-          <span class="brand-subtitle">Bookstore • Library • Paths</span>
-        </span>
-      </a>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
-        <span aria-hidden="true">☰</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
-        <a href="/pages/books.html" aria-current="page">Books</a>
-        <a href="/pages/library.html">Library</a>
-        <a href="/pages/paths.html">Paths</a>
-        <a href="/pages/about.html">About</a>
-        <a class="nav-cta" href="/pages/contact.html">Contact</a>
-      </nav>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="/tree.html">Tree</a>
+          <a href="/trees.html">Trees</a>
+          <a href="/book.html">Book</a>
+          <a class="active" href="/books.html">Books</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <!-- Page intro -->
-    <section class="page-hero">
-      <div class="container">
-        <p class="kicker">Bookstore</p>
-        <h1>Books by Kiah Aviyu</h1>
-        <p class="muted">
-          Print editions are available on Amazon. (When you’re ready, we can add direct eBooks + bundles here too.)
-        </p>
-      </div>
-    </section>
+  <!-- Hero -->
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroGrid">
+        <div>
+          <div class="hEyebrow">Torah • Physics • The Living Diagram</div>
+          <h1>Books</h1>
+          <p class="lead">
+            Published titles connected to the project. Covers are served locally, and Amazon buttons go to the exact listings.
+            Use tags to filter — or leave it on <strong>All</strong> to browse everything.
+          </p>
 
-    <!-- Books -->
-    <section class="section">
-      <div class="container">
-        <div class="grid-3">
-          <!-- Book 1 -->
-          <article class="card">
-            <div class="shine-wrap">
-              <img class="book-cover" src="/assets/img/books/Tower_of_Da'at_cover.jpg" alt="Cover of The Tower of Da’at" loading="lazy" />
-            </div>
-
-            <div class="book-meta">
-              <h3>The Tower of Da’at</h3>
-              <p class="byline">By Kiah Aviyu</p>
-              <p class="desc">A doorway into Da’at—where knowledge becomes living connection.</p>
-
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/contact.html">Bulk / inquiries</a>
-              </div>
-
-              <div class="mini-note">ASIN/ISBN: 1969659106</div>
-            </div>
-          </article>
-
-          <!-- Book 2 -->
-          <article class="card">
-            <div class="shine-wrap">
-              <img class="book-cover" src="/assets/img/books/Quantum_Etz_Chaim_cover.jpg" alt="Cover of Quantum Etz Chaim" loading="lazy" />
-            </div>
-
-            <div class="book-meta">
-              <h3>Quantum Etz Chaim</h3>
-              <p class="byline">By Kiah Aviyu</p>
-              <p class="desc">A bridge-language between modern field intuition and the Tree of Life as a map of meaning.</p>
-
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659254/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/contact.html">Bulk / inquiries</a>
-              </div>
-
-              <div class="mini-note">ASIN/ISBN: 1969659254</div>
-            </div>
-          </article>
-
-          <!-- Book 3 -->
-          <article class="card">
-            <div class="shine-wrap">
-              <img class="book-cover" src="/assets/img/books/Tiferet_cover.jpg" alt="Cover of Tiferet" loading="lazy" />
-            </div>
-
-            <div class="book-meta">
-              <h3>Tiferet</h3>
-              <p class="byline">By Kiah Aviyu</p>
-              <p class="desc">Beauty as balance—where compassion and strength become one clear centerline.</p>
-
-              <div class="book-actions">
-                <a class="btn primary small" target="_blank" rel="noopener"
-                   href="https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659394/">
-                  Buy on Amazon
-                </a>
-                <a class="btn ghost small" href="/pages/contact.html">Bulk / inquiries</a>
-              </div>
-
-              <div class="mini-note">ASIN/ISBN: 1969659394</div>
-            </div>
-          </article>
+          <!-- Filter pills injected by JS -->
+          <div class="filters">
+            <div id="filterBar" aria-label="Book filters"></div>
+          </div>
         </div>
+
+        <aside class="heroCard" aria-label="Tip">
+          <strong>Tip</strong>
+          <p>
+            If a book ever “doesn’t show up,” it’s usually a stale JSON cache or missing tags.
+            This page is built to avoid that — it will render books even if tags are empty.
+          </p>
+        </aside>
       </div>
     </section>
+
+    <!-- Grid injected by JS -->
+    <section aria-label="Book list">
+      <div id="bookGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Quantum Etz Chaim • Built for clarity and light.</div>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="brand-mark" aria-hidden="true">א</div>
-        <div>
-          <div class="footer-title">Quantum Etz Chaim</div>
-          <div class="muted">A bookstore + open learning sanctuary.</div>
-        </div>
-      </div>
-
-      <div class="footer-links" aria-label="Footer links">
-        <a href="/pages/privacy.html">Privacy</a>
-        <a href="/pages/terms.html">Terms</a>
-        <a href="/pages/refunds.html">Refunds</a>
-        <a href="/pages/contact.html">Contact</a>
-      </div>
-
-      <div class="footer-note muted">
-        © <span id="year"></span> QuantumEtzChaim.com
-      </div>
-    </div>
-  </footer>
-
   <script>
+    // tiny footer helper
     document.getElementById("year").textContent = new Date().getFullYear();
-    const btn = document.getElementById("navToggle");
-    const nav = document.getElementById("siteNav");
-    if (btn && nav) {
-      btn.addEventListener("click", () => {
-        const open = nav.classList.toggle("open");
-        btn.setAttribute("aria-expanded", String(open));
-      });
-    }
   </script>
+
+  <!-- Site JS -->
+  <script src="/js/site.js" defer></script>
 </body>
 </html>
