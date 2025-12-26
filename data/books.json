@@ -2,38 +2,46 @@
   {
     "id": "quantum-etz-chaim",
     "title": "Quantum Etz Chaim",
-    "subtitle": "One Excitation • Ten Emanations • Ten Trees",
-    "blurb": "Torah and the quantum world in one living framework—Sefirot as structure.",
-    "tags": ["Mystical Nonfiction", "Project World"],
-    "format": "Paperback / Kindle",
-    "cover": "/assets/img/books/Quantum_Etz_Chaim_cover.jpg",
-    "amazon": "https://www.amazon.com/QUANTUM-ETZ-CHAIM-KIAH-AVIYU/dp/1969659262/"
-  },
-  {
-    "id": "tower-of-daat",
-    "title": "The Tower of Da’at",
-    "blurb": "A gate of Da’at—structure, ascent, and the hidden join between worlds.",
-    "tags": ["Fiction & Myth", "Da’at Gate"],
-    "format": "Paperback",
-    "cover": "/assets/img/books/Tower_of_Da'at_cover.jpg",
-    "amazon": "https://www.amazon.com/TOWER-DAAT-AVIYU-KIAH-%D7%90%D7%91%D7%99%D7%95/dp/1969659106/"
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Quantum_Etz_Chaim_cover.jpg",
+    "amazon": "",
+    "tagline": "The Tree of Life as a living quantum architecture.",
+    "description_en": "A visionary synthesis of the Tree of Life with quantum principles—an inner map of structure, light, and becoming."
   },
   {
     "id": "tiferet",
     "title": "Tiferet",
-    "blurb": "Beauty as balance—centerline harmony, compassion, and radiance.",
-    "tags": ["Sefirot Volumes", "Tiferet"],
-    "format": "Paperback",
-    "cover": "/assets/img/books/Tiferet_cover.jpg",
-    "amazon": "https://www.amazon.com/TIFERET-Kiah-Aviyu/dp/1969659408/"
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Tiferet_cover.jpg",
+    "amazon": "",
+    "tagline": "Beauty as balance—heart-centered harmonics of the Tree.",
+    "description_en": "A contemplative work on harmony, center, and radiance—where symmetry becomes compassion and beauty becomes law."
+  },
+  {
+    "id": "tower-of-daat",
+    "title": "The Tower of Da’at",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Tower_of_Da'at_cover.jpg",
+    "amazon": "",
+    "tagline": "A gate of knowing between worlds.",
+    "description_en": "An ascent into Da’at—knowledge as bridge, threshold, and living flame."
   },
   {
     "id": "adversarys-prayer",
-    "title": "The Adversary’s Prayer",
-    "blurb": "Thanking HaShem while the adversary tries—steadfastness in the fire.",
-    "tags": ["Prayers & Devotional Works", "Kindle"],
-    "format": "Kindle",
-    "cover": "/assets/img/books/Adversarys_Prayer_cover.jpg",
-    "amazon": "https://www.amazon.com/ADVERSARYS-PRAYER-Thanking-HaShem-Tries-ebook/dp/B0G96BGXFF/"
+    "title": "Adversary’s Prayer",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Adversarys_Prayer_cover.jpg",
+    "amazon": "",
+    "tagline": "A shadow-lit confession searching for mercy.",
+    "description_en": "A raw spiritual meditation from the edge of contradiction—where judgment and longing speak in the same breath."
+  },
+  {
+    "id": "adam-kadmon",
+    "title": "ADAM KADMON",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/adam-kadmon.jpg",
+    "amazon": "https://www.amazon.com/dp/B0GCCFLVZN",
+    "tagline": "A luminous gate into the Primordial Human.",
+    "description_en": "A mystical exploration of Adam Kadmon—the Primordial Human and the living interface between Ein Sof and Creation. A work of inner architecture, divine light, and sacred structure."
   }
 ]
