@@ -6,6 +6,8 @@
   <title>Books — Quantum Etz Chaim</title>
   <meta name="description" content="Published volumes connected to the Quantum Etz Chaim diagram." />
 
+  <link rel="stylesheet" href="/css/global.css" />
+
   <style>
     :root{
       --bg0:#f4fbff;
@@ -13,39 +15,23 @@
       --ink:#071022;
       --muted:rgba(7,16,34,.68);
       --line:rgba(7,16,34,.12);
-
-      --sky:#7dd3fc;
-      --aqua:#22d3ee;
-      --mint:#34d399;
-      --violet:#a78bfa;
-
-      --card:rgba(255,255,255,.80);
-      --card2:rgba(255,255,255,.92);
-
-      --shadow:0 20px 60px rgba(2,6,23,.12);
+      --shadow:0 18px 50px rgba(2,6,23,.12);
       --shadow2:0 14px 34px rgba(2,6,23,.12);
-      --shadow3:0 12px 22px rgba(2,6,23,.10);
-
       --radius:22px;
     }
-
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
       background:
-        radial-gradient(900px 500px at 10% -10%, rgba(125,211,252,.38), transparent 60%),
-        radial-gradient(900px 520px at 95% 0%, rgba(52,211,153,.22), transparent 58%),
-        radial-gradient(1000px 680px at 55% 10%, rgba(167,139,250,.18), transparent 60%),
-        linear-gradient(180deg, var(--bg0), #ffffff 55%, #ffffff);
+        radial-gradient(900px 520px at 10% -10%, rgba(125,211,252,.30), transparent 60%),
+        radial-gradient(900px 520px at 95% 0%, rgba(52,211,153,.20), transparent 58%),
+        radial-gradient(1100px 720px at 50% 15%, rgba(167,139,250,.16), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #fff);
     }
-
     .wrap{ max-width:1160px; margin:0 auto; padding:16px 18px; }
-    a{ color:inherit; }
 
-    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,.78);
@@ -61,54 +47,47 @@
     .dot{
       width:10px; height:10px; border-radius:999px;
       background: radial-gradient(circle at 30% 30%, #b7f3ff, #22d3ee 50%, #0ea5e9);
-      box-shadow:
-        0 0 0 6px rgba(34,211,238,.14),
-        0 0 26px rgba(34,211,238,.28);
+      box-shadow: 0 0 0 6px rgba(34,211,238,.14), 0 0 26px rgba(34,211,238,.28);
       flex:0 0 auto;
     }
-    .nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-    .nav a{
+    nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    nav a{
       text-decoration:none;
       color: rgba(7,16,34,.78);
       padding: 8px 10px;
       border-radius: 12px;
       border: 1px solid transparent;
-      transition: .18s ease;
+      transition:.18s ease;
     }
-    .nav a:hover{
+    nav a:hover{
       background: rgba(34,211,238,.10);
       border-color: rgba(34,211,238,.22);
       color: rgba(7,16,34,.95);
       transform: translateY(-1px);
     }
-    .nav a.active{
+    nav a.active{
       background: linear-gradient(90deg, rgba(125,211,252,.22), rgba(52,211,153,.16));
       border-color: rgba(34,211,238,.28);
       color: rgba(7,16,34,.96);
       font-weight: 800;
     }
 
-    /* Hero */
     .hero{
-      margin: 18px 0 14px;
+      margin: 18px 0 12px;
       border: 1px solid rgba(7,16,34,.10);
       border-radius: 28px;
       overflow:hidden;
       box-shadow: var(--shadow);
       background:
-        radial-gradient(900px 520px at 15% 20%, rgba(125,211,252,.34), transparent 60%),
-        radial-gradient(900px 540px at 90% 10%, rgba(52,211,153,.22), transparent 58%),
+        radial-gradient(900px 520px at 15% 20%, rgba(125,211,252,.26), transparent 60%),
+        radial-gradient(900px 540px at 90% 10%, rgba(52,211,153,.18), transparent 58%),
         linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
     }
     .heroInner{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      padding: 22px;
-      align-items:center;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      padding: 18px 20px;
+      flex-wrap:wrap;
     }
-    @media (max-width: 900px){ .heroInner{ grid-template-columns:1fr; } }
-
     .eyebrow{
       font-size:12px;
       letter-spacing:.20em;
@@ -118,7 +97,7 @@
     }
     h1{
       margin:0;
-      font-size: clamp(34px, 4vw, 54px);
+      font-size: clamp(34px, 4vw, 52px);
       line-height:1.0;
       letter-spacing:-.03em;
     }
@@ -127,56 +106,15 @@
       color: var(--muted);
       font-size: 15px;
       line-height: 1.85;
-      max-width: 72ch;
+      max-width: 78ch;
+    }
+    .hint{
+      font-size:12px;
+      color: rgba(7,16,34,.58);
+      margin: 0;
     }
 
-    .heroRight{
-      justify-self:stretch;
-      border-radius: 22px;
-      border: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.66);
-      padding: 14px;
-      box-shadow: var(--shadow3);
-      position:relative;
-      overflow:hidden;
-      min-height: 190px;
-    }
-    .heroRight:before{
-      content:"";
-      position:absolute; inset:-40px -80px auto auto;
-      width: 220px; height: 220px;
-      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.40), transparent 60%);
-      filter: blur(2px);
-      transform: rotate(18deg);
-      opacity:.8;
-      pointer-events:none;
-    }
-    .heroRight h2{
-      margin:0 0 10px;
-      font-size: 15px;
-      letter-spacing:-.01em;
-    }
-    .heroRight p{
-      margin:0;
-      color: rgba(7,16,34,.70);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-    .statRow{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .stat{
-      border: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.80);
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-size: 12px;
-      font-weight: 800;
-      color: rgba(7,16,34,.82);
-    }
-
-    /* Filter */
+    /* site.js uses these classes/ids; we style them here */
     #filterBar{
       display:flex;
       flex-wrap:wrap;
@@ -201,14 +139,11 @@
       background: linear-gradient(90deg, rgba(125,211,252,.30), rgba(52,211,153,.20));
       border-color: rgba(34,211,238,.34);
       color: rgba(7,16,34,.92);
-      box-shadow:
-        0 12px 22px rgba(2,6,23,.08),
-        0 0 0 6px rgba(34,211,238,.10);
+      box-shadow: 0 12px 22px rgba(2,6,23,.08), 0 0 0 6px rgba(34,211,238,.10);
     }
 
-    /* Grid */
     #bookGrid{
-      margin-top: 12px;
+      margin-top: 10px;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
@@ -218,7 +153,7 @@
     @media (max-width: 620px){ #bookGrid{ grid-template-columns: 1fr; } }
 
     .book-card{
-      background: var(--card);
+      background: rgba(255,255,255,.82);
       border: 1px solid rgba(7,16,34,.12);
       border-radius: var(--radius);
       box-shadow: var(--shadow2);
@@ -233,28 +168,11 @@
       box-shadow: 0 26px 70px rgba(2,6,23,.16);
       border-color: rgba(34,211,238,.24);
     }
-
-    /* Featured ribbon (JS will add data-tag feature via tags; we’ll style it if present in tags list visually) */
-    .ribbon{
-      position:absolute;
-      top: 14px; left: 14px;
-      background: linear-gradient(90deg, rgba(34,211,238,.92), rgba(52,211,153,.92));
-      color: rgba(7,16,34,.95);
-      font-weight: 900;
-      font-size: 11px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.55);
-      box-shadow: 0 10px 22px rgba(2,6,23,.14);
-    }
-
     .book-cover{
       display:block;
       padding: 16px;
       background:
-        radial-gradient(900px 520px at 20% 20%, rgba(125,211,252,.24), transparent 55%),
+        radial-gradient(900px 520px at 20% 20%, rgba(125,211,252,.22), transparent 55%),
         radial-gradient(900px 520px at 90% 10%, rgba(52,211,153,.14), transparent 60%),
         linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.50));
       border-bottom: 1px solid rgba(7,16,34,.10);
@@ -267,7 +185,6 @@
       box-shadow: 0 18px 44px rgba(2,6,23,.22);
       background: rgba(255,255,255,.60);
     }
-
     .book-meta{
       padding: 14px 16px 16px;
       display:flex;
@@ -277,7 +194,6 @@
     }
     .book-title{ margin:0; font-size:18px; letter-spacing:-.01em; }
     .book-tagline{ margin:0; color: rgba(7,16,34,.70); font-size:14px; line-height:1.6; }
-
     .tags{ display:flex; flex-wrap:wrap; gap: 8px; }
     .tag{
       background: rgba(34,211,238,.10);
@@ -288,9 +204,7 @@
       font-size: 12px;
       font-weight: 850;
     }
-
     .book-actions{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
-
     .btn{
       text-decoration:none;
       display:inline-flex; align-items:center; justify-content:center;
@@ -317,6 +231,21 @@
       padding: 18px 0 26px;
       margin-top: 26px;
     }
+
+    .ribbon{
+      position:absolute;
+      top: 14px; left: 14px;
+      background: linear-gradient(90deg, rgba(34,211,238,.92), rgba(52,211,153,.92));
+      color: rgba(7,16,34,.95);
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 10px 22px rgba(2,6,23,.14);
+    }
   </style>
 </head>
 
@@ -325,7 +254,7 @@
     <div class="wrap">
       <div class="navrow">
         <a class="brand" href="/"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav class="nav">
+        <nav>
           <a href="/">Home</a>
           <a href="/tree">Tree</a>
           <a class="active" href="/books">Books</a>
@@ -341,28 +270,13 @@
         <div>
           <p class="eyebrow">Volumes</p>
           <h1>Books as Gates.</h1>
-          <p class="lead">
-            Published titles connected to the living diagram. Browse by sefirot, themes, or simply follow what shines.
-          </p>
-          <div id="filterBar"></div>
+          <p class="lead">Published titles connected to the living diagram. Covers are local; “Amazon” opens the listing.</p>
         </div>
-
-        <aside class="heroRight">
-          <h2>How this page works</h2>
-          <p>
-            Covers are local. The grid is rendered from <strong>/data/books.json</strong>.
-            Add a new book by adding one JSON object and a cover image.
-          </p>
-          <div class="statRow">
-            <span class="stat">Fast</span>
-            <span class="stat">Local Covers</span>
-            <span class="stat">Filterable</span>
-            <span class="stat">Expandable</span>
-          </div>
-        </aside>
+        <p class="hint">Tip: click tags to filter.</p>
       </div>
     </section>
 
+    <div id="filterBar"></div>
     <section>
       <div id="bookGrid"></div>
     </section>
@@ -372,14 +286,10 @@
     </footer>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Your existing renderer -->
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   <script src="/js/site.js" defer></script>
 
-  <!-- Tiny enhancement: add "Featured" ribbon when a card contains tag "featured" -->
+  <!-- Featured ribbon enhancer -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const obs = new MutationObserver(() => {
