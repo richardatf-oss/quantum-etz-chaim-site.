@@ -1,0 +1,82 @@
+/* css/global.css
+   Subtle starfield/noise overlay for all pages.
+   - Uses pure CSS (no images).
+   - Respects reduced-motion.
+*/
+
+:root{
+  /* Tune these if you want stronger/weaker effect */
+  --noise-opacity: 0.10;      /* overall strength (0.06–0.14 is subtle) */
+  --stars-opacity: 0.18;      /* star sparkle layer strength */
+}
+
+/* Ensure background stays behind everything */
+body{ position: relative; }
+
+/* Starfield + noise overlay */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Layer 1: soft “stars” (tiny dots) */
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,var(--stars-opacity)), transparent 55%),
+    radial-gradient(1px 1px at 28% 62%, rgba(255,255,255,calc(var(--stars-opacity) * 0.9)), transparent 55%),
+    radial-gradient(1px 1px at 44% 34%, rgba(255,255,255,calc(var(--stars-opacity) * 0.8)), transparent 55%),
+    radial-gradient(1px 1px at 61% 77%, rgba(255,255,255,calc(var(--stars-opacity) * 0.7)), transparent 55%),
+    radial-gradient(1px 1px at 74% 22%, rgba(255,255,255,calc(var(--stars-opacity) * 0.9)), transparent 55%),
+    radial-gradient(1px 1px at 88% 58%, rgba(255,255,255,calc(var(--stars-opacity) * 0.8)), transparent 55%),
+
+    /* Layer 2: denser faint stars (repeating) */
+    radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.10), transparent 55%),
+    radial-gradient(1px 1px at 20% 40%, rgba(255,255,255,0.08), transparent 55%),
+    radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.09), transparent 55%),
+    radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.07), transparent 55%),
+    radial-gradient(1px 1px at 70% 50%, rgba(255,255,255,0.08), transparent 55%),
+    radial-gradient(1px 1px at 90% 85%, rgba(255,255,255,0.07), transparent 55%),
+
+    /* Layer 3: noise (two angled micro-grids) */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,var(--noise-opacity)) 0px,
+      rgba(255,255,255,var(--noise-opacity)) 1px,
+      rgba(0,0,0,0) 1px,
+      rgba(0,0,0,0) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,calc(var(--noise-opacity) * 0.65)) 0px,
+      rgba(255,255,255,calc(var(--noise-opacity) * 0.65)) 1px,
+      rgba(0,0,0,0) 1px,
+      rgba(0,0,0,0) 4px
+    );
+
+  background-size:
+    auto, auto, auto, auto, auto, auto,
+    auto, auto, auto, auto, auto, auto,
+    180px 180px,
+    220px 220px;
+
+  background-repeat: repeat;
+  mix-blend-mode: soft-light;
+  opacity: 1;
+
+  /* Just enough movement to feel alive */
+  animation: qec-stars-drift 26s linear infinite;
+}
+
+/* Make sure your page content stays above the overlay */
+body > *{ position: relative; z-index: 1; }
+
+@keyframes qec-stars-drift{
+  0%   { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-40px, -24px, 0); }
+}
+
+/* Accessibility: no motion */
+@media (prefers-reduced-motion: reduce){
+  body::before{ animation: none; }
+}
