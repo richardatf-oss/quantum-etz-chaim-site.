@@ -7,10 +7,7 @@
   <meta name="description" content="The Tree diagram — a living map of structure." />
   <link rel="stylesheet" href="/css/global.css" />
   <style>
-    .frame{
-      margin-top: 18px;
-      padding: 18px;
-    }
+    .frame{ margin-top: 18px; padding: 18px; }
     .treeWrap{
       display:grid;
       grid-template-columns: 1fr 360px;
@@ -23,28 +20,37 @@
       border-radius: var(--radius2);
       border: 1px solid rgba(7,16,34,.10);
       background: rgba(255,255,255,.74);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
       overflow:hidden;
       padding: 10px;
     }
-    .svgBox img{ width:100%; height:auto; display:block; border-radius: 18px; }
+    .svgBox img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius: 12px;
+    }
 
     .side{
       padding: 18px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: var(--shadow2);
     }
     .side h1{
-      margin: 0 0 10px;
+      margin:0 0 10px;
       font-size: clamp(26px, 3vw, 36px);
       letter-spacing: -0.02em;
       line-height: 1.05;
     }
     .side p{
-      margin: 0 0 12px;
+      margin:0 0 10px;
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.75;
       font-size: 14px;
     }
-    .side .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .side .cta{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
   </style>
 </head>
 
@@ -66,22 +72,22 @@
   <main class="wrap">
     <section class="panel frame">
       <div class="treeWrap">
-        <div class="svgBox" aria-label="Tree diagram">
-          <img src="/assets/tree.svg" alt="Tree diagram" />
+        <div class="svgBox">
+          <img src="/assets/img/hero/tree.svg" alt="Tree diagram" />
         </div>
 
-        <div class="card side">
+        <aside class="side">
           <p class="eyebrow">Diagram</p>
           <h1>The Tree</h1>
           <p>
-            The Tree is the navigable interface: spheres as perspectives, paths as relationships.
-            (Next step is making this SVG clickable per node.)
+            The Tree is a navigable diagram: spheres as perspectives, paths as relations.
+            This page is intentionally minimal — we can make each sphere clickable next.
           </p>
-          <div class="btnRow">
-            <a class="btn" href="/books.html">Browse Volumes</a>
-            <a class="btn secondary" href="/index.html">Back Home</a>
+          <div class="cta">
+            <a class="btn" href="/books.html">Browse Books</a>
+            <a class="btn secondary" href="/book.html?id=adam-kadmon">Start at Keter</a>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
