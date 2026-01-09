@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Book — Quantum Etz Chaim</title>
-  <meta name="description" content="Book details for Quantum Etz Chaim titles." />
+  <meta name="description" content="Book detail page for Quantum Etz Chaim titles." />
 
   <style>
     :root{
@@ -16,7 +16,6 @@
       --shadow:0 14px 40px rgba(2, 6, 23, 0.10);
       --shadow2:0 10px 22px rgba(2, 6, 23, 0.10);
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -27,9 +26,8 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 45%, #ffffff);
       color: var(--ink);
     }
-
-    a{ color: inherit; }
     .wrap{ max-width:1100px; margin:0 auto; padding:14px 18px; }
+    a{ color: inherit; }
 
     .topbar{
       position:sticky; top:0; z-index:50;
@@ -82,10 +80,6 @@
       color: rgba(11,18,32,0.70);
       text-decoration:none;
       border-bottom: 1px solid rgba(11,18,32,0.18);
-    }
-    .crumbs a:hover{
-      color: rgba(11,18,32,0.90);
-      border-bottom-color: rgba(14,165,233,0.35);
     }
 
     .panel{
@@ -159,15 +153,12 @@
       border: 1px solid rgba(14,165,233,0.28);
       background: rgba(14,165,233,0.12);
       color: rgba(11,18,32,0.92);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
     .btn.secondary{
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255,255,255,0.70);
       color: rgba(11,18,32,0.82);
     }
-    .btn.secondary:hover{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.10); }
 
     .desc{
       margin-top: 14px;
@@ -221,12 +212,7 @@
       box-shadow: 0 10px 22px rgba(2,6,23,0.12);
       display:block;
     }
-    .other-meta{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      min-width: 0;
-    }
+    .other-meta{ display:flex; flex-direction:column; gap: 6px; min-width:0; }
     .other-name{
       text-decoration:none;
       color: rgba(11,18,32,0.92);
@@ -237,8 +223,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .other-name:hover{ color: rgba(14,165,233,0.95); }
-
     .mini-link{
       font-size: 12px;
       text-decoration:none;
@@ -246,7 +230,6 @@
       border-bottom: 1px solid rgba(11,18,32,0.18);
       width: fit-content;
     }
-    .mini-link:hover{ border-bottom-color: rgba(34,197,94,0.35); color: rgba(11,18,32,0.90); }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -263,7 +246,7 @@
     <div class="wrap">
       <div class="navrow">
         <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav class="nav" aria-label="Primary navigation">
+        <nav class="nav">
           <a href="/index.html">Home</a>
           <a href="/tree.html">Tree</a>
           <a href="/books.html">Books</a>
@@ -276,13 +259,12 @@
   <main class="wrap">
     <div class="crumbs">
       <a href="/books.html">← Back to Books</a>
-      <span id="crumbId" aria-hidden="true"></span>
     </div>
 
-    <section class="panel" aria-label="Book details">
+    <section class="panel">
       <div class="bookGrid">
         <div class="coverWrap">
-          <img id="bookCover" src="/assets/img/books/adam-kadmon.jpg" alt="Book cover" loading="lazy" decoding="async" />
+          <img id="bookCover" src="" alt="Book cover" loading="lazy" decoding="async" />
         </div>
 
         <div>
@@ -302,7 +284,7 @@
         </div>
       </div>
 
-      <div class="other" aria-label="Other titles">
+      <div class="other">
         <h2>Other titles</h2>
         <div id="otherTitles"></div>
       </div>
@@ -315,12 +297,7 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const crumb = document.getElementById("crumbId");
-    if (crumb && id) crumb.textContent = "• id=" + id;
   </script>
-
   <script src="/js/site.js" defer></script>
 </body>
 </html>
