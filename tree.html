@@ -29,54 +29,28 @@
       color: var(--ink);
     }
 
-    /* Top nav */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-    .wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px;
-    }
-    .navrow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-    }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; gap: 14px; }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color: var(--ink);
-      font-weight: 800;
-      letter-spacing: .2px;
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color: var(--ink);
+      font-weight: 800; letter-spacing: .2px;
     }
     .brand .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
+      width: 10px; height: 10px; border-radius: 999px;
       background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
       box-shadow: 0 0 0 6px rgba(14,165,233,0.12);
     }
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-    }
+    .nav{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
     .nav a{
-      text-decoration:none;
-      color: rgba(11,18,32,0.78);
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
+      text-decoration:none; color: rgba(11,18,32,0.78);
+      padding: 8px 10px; border-radius: 10px; border: 1px solid transparent;
     }
     .nav a:hover{
       background: rgba(14,165,233,0.08);
@@ -90,14 +64,8 @@
       font-weight: 650;
     }
 
-    /* Page header */
     .pageHead{
       margin: 18px 0 12px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
     }
     .eyebrow{
       font-size: 12px;
@@ -117,92 +85,59 @@
       color: var(--muted);
       font-size: 15px;
       line-height: 1.75;
-      max-width: 78ch;
+      max-width: 82ch;
     }
 
-    /* Tree stage */
     .stage{
+      margin-top: 14px;
       background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       border-radius: 22px;
       box-shadow: var(--shadow);
       overflow:hidden;
+      padding: 16px;
     }
-    .stageGrid{
+    .stageInner{
       display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 0;
-      align-items: stretch;
+      grid-template-columns: 1fr 360px;
+      gap: 14px;
+      align-items:start;
     }
     @media (max-width: 980px){
-      .stageGrid{ grid-template-columns: 1fr; }
+      .stageInner{ grid-template-columns: 1fr; }
     }
 
-    .treePane{
-      padding: 16px;
-      background:
-        radial-gradient(900px 520px at 50% 35%, rgba(255,255,255,0.98), rgba(255,255,255,0.50));
-      border-right: 1px solid rgba(15, 23, 42, 0.10);
+    .diagram{
+      background: radial-gradient(900px 520px at 50% 35%, rgba(255,255,255,0.98), rgba(255,255,255,0.55));
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      border-radius: 18px;
+      padding: 14px;
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height: 520px;
-      position:relative;
+      min-height: 560px;
     }
-    @media (max-width: 980px){
-      .treePane{ border-right: none; border-bottom: 1px solid rgba(15, 23, 42, 0.10); min-height: 420px; }
-    }
-    .treePane img{
+    .diagram img{
       width: 100%;
-      max-width: 680px;
+      max-width: 720px;
       height: auto;
       display:block;
-      border-radius: 18px;
+      border-radius: 16px;
       box-shadow: 0 18px 44px rgba(2,6,23,0.14);
+      background: rgba(255,255,255,0.55);
     }
 
-    .treeOverlay{
-      position:absolute;
-      inset: 16px;
-      pointer-events:none; /* overlay labels are non-interactive for now */
-      border-radius: 18px;
-    }
-
-    .sidePane{
-      padding: 18px;
-    }
-
-    .pillRow{
+    .side{
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 0 0 14px;
+      flex-direction:column;
+      gap: 12px;
     }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      border: 1px solid rgba(14,165,233,0.22);
-      background: rgba(14,165,233,0.10);
-      color: rgba(11,18,32,0.82);
-      white-space:nowrap;
-    }
-    .pill.green{
-      border-color: rgba(34,197,94,0.22);
-      background: rgba(34,197,94,0.10);
-    }
-
     .card{
       background: rgba(255,255,255,0.72);
       border: 1px solid rgba(15, 23, 42, 0.10);
       border-radius: 18px;
       padding: 14px;
       box-shadow: var(--shadow2);
-      margin-bottom: 12px;
     }
     .card h2{
       margin: 0 0 6px;
@@ -215,43 +150,25 @@
       font-size: 13px;
       line-height: 1.7;
     }
-
-    .ctaRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
+    .ctaRow{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 10px; }
     .btn{
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 13px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px; border-radius: 12px;
+      font-weight: 800; font-size: 13px;
       border: 1px solid rgba(14,165,233,0.28);
       background: rgba(14,165,233,0.12);
       color: rgba(11,18,32,0.92);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(14,165,233,0.42);
-      background: rgba(14,165,233,0.16);
-    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
     .btn.secondary{
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255,255,255,0.70);
       color: rgba(11,18,32,0.82);
     }
-    .btn.secondary:hover{
-      border-color: rgba(34,197,94,0.35);
-      background: rgba(34,197,94,0.10);
-    }
+    .btn.secondary:hover{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.10); }
 
-    /* Footer */
     .footer{
       border-top: 1px solid var(--line);
       color: rgba(11,18,32,0.55);
@@ -286,74 +203,51 @@
 
   <main class="wrap">
     <div class="pageHead">
-      <div>
-        <p class="eyebrow">The Interface</p>
-        <h1>The Tree</h1>
-        <p class="lead">
-          Begin here. The Tree is a map of structure — not a metaphor to admire, but an interface you can move through.
-          Today it’s a luminous image. Next, we make it interactive: spheres, paths, gates.
-        </p>
-      </div>
+      <p class="eyebrow">The Interface</p>
+      <h1>The Tree</h1>
+      <p class="lead">
+        This SVG is the foundation: scalable, precise, and ready to become interactive.
+        Next we can make nodes clickable (Keter → Adam Kadmon, Tiferet → Tiferet, Da’at → Tower of Da’at).
+      </p>
     </div>
 
     <section class="stage" aria-label="The Tree diagram">
-      <div class="stageGrid">
-        <!-- Tree visual -->
-        <div class="treePane">
-          <img
-            src="/assets/img/hero/hero-quantum-etz-chaim.png"
-            alt="A luminous Tree of Life diagram emerging into view"
-            loading="eager"
-            decoding="async"
-          />
-          <div class="treeOverlay" aria-hidden="true"></div>
+      <div class="stageInner">
+        <div class="diagram">
+          <img src="/assets/tree.svg" alt="Tree of Life diagram (SVG)" loading="eager" decoding="async" />
         </div>
 
-        <!-- Guidance / actions -->
-        <div class="sidePane">
-          <div class="pillRow">
-            <span class="pill">Map-first</span>
-            <span class="pill green">Luminous / Minimal</span>
-          </div>
-
+        <aside class="side" aria-label="Guidance">
           <div class="card">
-            <h2>How to use the Tree</h2>
+            <h2>Why SVG?</h2>
             <p>
-              Think of each sphere as a perspective and each path as a relationship. Books, essays, and gates attach to
-              specific locations — so navigation becomes learning.
+              SVG is Scalable Vector Graphics — perfect for diagrams. Every sphere and path can become a clickable
+              element without losing sharpness.
             </p>
           </div>
 
           <div class="card">
-            <h2>Next upgrade (interactive)</h2>
+            <h2>Start with a gate</h2>
             <p>
-              We’ll replace this image with an SVG Tree where you can hover spheres and open gates (Keter → Adam Kadmon,
-              Tiferet → Tiferet, and so on).
-            </p>
-          </div>
-
-          <div class="card">
-            <h2>Start with published gates</h2>
-            <p>
-              If you prefer text first, browse the volumes. Each is an artifact connected to a place on the map.
+              Begin at Keter with Adam Kadmon, then return to the Tree and travel downward.
             </p>
             <div class="ctaRow">
-              <a class="btn" href="/books.html">Open Volumes</a>
-              <a class="btn secondary" href="/book.html?id=adam-kadmon">Adam Kadmon</a>
+              <a class="btn" href="/book.html?id=adam-kadmon">Adam Kadmon</a>
+              <a class="btn secondary" href="/books.html">All Volumes</a>
             </div>
           </div>
 
           <div class="card">
-            <h2>One canonical thesis</h2>
+            <h2>Next upgrade</h2>
             <p>
-              A single clear explanation of the project — restrained, navigable, and non-repetitive.
+              If you want, I’ll give you a tiny JS file to make the SVG nodes clickable — no frameworks, just clean DOM.
             </p>
             <div class="ctaRow">
-              <a class="btn secondary" href="/about.html">Read About</a>
               <a class="btn secondary" href="/contact.html">Contact</a>
+              <a class="btn secondary" href="/about.html">About</a>
             </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
