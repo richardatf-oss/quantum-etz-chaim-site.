@@ -1,0 +1,52 @@
+[
+  {
+    "id": "adam-kadmon",
+    "title": "ADAM KADMON",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/adam-kadmon.jpg",
+    "amazon": "https://www.amazon.com/dp/B0GCCFLVZN",
+    "tagline": "A luminous gate into the Primordial Human.",
+    "description_en": "A mystical exploration of Adam Kadmon—the Primordial Human and the living interface between Ein Sof and Creation. A work of inner architecture, divine light, and sacred structure.",
+    "tags": ["featured", "keter", "kabbalah"]
+  },
+  {
+    "id": "quantum-etz-chaim",
+    "title": "Quantum Etz Chaim",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Quantum_Etz_Chaim_cover.jpg",
+    "amazon": "",
+    "tagline": "The Tree of Life as a living quantum architecture.",
+    "description_en": "A visionary synthesis of the Tree of Life with quantum principles—an inner map of structure, light, and becoming.",
+    "tags": ["featured", "tree", "physics"]
+  },
+  {
+    "id": "tiferet",
+    "title": "Tiferet",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Tiferet_cover.jpg",
+    "amazon": "",
+    "tagline": "Beauty as balance—heart-centered harmonics of the Tree.",
+    "description_en": "A contemplative work on harmony, center, and radiance—where symmetry becomes compassion and beauty becomes law.",
+    "tags": ["tiferet", "balance"]
+  },
+  {
+    "id": "tower-of-daat",
+    "title": "The Tower of Da’at",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Tower_of_Da'at_cover.jpg",
+    "amazon": "",
+    "tagline": "A gate of knowing between worlds.",
+    "description_en": "An ascent into Da’at—knowledge as bridge, threshold, and living flame.",
+    "tags": ["daat", "knowledge"]
+  },
+  {
+    "id": "adversarys-prayer",
+    "title": "Adversary’s Prayer",
+    "author": "Kiah Aviyu",
+    "cover": "assets/img/books/Adversarys_Prayer_cover.jpg",
+    "amazon": "",
+    "tagline": "A shadow-lit confession searching for mercy.",
+    "description_en": "A raw spiritual meditation from the edge of contradiction—where judgment and longing speak in the same breath.",
+    "tags": ["prayer", "mercy"]
+  }
+]
