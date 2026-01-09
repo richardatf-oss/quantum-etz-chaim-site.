@@ -16,7 +16,6 @@
       --shadow:0 14px 40px rgba(2, 6, 23, 0.10);
       --shadow2:0 10px 22px rgba(2, 6, 23, 0.10);
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -27,9 +26,8 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 45%, #ffffff);
       color: var(--ink);
     }
-
-    a{ color: inherit; }
     .wrap{ max-width:1100px; margin:0 auto; padding:14px 18px; }
+    a{ color: inherit; }
 
     .topbar{
       position:sticky; top:0; z-index:50;
@@ -91,7 +89,6 @@
       max-width: 82ch;
     }
 
-    /* Filter bar (JS will populate) */
     #filterBar{
       display:flex;
       flex-wrap:wrap;
@@ -109,16 +106,13 @@
       font-weight: 750;
       font-size: 13px;
       box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .pill:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.30); }
     .pill.active{
       background: linear-gradient(90deg, rgba(14,165,233,0.16), rgba(34,197,94,0.12));
       border-color: rgba(14,165,233,0.35);
       color: rgba(11,18,32,0.92);
     }
 
-    /* Grid */
     #bookGrid{
       margin-top: 10px;
       display:grid;
@@ -129,7 +123,6 @@
     @media (max-width: 980px){ #bookGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 620px){ #bookGrid{ grid-template-columns: 1fr; } }
 
-    /* Book cards (site.js renders these classes) */
     .book-card{
       background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
@@ -138,7 +131,6 @@
       overflow:hidden;
       display:flex;
       flex-direction:column;
-      min-height: 100%;
     }
     .book-cover{
       display:block;
@@ -160,17 +152,8 @@
       gap: 10px;
       flex: 1;
     }
-    .book-title{
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-    .book-tagline{
-      margin: 0;
-      color: rgba(11,18,32,0.68);
-      font-size: 14px;
-      line-height: 1.55;
-    }
+    .book-title{ margin:0; font-size:18px; letter-spacing:-0.01em; }
+    .book-tagline{ margin:0; color: rgba(11,18,32,0.68); font-size:14px; line-height:1.55; }
     .tags{ display:flex; flex-wrap:wrap; gap: 8px; }
     .tag{
       background: rgba(14,165,233,0.10);
@@ -181,18 +164,11 @@
       font-size: 12px;
       font-weight: 750;
     }
-    .book-actions{
-      margin-top:auto;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
+    .book-actions{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
+
     .btn{
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display:inline-flex; align-items:center; justify-content:center;
       padding: 10px 12px;
       border-radius: 12px;
       font-weight: 800;
@@ -200,15 +176,12 @@
       border: 1px solid rgba(14,165,233,0.28);
       background: rgba(14,165,233,0.12);
       color: rgba(11,18,32,0.92);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
     .btn.secondary{
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255,255,255,0.70);
       color: rgba(11,18,32,0.82);
     }
-    .btn.secondary:hover{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.10); }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -216,3 +189,45 @@
       font-size: 12px;
       padding: 18px 0 26px;
       margin-top: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="navrow">
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
+        <nav class="nav">
+          <a href="/index.html">Home</a>
+          <a href="/tree.html">Tree</a>
+          <a class="active" href="/books.html">Books</a>
+          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="pageHead">
+      <p class="eyebrow">Volumes</p>
+      <h1>Books</h1>
+      <p class="lead">Published titles connected to the diagram. Covers are served locally.</p>
+      <div id="filterBar"></div>
+    </div>
+
+    <section>
+      <div id="bookGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Quantum Etz Chaim</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="/js/site.js" defer></script>
+</body>
+</html>
