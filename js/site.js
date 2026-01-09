@@ -1,9 +1,4 @@
-/* js/site.js
-   Minimal renderer for:
-   - books.html (grid + optional tag filter)
-   - book.html  (single book detail via ?id=...)
-*/
-
+/* js/site.js — resilient renderer (works even if ids differ) */
 (function () {
   "use strict";
 
@@ -48,44 +43,16 @@
     return params.get("id") || "";
   }
 
-  // ---------- BOOKS PAGE ----------
-  function renderFilterBar(books) {
-    const bar = $("#filterBar");
-    if (!bar) return;
+  function findBooksMount() {
+    // Preferred IDs
+    let grid = $("#bookGrid");
+    let filter = $("#filterBar");
 
-    const allTags = uniq(
-      books.flatMap((b) => (b.tags && b.tags.length ? b.tags : []))
-    ).sort((a, b) => a.localeCompare(b));
+    // Fallbacks (in case the deployed page differs)
+    if (!grid) grid = $("#booksGrid") || $("#grid") || $(".grid") || $('[data-books-grid]');
+    if (!filter) filter = $("#filters") || $(".filters") || $('[data-books-filter]');
 
-    // If no tags exist at all, hide filter bar
-    if (allTags.length === 0) {
-      bar.style.display = "none";
-      return;
-    }
-
-    const makeBtn = (label, value, active) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "pill" + (active ? " active" : "");
-      btn.dataset.filter = value;
-      btn.textContent = label;
-      return btn;
-    };
-
-    bar.innerHTML = "";
-    bar.appendChild(makeBtn("All", "all", true));
-    for (const t of allTags) bar.appendChild(makeBtn(t, t, false));
-
-    bar.addEventListener("click", (e) => {
-      const btn = e.target.closest("button.pill");
-      if (!btn) return;
-
-      bar.querySelectorAll("button.pill").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter || "all";
-      renderBooksGrid(books, filter);
-    });
+    return { grid, filter };
   }
 
   function bookCard(b) {
@@ -120,18 +87,46 @@
     `;
   }
 
-  function renderBooksGrid(books, filter) {
-    const grid = $("#bookGrid");
-    if (!grid) return;
-
+  function renderBooksGrid(gridEl, books, filter) {
     const filtered = (filter && filter !== "all")
       ? books.filter(b => (b.tags || []).includes(filter))
       : books;
 
-    grid.innerHTML = filtered.map(bookCard).join("");
+    gridEl.innerHTML = filtered.map(bookCard).join("");
   }
 
-  // ---------- BOOK DETAIL PAGE ----------
+  function renderFilterBar(filterEl, books, onPick) {
+    const allTags = uniq(
+      books.flatMap((b) => (b.tags && b.tags.length ? b.tags : []))
+    ).sort((a, b) => a.localeCompare(b));
+
+    if (allTags.length === 0) {
+      filterEl.style.display = "none";
+      return;
+    }
+
+    const makeBtn = (label, value, active) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "pill" + (active ? " active" : "");
+      btn.dataset.filter = value;
+      btn.textContent = label;
+      return btn;
+    };
+
+    filterEl.innerHTML = "";
+    filterEl.appendChild(makeBtn("All", "all", true));
+    for (const t of allTags) filterEl.appendChild(makeBtn(t, t, false));
+
+    filterEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("button.pill");
+      if (!btn) return;
+      filterEl.querySelectorAll("button.pill").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      onPick(btn.dataset.filter || "all");
+    });
+  }
+
   function renderBookDetail(books) {
     const id = getIdFromQuery();
     const coverEl = $("#bookCover");
@@ -144,14 +139,12 @@
     if (!titleEl || !coverEl) return;
 
     const found = books.find(b => b.id === id) || books[0];
-
     if (!found) {
       titleEl.textContent = "No books found.";
       return;
     }
 
     document.title = `${found.title} — Quantum Etz Chaim`;
-
     titleEl.textContent = found.title;
     if (taglineEl) taglineEl.textContent = found.tagline || "";
     if (descEl) descEl.textContent = found.description_en || "";
@@ -186,10 +179,15 @@
     }
   }
 
-  // ---------- INIT ----------
   async function init() {
-    const isBooksPage = !!$("#bookGrid");
+    console.log("[site.js] init", location.pathname);
+
+    // Books mounts (if on books page)
+    const { grid, filter } = findBooksMount();
+    const isBooksPage = !!grid;
     const isBookPage = !!$("#bookTitle");
+
+    console.log("[site.js] mounts", { isBooksPage, isBookPage, grid: !!grid, filter: !!filter });
 
     if (!isBooksPage && !isBookPage) return;
 
@@ -197,19 +195,20 @@
     try {
       raw = await fetchJSON("/data/books.json");
     } catch (err) {
-      console.error(err);
-      const grid = $("#bookGrid");
+      console.error("[site.js] JSON load failed", err);
       if (grid) grid.innerHTML = `<div style="padding:16px;color:rgba(11,18,32,.7)">Could not load /data/books.json</div>`;
-      const title = $("#bookTitle");
-      if (title) title.textContent = "Could not load book data.";
+      if ($("#bookTitle")) $("#bookTitle").textContent = "Could not load book data.";
       return;
     }
 
     const books = Array.isArray(raw) ? raw.map(normalizeBook).filter(b => b.id) : [];
+    console.log("[site.js] books loaded:", books.length);
 
     if (isBooksPage) {
-      renderFilterBar(books);
-      renderBooksGrid(books, "all");
+      if (filter) {
+        renderFilterBar(filter, books, (picked) => renderBooksGrid(grid, books, picked));
+      }
+      renderBooksGrid(grid, books, "all");
     }
 
     if (isBookPage) {
