@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" role="img" aria-label="Tree of Life diagram">
+  <defs>
+    <!-- Soft glow -->
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.55 0" result="colored"/>
+      <feMerge>
+        <feMergeNode in="colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle gradient stroke for paths -->
+    <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- Node fill gradient -->
+    <radialGradient id="nodeGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#eaf6ff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#dff7ea" stop-opacity="0.55"/>
+    </radialGradient>
+
+    <style>
+      /* Base look */
+      .path {
+        stroke: url(#pathGrad);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-opacity: 0.55;
+        fill: none;
+        filter: url(#glow);
+      }
+      .node {
+        fill: url(#nodeGrad);
+        stroke: rgba(14,165,233,0.55);
+        stroke-width: 3;
+        filter: url(#glow);
+      }
+      .node-ring {
+        fill: none;
+        stroke: rgba(255,255,255,0.55);
+        stroke-width: 2;
+        opacity: 0.9;
+        filter: url(#glow);
+      }
+      .label {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        fill: rgba(11,18,32,0.55);
+      }
+
+      /* Optional: if you embed inline and want hover interactivity later */
+      .hotspot { cursor: pointer; }
+      .hotspot:hover .node { stroke: rgba(34,197,94,0.75); }
+      .hotspot:hover .path { stroke-opacity: 0.85; }
+    </style>
+  </defs>
+
+  <!-- Background "mist" -->
+  <rect x="0" y="0" width="800" height="1200" fill="#ffffff" opacity="0"/>
+  <circle cx="220" cy="180" r="260" fill="#0ea5e9" opacity="0.06"/>
+  <circle cx="610" cy="250" r="300" fill="#22c55e" opacity="0.05"/>
+  <circle cx="420" cy="980" r="360" fill="#0ea5e9" opacity="0.04"/>
+
+  <!-- Coordinates (classic layout) -->
+  <!-- xLeft=270, xCenter=400, xRight=530 -->
+  <!-- y: 90, 210, 330, 480, 620, 780, 1020 -->
+
+  <!-- 22 paths (lines). Ordered top-down. -->
+  <g id="paths">
+    <!-- Top triad -->
+    <line id="path-01" class="path" x1="400" y1="90"  x2="270" y2="210"/>
+    <line id="path-02" class="path" x1="400" y1="90"  x2="530" y2="210"/>
+    <line id="path-03" class="path" x1="270" y1="210" x2="530" y2="210"/>
+
+    <!-- Second to third -->
+    <line id="path-04" class="path" x1="270" y1="210" x2="270" y2="330"/>
+    <line id="path-05" class="path" x1="530" y1="210" x2="530" y2="330"/>
+    <line id="path-06" class="path" x1="270" y1="210" x2="400" y2="330"/>
+    <line id="path-07" class="path" x1="530" y1="210" x2="400" y2="330"/>
+
+    <!-- Third to fourth (Chesed/Gevurah) -->
+    <line id="path-08" class="path" x1="270" y1="330" x2="270" y2="480"/>
+    <line id="path-09" class="path" x1="530" y1="330" x2="530" y2="480"/>
+    <line id="path-10" class="path" x1="270" y1="330" x2="400" y2="480"/>
+    <line id="path-11" class="path" x1="530" y1="330" x2="400" y2="480"/>
+    <line id="path-12" class="path" x1="270" y1="480" x2="530" y2="480"/>
+
+    <!-- Fourth to fifth (Tiferet) -->
+    <line id="path-13" class="path" x1="270" y1="480" x2="400" y2="620"/>
+    <line id="path-14" class="path" x1="530" y1="480" x2="400" y2="620"/>
+    <line id="path-15" class="path" x1="400" y1="480" x2="400" y2="620"/>
+
+    <!-- Fifth to sixth (Netzach/Hod) -->
+    <line id="path-16" class="path" x1="400" y1="620" x2="270" y2="780"/>
+    <line id="path-17" class="path" x1="400" y1="620" x2="530" y2="780"/>
+    <line id="path-18" class="path" x1="270" y1="780" x2="530" y2="780"/>
+
+    <!-- Sixth to seventh (Yesod) -->
+    <line id="path-19" class="path" x1="270" y1="780" x2="400" y2="900"/>
+    <line id="path-20" class="path" x1="530" y1="780" x2="400" y2="900"/>
+    <line id="path-21" class="path" x1="400" y1="620" x2="400" y2="900"/>
+
+    <!-- Yesod to Malkhut -->
+    <line id="path-22" class="path" x1="400" y1="900" x2="400" y2="1020"/>
+  </g>
+
+  <!-- Nodes (10 sephirot) -->
+  <g id="nodes">
+    <!-- Keter -->
+    <g id="keter" class="hotspot">
+      <circle class="node" cx="400" cy="90" r="34"/>
+      <circle class="node-ring" cx="400" cy="90" r="44"/>
+      <title>Keter</title>
+    </g>
+
+    <!-- Chokhmah / Binah -->
+    <g id="chokhmah" class="hotspot">
+      <circle class="node" cx="270" cy="210" r="30"/>
+      <circle class="node-ring" cx="270" cy="210" r="40"/>
+      <title>Chokhmah</title>
+    </g>
+    <g id="binah" class="hotspot">
+      <circle class="node" cx="530" cy="210" r="30"/>
+      <circle class="node-ring" cx="530" cy="210" r="40"/>
+      <title>Binah</title>
+    </g>
+
+    <!-- Da'at (optional) -->
+    <g id="daat" class="hotspot" opacity="0.70">
+      <circle class="node" cx="400" cy="330" r="24" style="stroke: rgba(34,197,94,0.55);"/>
+      <circle class="node-ring" cx="400" cy="330" r="34"/>
+      <title>Da’at (optional)</title>
+    </g>
+
+    <!-- Chesed / Gevurah -->
+    <g id="chesed" class="hotspot">
+      <circle class="node" cx="270" cy="480" r="30"/>
+      <circle class="node-ring" cx="270" cy="480" r="40"/>
+      <title>Chesed</title>
+    </g>
+    <g id="gevurah" class="hotspot">
+      <circle class="node" cx="530" cy="480" r="30"/>
+      <circle class="node-ring" cx="530" cy="480" r="40"/>
+      <title>Gevurah</title>
+    </g>
+
+    <!-- Tiferet -->
+    <g id="tiferet" class="hotspot">
+      <circle class="node" cx="400" cy="620" r="34"/>
+      <circle class="node-ring" cx="400" cy="620" r="44"/>
+      <title>Tiferet</title>
+    </g>
+
+    <!-- Netzach / Hod -->
+    <g id="netzach" class="hotspot">
+      <circle class="node" cx="270" cy="780" r="30"/>
+      <circle class="node-ring" cx="270" cy="780" r="40"/>
+      <title>Netzach</title>
+    </g>
+    <g id="hod" class="hotspot">
+      <circle class="node" cx="530" cy="780" r="30"/>
+      <circle class="node-ring" cx="530" cy="780" r="40"/>
+      <title>Hod</title>
+    </g>
+
+    <!-- Yesod -->
+    <g id="yesod" class="hotspot">
+      <circle class="node" cx="400" cy="900" r="30"/>
+      <circle class="node-ring" cx="400" cy="900" r="40"/>
+      <title>Yesod</title>
+    </g>
+
+    <!-- Malkhut -->
+    <g id="malkhut" class="hotspot">
+      <circle class="node" cx="400" cy="1020" r="34"/>
+      <circle class="node-ring" cx="400" cy="1020" r="44"/>
+      <title>Malkhut</title>
+    </g>
+  </g>
+</svg>
