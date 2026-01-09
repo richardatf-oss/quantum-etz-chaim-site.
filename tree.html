@@ -2,102 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tree — Quantum Etz Chaim</title>
-  <meta name="description" content="The Tree diagram — a living map of structure." />
-  <link rel="stylesheet" href="/css/global.css" />
-  <style>
-    .frame{ margin-top: 18px; padding: 18px; }
-    .treeWrap{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap: 14px;
-      align-items:start;
-    }
-    @media (max-width: 980px){ .treeWrap{ grid-template-columns: 1fr; } }
-
-    .svgBox{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.74);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      padding: 10px;
-    }
-    .svgBox img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius: 12px;
-    }
-
-    .side{
-      padding: 18px;
-      border-radius: var(--radius2);
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: var(--shadow2);
-    }
-    .side h1{
-      margin:0 0 10px;
-      font-size: clamp(26px, 3vw, 36px);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-    }
-    .side p{
-      margin:0 0 10px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 14px;
-    }
-    .side .cta{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tree • Quantum Etz Chaim</title>
+  <meta name="description" content="Etz Chaim diagram — responsive SVG display." />
+  <link rel="stylesheet" href="./css/global.css" />
+  <script defer src="./js/site.js"></script>
 </head>
-
 <body>
   <header class="topbar">
-    <div class="wrap">
-      <div class="navrow">
-        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav class="nav">
-          <a href="/index.html">Home</a>
-          <a class="active" href="/tree.html">Tree</a>
-          <a href="/books.html">Books</a>
-          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
-        </nav>
-      </div>
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">QEC</span>
+        <span class="brand-text">Quantum Etz Chaim</span>
+      </a>
+      <nav class="nav">
+        <a class="pill" href="./books.html">Books</a>
+        <a class="pill active" href="./tree.html">Tree</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="panel frame">
-      <div class="treeWrap">
-        <div class="svgBox">
-          <img src="/assets/img/hero/tree.svg" alt="Tree diagram" />
-        </div>
-
-        <aside class="side">
-          <p class="eyebrow">Diagram</p>
-          <h1>The Tree</h1>
-          <p>
-            The Tree is a navigable diagram: spheres as perspectives, paths as relations.
-            This page is intentionally minimal — we can make each sphere clickable next.
-          </p>
-          <div class="cta">
-            <a class="btn" href="/books.html">Browse Books</a>
-            <a class="btn secondary" href="/book.html?id=adam-kadmon">Start at Keter</a>
-          </div>
-        </aside>
+  <main class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Etz Chaim</h1>
+        <p class="muted">SVG that scales correctly on every screen.</p>
       </div>
-    </section>
 
-    <footer class="footer">
-      <div>© <span id="year"></span> Quantum Etz Chaim</div>
-    </footer>
+      <div class="tree-frame">
+        <img class="tree-diagram" src="./assets/tree.svg" alt="Tree of Life diagram" />
+      </div>
+
+      <div class="card" style="margin-top: 18px;">
+        <h2>Notes</h2>
+        <ul class="list">
+          <li>If the diagram ever looks tiny again, it’s almost always a <code>viewBox</code> issue inside <code>tree.svg</code>.</li>
+          <li>This page keeps the SVG responsive without distortion.</li>
+        </ul>
+      </div>
+    </div>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-left">
+        <div class="footer-author">RICHARD ALLEN LEE</div>
+        <div class="footer-sub">LuminaNexus.org</div>
+      </div>
+      <div class="footer-right">
+        <img class="footer-tree" src="./assets/tree.svg" alt="Tree of Life emblem" />
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
