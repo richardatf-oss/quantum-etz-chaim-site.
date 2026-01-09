@@ -1,4 +1,12 @@
-[[headers]]
-  for = "/data/*"
-  [headers.values]
-    Cache-Control = "no-store"
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/books"
+  to = "/books.html"
+  status = 200
+
+[[redirects]]
+  from = "/tree"
+  to = "/tree.html"
+  status = 200
