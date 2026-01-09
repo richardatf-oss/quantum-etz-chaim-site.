@@ -5,67 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Book — Quantum Etz Chaim</title>
   <meta name="description" content="Book detail page for Quantum Etz Chaim titles." />
-
   <link rel="stylesheet" href="/css/global.css" />
 
   <style>
-    :root{
-      --bg0:#f4fbff;
-      --bg1:#ffffff;
-      --ink:#071022;
-      --muted:rgba(7,16,34,.68);
-      --line:rgba(7,16,34,.12);
-      --shadow:0 18px 50px rgba(2,6,23,.12);
-      --shadow2:0 14px 34px rgba(2,6,23,.12);
-      --radius:22px;
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--ink);
-      background:
-        radial-gradient(900px 520px at 10% -10%, rgba(125,211,252,.30), transparent 60%),
-        radial-gradient(900px 520px at 95% 0%, rgba(52,211,153,.20), transparent 58%),
-        radial-gradient(1100px 720px at 50% 15%, rgba(167,139,250,.16), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #fff);
-    }
-    .wrap{ max-width:1160px; margin:0 auto; padding:16px 18px; }
-
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(7,16,34,.10);
-    }
-    .navrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; font-weight:900;
-      letter-spacing:-.01em;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, #b7f3ff, #22d3ee 50%, #0ea5e9);
-      box-shadow: 0 0 0 6px rgba(34,211,238,.14), 0 0 26px rgba(34,211,238,.28);
-      flex:0 0 auto;
-    }
-    nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-    nav a{
-      text-decoration:none;
-      color: rgba(7,16,34,.78);
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition:.18s ease;
-    }
-    nav a:hover{
-      background: rgba(34,211,238,.10);
-      border-color: rgba(34,211,238,.22);
-      color: rgba(7,16,34,.95);
-      transform: translateY(-1px);
-    }
-
     .crumbs{
       margin: 16px 0 10px;
       display:flex;
@@ -79,19 +21,12 @@
       color: rgba(7,16,34,.72);
       text-decoration:none;
       border-bottom: 1px solid rgba(7,16,34,.18);
-    }
-
-    .panel{
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(7,16,34,.10);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      font-weight: 850;
     }
 
     .bookGrid{
       display:grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 330px 1fr;
       gap: 18px;
       padding: 18px;
       align-items:start;
@@ -99,43 +34,33 @@
     @media (max-width: 900px){ .bookGrid{ grid-template-columns: 1fr; } }
 
     .coverWrap{
-      background:
-        radial-gradient(900px 540px at 40% 25%, rgba(125,211,252,.18), transparent 60%),
-        radial-gradient(900px 560px at 90% 15%, rgba(52,211,153,.12), transparent 60%),
-        rgba(255,255,255,.70);
+      background: radial-gradient(800px 500px at 50% 40%, rgba(255,255,255,.95), rgba(255,255,255,.35));
       border: 1px solid rgba(7,16,34,.10);
-      border-radius: 22px;
+      border-radius: 18px;
       padding: 14px;
-      box-shadow: 0 12px 26px rgba(2,6,23,.10);
+      box-shadow: var(--shadow-sm);
     }
     .coverWrap img{
       width: 100%;
       height: auto;
       display:block;
       border-radius: 14px;
-      box-shadow: 0 18px 44px rgba(2,6,23,.20);
+      box-shadow: 0 18px 40px rgba(2,6,23,.20);
       background: rgba(255,255,255,.55);
     }
 
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(7,16,34,.58);
-      margin: 0 0 10px;
-    }
     #bookTitle{
       margin: 0 0 10px;
-      font-size: clamp(30px, 3.2vw, 44px);
+      font-size: clamp(28px, 3.2vw, 40px);
       line-height: 1.05;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
     }
     #bookTagline{
       margin: 0 0 14px;
-      color: rgba(7,16,34,.70);
+      color: var(--muted);
       font-size: 15px;
-      line-height: 1.8;
-      max-width: 78ch;
+      line-height: 1.85;
+      max-width: 75ch;
     }
 
     .actions{
@@ -143,26 +68,6 @@
       gap: 10px;
       flex-wrap:wrap;
       margin: 10px 0 8px;
-    }
-    .btn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 11px 14px;
-      border-radius: 14px;
-      font-weight: 900;
-      font-size: 13px;
-      border: 1px solid rgba(34,211,238,.34);
-      background: rgba(34,211,238,.14);
-      color: rgba(7,16,34,.94);
-      transition:.18s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 24px rgba(2,6,23,.10); }
-    .btn.secondary{
-      border-color: rgba(7,16,34,.14);
-      background: rgba(255,255,255,.78);
-      color: rgba(7,16,34,.82);
     }
 
     .desc{
@@ -179,14 +84,15 @@
       margin: 0;
       color: rgba(7,16,34,.70);
       font-size: 14px;
-      line-height: 1.95;
+      line-height: 1.9;
       white-space: pre-wrap;
     }
 
     .other{
+      margin-top: 0;
       padding: 18px;
       border-top: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.76);
+      background: rgba(255,255,255,.62);
     }
     .other h2{
       margin: 0 0 12px;
@@ -198,7 +104,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
-    @media (max-width: 980px){ #otherTitles{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 980px){ #otherTitles{ grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px){ #otherTitles{ grid-template-columns: 1fr; } }
 
     .other-title{
@@ -209,20 +115,20 @@
       border: 1px solid rgba(7,16,34,.10);
       border-radius: 18px;
       padding: 10px;
-      transition:.18s ease;
+      box-shadow: var(--shadow-sm);
     }
-    .other-title:hover{ transform: translateY(-2px); box-shadow: 0 16px 34px rgba(2,6,23,.10); }
     .other-cover img{
-      width: 56px;
+      width: 58px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 12px 24px rgba(2,6,23,.12);
+      box-shadow: 0 10px 22px rgba(2,6,23,.12);
       display:block;
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.55);
     }
+    .other-meta{ display:flex; flex-direction:column; gap: 6px; min-width:0; }
     .other-name{
       text-decoration:none;
-      color: rgba(7,16,34,.94);
+      color: rgba(7,16,34,.92);
       font-weight: 900;
       font-size: 13px;
       line-height: 1.25;
@@ -233,17 +139,10 @@
     .mini-link{
       font-size: 12px;
       text-decoration:none;
-      color: rgba(7,16,34,.70);
+      color: rgba(7,16,34,.72);
       border-bottom: 1px solid rgba(7,16,34,.18);
       width: fit-content;
-    }
-
-    .footer{
-      border-top: 1px solid rgba(7,16,34,.10);
-      color: rgba(7,16,34,.58);
-      font-size: 12px;
-      padding: 18px 0 26px;
-      margin-top: 26px;
+      font-weight: 850;
     }
   </style>
 </head>
@@ -252,12 +151,12 @@
   <header class="topbar">
     <div class="wrap">
       <div class="navrow">
-        <a class="brand" href="/"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/tree">Tree</a>
-          <a href="/books">Books</a>
-          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
+        <nav class="nav">
+          <a href="/index.html">Home</a>
+          <a href="/tree.html">Tree</a>
+          <a href="/books.html">Books</a>
+          <a class="active" href="/book.html">Book</a>
         </nav>
       </div>
     </div>
@@ -265,7 +164,7 @@
 
   <main class="wrap">
     <div class="crumbs">
-      <a href="/books">← Back to Books</a>
+      <a href="/books.html">← Back to Books</a>
     </div>
 
     <section class="panel">
@@ -280,7 +179,7 @@
           <p id="bookTagline"></p>
 
           <div class="actions">
-            <a class="btn secondary" href="/books">All Books</a>
+            <a class="btn secondary" href="/books.html">All Books</a>
             <a id="bookAmazon" class="btn" href="#" target="_blank" rel="noopener">Amazon</a>
           </div>
 
@@ -294,6 +193,9 @@
       <div class="other">
         <h2>Other titles</h2>
         <div id="otherTitles"></div>
+        <div style="margin-top:10px;">
+          <a class="mini-link" href="/index.html">Home</a>
+        </div>
       </div>
     </section>
 
@@ -302,7 +204,9 @@
     </footer>
   </main>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
   <script src="/js/site.js" defer></script>
 </body>
 </html>
