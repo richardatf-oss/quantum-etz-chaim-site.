@@ -5,246 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Books — Quantum Etz Chaim</title>
   <meta name="description" content="Published volumes connected to the Quantum Etz Chaim diagram." />
-
   <link rel="stylesheet" href="/css/global.css" />
 
   <style>
-    :root{
-      --bg0:#f4fbff;
-      --bg1:#ffffff;
-      --ink:#071022;
-      --muted:rgba(7,16,34,.68);
-      --line:rgba(7,16,34,.12);
-      --shadow:0 18px 50px rgba(2,6,23,.12);
-      --shadow2:0 14px 34px rgba(2,6,23,.12);
-      --radius:22px;
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--ink);
-      background:
-        radial-gradient(900px 520px at 10% -10%, rgba(125,211,252,.30), transparent 60%),
-        radial-gradient(900px 520px at 95% 0%, rgba(52,211,153,.20), transparent 58%),
-        radial-gradient(1100px 720px at 50% 15%, rgba(167,139,250,.16), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #fff);
-    }
-    .wrap{ max-width:1160px; margin:0 auto; padding:16px 18px; }
+    .pageHead{ margin: 18px 0 10px; }
 
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(7,16,34,.10);
-    }
-    .navrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; font-weight:900;
-      letter-spacing:-.01em;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, #b7f3ff, #22d3ee 50%, #0ea5e9);
-      box-shadow: 0 0 0 6px rgba(34,211,238,.14), 0 0 26px rgba(34,211,238,.28);
-      flex:0 0 auto;
-    }
-    nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-    nav a{
-      text-decoration:none;
-      color: rgba(7,16,34,.78);
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition:.18s ease;
-    }
-    nav a:hover{
-      background: rgba(34,211,238,.10);
-      border-color: rgba(34,211,238,.22);
-      color: rgba(7,16,34,.95);
-      transform: translateY(-1px);
-    }
-    nav a.active{
-      background: linear-gradient(90deg, rgba(125,211,252,.22), rgba(52,211,153,.16));
-      border-color: rgba(34,211,238,.28);
-      color: rgba(7,16,34,.96);
-      font-weight: 800;
-    }
-
-    .hero{
-      margin: 18px 0 12px;
-      border: 1px solid rgba(7,16,34,.10);
-      border-radius: 28px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background:
-        radial-gradient(900px 520px at 15% 20%, rgba(125,211,252,.26), transparent 60%),
-        radial-gradient(900px 540px at 90% 10%, rgba(52,211,153,.18), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
-    }
-    .heroInner{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
-      padding: 18px 20px;
-      flex-wrap:wrap;
-    }
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(7,16,34,.58);
-      margin: 0 0 10px;
-    }
-    h1{
-      margin:0;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height:1.0;
-      letter-spacing:-.03em;
-    }
-    .lead{
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.85;
-      max-width: 78ch;
-    }
-    .hint{
-      font-size:12px;
-      color: rgba(7,16,34,.58);
-      margin: 0;
-    }
-
-    /* site.js uses these classes/ids; we style them here */
     #filterBar{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      padding: 12px 0 6px;
-    }
-    .pill{
-      appearance:none;
-      border: 1px solid rgba(7,16,34,.14);
-      background: rgba(255,255,255,.72);
-      padding: 9px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      color: rgba(7,16,34,.80);
-      font-weight: 850;
-      font-size: 13px;
-      box-shadow: 0 10px 18px rgba(2,6,23,.06);
-      transition: .18s ease;
-    }
-    .pill:hover{ transform: translateY(-1px); box-shadow: 0 14px 24px rgba(2,6,23,.08); }
-    .pill.active{
-      background: linear-gradient(90deg, rgba(125,211,252,.30), rgba(52,211,153,.20));
-      border-color: rgba(34,211,238,.34);
-      color: rgba(7,16,34,.92);
-      box-shadow: 0 12px 22px rgba(2,6,23,.08), 0 0 0 6px rgba(34,211,238,.10);
+      padding: 10px 0 4px;
     }
 
+    /* Grid + cards (page-specific) */
     #bookGrid{
       margin-top: 10px;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
       padding-bottom: 34px;
     }
-    @media (max-width: 980px){ #bookGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 980px){ #bookGrid{ grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px){ #bookGrid{ grid-template-columns: 1fr; } }
 
     .book-card{
       background: rgba(255,255,255,.82);
-      border: 1px solid rgba(7,16,34,.12);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
       overflow:hidden;
       display:flex;
       flex-direction:column;
-      position:relative;
-      transition: .20s ease;
+      transition: .18s ease;
     }
-    .book-card:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 26px 70px rgba(2,6,23,.16);
-      border-color: rgba(34,211,238,.24);
-    }
+    .book-card:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+
     .book-cover{
       display:block;
-      padding: 16px;
-      background:
-        radial-gradient(900px 520px at 20% 20%, rgba(125,211,252,.22), transparent 55%),
-        radial-gradient(900px 520px at 90% 10%, rgba(52,211,153,.14), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.50));
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(34,211,238,.14), rgba(52,211,153,.08));
       border-bottom: 1px solid rgba(7,16,34,.10);
+      text-decoration:none;
     }
     .book-cover-img{
       width: 100%;
       height: auto;
       display:block;
       border-radius: 14px;
-      box-shadow: 0 18px 44px rgba(2,6,23,.22);
-      background: rgba(255,255,255,.60);
+      box-shadow: 0 16px 36px rgba(2,6,23,.18);
+      background: rgba(255,255,255,.55);
     }
+
     .book-meta{
-      padding: 14px 16px 16px;
+      padding: 14px 14px 16px;
       display:flex;
       flex-direction:column;
       gap: 10px;
       flex: 1;
     }
-    .book-title{ margin:0; font-size:18px; letter-spacing:-.01em; }
-    .book-tagline{ margin:0; color: rgba(7,16,34,.70); font-size:14px; line-height:1.6; }
+    .book-title{ margin:0; font-size:18px; letter-spacing:-0.01em; }
+    .book-tagline{ margin:0; color: var(--muted); font-size:14px; line-height:1.7; }
     .tags{ display:flex; flex-wrap:wrap; gap: 8px; }
-    .tag{
-      background: rgba(34,211,238,.10);
-      color: rgba(7,16,34,.84);
-      border: 1px solid rgba(34,211,238,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 850;
-    }
+
     .book-actions{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn{
-      text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 900;
-      font-size: 13px;
-      border: 1px solid rgba(34,211,238,.34);
-      background: rgba(34,211,238,.14);
-      color: rgba(7,16,34,.94);
-      transition:.18s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 24px rgba(2,6,23,.10); }
-    .btn.secondary{
-      border-color: rgba(7,16,34,.14);
-      background: rgba(255,255,255,.78);
-      color: rgba(7,16,34,.82);
-    }
 
-    .footer{
-      border-top: 1px solid rgba(7,16,34,.10);
-      color: rgba(7,16,34,.58);
+    /* Small helper link style */
+    .mini-link{
       font-size: 12px;
-      padding: 18px 0 26px;
-      margin-top: 26px;
-    }
-
-    .ribbon{
-      position:absolute;
-      top: 14px; left: 14px;
-      background: linear-gradient(90deg, rgba(34,211,238,.92), rgba(52,211,153,.92));
-      color: rgba(7,16,34,.95);
-      font-weight: 900;
-      font-size: 11px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.55);
-      box-shadow: 0 10px 22px rgba(2,6,23,.14);
+      text-decoration:none;
+      color: rgba(7,16,34,.72);
+      border-bottom: 1px solid rgba(7,16,34,.18);
+      width: fit-content;
+      font-weight: 850;
     }
   </style>
 </head>
@@ -253,11 +85,11 @@
   <header class="topbar">
     <div class="wrap">
       <div class="navrow">
-        <a class="brand" href="/"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/tree">Tree</a>
-          <a class="active" href="/books">Books</a>
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
+        <nav class="nav">
+          <a href="/index.html">Home</a>
+          <a href="/tree.html">Tree</a>
+          <a class="active" href="/books.html">Books</a>
           <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
         </nav>
       </div>
@@ -265,20 +97,16 @@
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <div class="heroInner">
-        <div>
-          <p class="eyebrow">Volumes</p>
-          <h1>Books as Gates.</h1>
-          <p class="lead">Published titles connected to the living diagram. Covers are local; “Amazon” opens the listing.</p>
-        </div>
-        <p class="hint">Tip: click tags to filter.</p>
-      </div>
-    </section>
+    <div class="pageHead">
+      <p class="eyebrow">Volumes</p>
+      <h1 style="margin:0;font-size:clamp(30px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.03;">Books</h1>
+      <p class="lead">Published titles connected to the diagram. Covers are served locally.</p>
+      <div id="filterBar"></div>
+    </div>
 
-    <div id="filterBar"></div>
     <section>
-      <div id="bookGrid"></div>
+      <div id="bookGrid" aria-live="polite"></div>
+      <a class="mini-link" href="/index.html">← Back to Home</a>
     </section>
 
     <footer class="footer">
@@ -286,27 +114,9 @@
     </footer>
   </main>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="/js/site.js" defer></script>
-
-  <!-- Featured ribbon enhancer -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const obs = new MutationObserver(() => {
-        document.querySelectorAll(".book-card").forEach(card => {
-          if (card.querySelector(".ribbon")) return;
-          const tags = Array.from(card.querySelectorAll(".tag")).map(t => t.textContent.trim().toLowerCase());
-          if (tags.includes("featured")) {
-            const r = document.createElement("div");
-            r.className = "ribbon";
-            r.textContent = "Featured";
-            card.appendChild(r);
-          }
-        });
-      });
-      obs.observe(document.body, { childList: true, subtree: true });
-      setTimeout(() => obs.disconnect(), 2500);
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script src="/js/site.js" defer></script>
 </body>
 </html>
