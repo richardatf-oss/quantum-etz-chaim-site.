@@ -39,13 +39,13 @@
     };
   }
 
+  function uniq(arr) {
+    return Array.from(new Set(arr));
+  }
+
   function getIdFromQuery() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id") || "";
-  }
-
-  function uniq(arr) {
-    return Array.from(new Set(arr));
   }
 
   // ---------- BOOKS PAGE ----------
@@ -170,7 +170,6 @@
       }
     }
 
-    // Other titles
     if (otherEl) {
       const others = books.filter(b => b.id !== found.id).slice(0, 6);
       otherEl.innerHTML = others.map(b => `
@@ -189,7 +188,6 @@
 
   // ---------- INIT ----------
   async function init() {
-    // Only run on pages that have the expected mount points.
     const isBooksPage = !!$("#bookGrid");
     const isBookPage = !!$("#bookTitle");
 
