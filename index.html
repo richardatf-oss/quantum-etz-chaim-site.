@@ -4,9 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quantum Etz Chaim</title>
-  <meta name="description" content="Quantum Etz Chaim — the Tree of Life as a living diagram: Torah-first language, modern physics metaphors, and a navigable map of Sefirot." />
-
-  <link rel="stylesheet" href="/css/styles.css" />
+  <meta name="description" content="Quantum Etz Chaim — the Tree of Life as a living diagram." />
 
   <style>
     :root{
@@ -17,11 +15,12 @@
       --line:rgba(15, 23, 42, 0.12);
       --shadow:0 14px 40px rgba(2, 6, 23, 0.10);
       --shadow2:0 10px 22px rgba(2, 6, 23, 0.10);
-      --brand:#0ea5e9;
-      --brand2:#22c55e;
     }
 
+    *{ box-sizing:border-box; }
     body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
         radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.18), transparent 55%),
         radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,0.12), transparent 60%),
@@ -29,28 +28,34 @@
       color: var(--ink);
     }
 
+    a{ color: inherit; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:14px 18px; }
+
     .topbar{
-      position: sticky; top: 0; z-index: 50;
+      position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
-    .navrow{ display:flex; align-items:center; justify-content:space-between; gap: 14px; }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
     .brand{
       display:flex; align-items:center; gap:10px;
-      text-decoration:none; color: var(--ink);
-      font-weight: 800; letter-spacing: .2px;
+      text-decoration:none; font-weight:800;
+      letter-spacing:.2px;
     }
-    .brand .dot{
-      width: 10px; height: 10px; border-radius: 999px;
+    .dot{
+      width:10px; height:10px; border-radius:999px;
       background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
       box-shadow: 0 0 0 6px rgba(14,165,233,0.12);
+      flex:0 0 auto;
     }
-    .nav{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
+    .nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
     .nav a{
-      text-decoration:none; color: rgba(11,18,32,0.78);
-      padding: 8px 10px; border-radius: 10px; border: 1px solid transparent;
+      text-decoration:none;
+      color: rgba(11,18,32,0.78);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
     }
     .nav a:hover{
       background: rgba(14,165,233,0.08);
@@ -81,38 +86,53 @@
 
     .heroCopy{ padding: 22px 22px 18px; }
     .eyebrow{
-      font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(11,18,32,0.55); margin: 0 0 10px;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(11,18,32,0.55);
+      margin: 0 0 10px;
     }
     h1{
-      margin: 0 0 10px;
+      margin:0 0 10px;
       font-size: clamp(34px, 4vw, 50px);
-      letter-spacing: -0.02em; line-height: 1.03;
+      letter-spacing:-0.02em;
+      line-height:1.03;
     }
     .lead{
-      margin: 0 0 16px;
+      margin:0 0 16px;
       color: var(--muted);
-      font-size: 16px; line-height: 1.75;
-      max-width: 72ch;
+      font-size:16px;
+      line-height:1.75;
+      max-width:72ch;
     }
-    .ctaRow{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
+
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
     .btn{
       text-decoration:none;
       display:inline-flex; align-items:center; justify-content:center;
-      padding: 10px 14px; border-radius: 12px;
-      font-weight: 800; font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
       border: 1px solid rgba(14,165,233,0.28);
       background: rgba(14,165,233,0.12);
       color: rgba(11,18,32,0.92);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(14,165,233,0.42);
+      background: rgba(14,165,233,0.16);
+    }
     .btn.secondary{
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255,255,255,0.70);
       color: rgba(11,18,32,0.82);
     }
-    .btn.secondary:hover{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.10); }
+    .btn.secondary:hover{
+      border-color: rgba(34,197,94,0.35);
+      background: rgba(34,197,94,0.10);
+    }
 
     .heroArt{
       background: radial-gradient(800px 500px at 50% 40%, rgba(255,255,255,0.95), rgba(255,255,255,0.35));
@@ -120,22 +140,22 @@
       display:flex; align-items:center; justify-content:center;
       padding: 14px;
     }
-    @media (max-width: 980px){ .heroArt{ border-left: none; border-top: 1px solid rgba(15, 23, 42, 0.10); } }
+    @media (max-width: 980px){ .heroArt{ border-left:none; border-top:1px solid rgba(15, 23, 42, 0.10); } }
 
     .heroArt img{
-      width: 100%;
-      max-width: 560px;
-      height: auto;
+      width:100%;
+      max-width:560px;
+      height:auto;
       display:block;
-      border-radius: 18px;
+      border-radius:18px;
       box-shadow: 0 18px 44px rgba(2,6,23,0.14);
       background: rgba(255,255,255,0.55);
     }
     .caption{
-      margin: 10px 0 0;
+      margin:10px 0 0;
       color: rgba(11,18,32,0.58);
-      font-size: 12px;
-      line-height: 1.6;
+      font-size:12px;
+      line-height:1.6;
       text-align:center;
     }
 
@@ -153,8 +173,8 @@
       box-shadow: var(--shadow2);
       padding: 16px;
     }
-    .tile h2{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
-    .tile p{ margin: 0 0 12px; color: rgba(11,18,32,0.66); font-size: 13px; line-height: 1.7; }
+    .tile h2{ margin:0 0 8px; font-size:16px; letter-spacing:-0.01em; }
+    .tile p{ margin:0 0 12px; color: rgba(11,18,32,0.66); font-size:13px; line-height:1.7; }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -170,19 +190,12 @@
   <header class="topbar">
     <div class="wrap">
       <div class="navrow">
-        <a class="brand" href="/index.html" aria-label="Quantum Etz Chaim home">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Quantum Etz Chaim</span>
-        </a>
-
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
         <nav class="nav" aria-label="Primary navigation">
           <a class="active" href="/index.html">Home</a>
           <a href="/tree.html">Tree</a>
-          <a href="/trees.html">Trees</a>
-          <a href="/book.html">Book</a>
           <a href="/books.html">Books</a>
-          <a href="/about.html">About</a>
-          <a href="/contact.html">Contact</a>
+          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
         </nav>
       </div>
     </div>
@@ -196,10 +209,8 @@
             <p class="eyebrow">Torah • Physics • The Living Diagram</p>
             <h1>The Tree is the Interface.</h1>
             <p class="lead">
-              Quantum Etz Chaim is a diagrammatic home for a single claim: there is only one excitation in the unified field —
-              and the Sefirot are the structured ways it appears, returns, and becomes knowable.
+              Quantum Etz Chaim is a map of structure — the Sefirot as the ways one reality appears, returns, and becomes knowable.
             </p>
-
             <div class="ctaRow">
               <a class="btn" href="/tree.html">Open the Tree</a>
               <a class="btn secondary" href="/books.html">Browse Volumes</a>
@@ -209,7 +220,7 @@
           <div class="heroArt">
             <div>
               <img src="/assets/tree.svg" alt="Tree of Life diagram (SVG)" loading="eager" decoding="async" />
-              <p class="caption">A luminous SVG map — scalable, precise, and ready for interaction.</p>
+              <p class="caption">Scalable Vector Graphics — crisp at any size, ready to become clickable.</p>
             </div>
           </div>
         </div>
@@ -218,26 +229,24 @@
       <div class="section">
         <div class="tile">
           <h2>Explore the Map</h2>
-          <p>Start with the Tree. Each sphere is a perspective. Each path is a relationship. The map is the lesson.</p>
+          <p>Start with the Tree. Each sphere is a perspective. Each path is a relationship.</p>
           <a class="btn secondary" href="/tree.html">Enter</a>
         </div>
-
         <div class="tile">
           <h2>Read the Volumes</h2>
-          <p>Published titles are artifacts — crystallized gates connected to the diagram and its living architecture.</p>
-          <a class="btn secondary" href="/books.html">Browse Books</a>
+          <p>Published titles are artifacts — crystallized gates connected to the diagram.</p>
+          <a class="btn secondary" href="/books.html">Browse</a>
         </div>
-
         <div class="tile">
-          <h2>Begin with Adam Kadmon</h2>
-          <p>The Primordial Human — a luminous gate into the interface between Ein Sof and Creation.</p>
+          <h2>Begin at Keter</h2>
+          <p>Adam Kadmon — a luminous gate into the Primordial Human.</p>
           <a class="btn secondary" href="/book.html?id=adam-kadmon">Open</a>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> Quantum Etz Chaim • Built for clarity and light.</div>
+      <div>© <span id="year"></span> Quantum Etz Chaim</div>
     </footer>
   </main>
 
