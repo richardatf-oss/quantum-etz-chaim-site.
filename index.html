@@ -4,269 +4,126 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quantum Etz Chaim</title>
-  <meta name="description" content="The Tree is the interface: Torah-first language, modern physics metaphors, and a living diagram." />
-
+  <meta name="description" content="Torah + Physics — the living diagram. Explore the Tree and browse published volumes." />
   <link rel="stylesheet" href="/css/global.css" />
-
   <style>
-    :root{
-      --bg0:#f4fbff;
-      --bg1:#ffffff;
-      --ink:#071022;
-      --muted:rgba(7,16,34,.68);
-      --line:rgba(7,16,34,.12);
-      --card:rgba(255,255,255,.82);
-      --shadow:0 18px 50px rgba(2,6,23,.12);
-
-      --sky:#7dd3fc;
-      --aqua:#22d3ee;
-      --mint:#34d399;
-      --violet:#a78bfa;
-      --radius:22px;
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--ink);
-      background:
-        radial-gradient(900px 520px at 10% -10%, rgba(125,211,252,.34), transparent 60%),
-        radial-gradient(900px 520px at 95% 0%, rgba(52,211,153,.22), transparent 58%),
-        radial-gradient(1100px 720px at 50% 15%, rgba(167,139,250,.18), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #fff);
-    }
-
-    .wrap{ max-width:1160px; margin:0 auto; padding:16px 18px; }
-
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(7,16,34,.10);
-    }
-    .navrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; font-weight:900;
-      letter-spacing:-.01em;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, #b7f3ff, #22d3ee 50%, #0ea5e9);
-      box-shadow: 0 0 0 6px rgba(34,211,238,.14), 0 0 26px rgba(34,211,238,.28);
-      flex:0 0 auto;
-    }
-    nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-    nav a{
-      text-decoration:none;
-      color: rgba(7,16,34,.78);
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition:.18s ease;
-    }
-    nav a:hover{
-      background: rgba(34,211,238,.10);
-      border-color: rgba(34,211,238,.22);
-      color: rgba(7,16,34,.95);
-      transform: translateY(-1px);
-    }
-    nav a.active{
-      background: linear-gradient(90deg, rgba(125,211,252,.22), rgba(52,211,153,.16));
-      border-color: rgba(34,211,238,.28);
-      color: rgba(7,16,34,.96);
-      font-weight: 800;
-    }
-
-    /* Hero */
+    /* Tiny page-specific layout only */
     .hero{
-      margin: 18px 0 14px;
-      border: 1px solid rgba(7,16,34,.10);
-      border-radius: 28px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background:
-        radial-gradient(900px 520px at 15% 20%, rgba(125,211,252,.30), transparent 60%),
-        radial-gradient(900px 540px at 90% 10%, rgba(52,211,153,.20), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
-    }
-    .heroInner{
+      margin-top: 18px;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      padding: 22px;
-      align-items:center;
+      gap: 16px;
+      align-items: stretch;
     }
-    @media (max-width: 900px){ .heroInner{ grid-template-columns:1fr; } }
+    @media (max-width: 980px){ .hero{ grid-template-columns: 1fr; } }
 
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(7,16,34,.58);
+    .heroCard{
+      padding: 22px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.80);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 380px at 15% 0%, rgba(125,211,252,.22), transparent 55%),
+        radial-gradient(700px 420px at 95% 10%, rgba(52,211,153,.18), transparent 58%),
+        radial-gradient(900px 520px at 50% 100%, rgba(167,139,250,.12), transparent 60%);
+      z-index:0;
+    }
+    .heroCard > *{ position:relative; z-index:1; }
+
+    .heroTitle{
       margin: 0 0 10px;
+      font-size: clamp(34px, 4.4vw, 58px);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
     }
-    h1{
-      margin:0;
-      font-size: clamp(34px, 4vw, 54px);
-      line-height:1.0;
-      letter-spacing:-.03em;
-    }
-    .lead{
-      margin: 12px 0 0;
-      color: rgba(7,16,34,.68);
-      font-size: 15px;
-      line-height: 1.9;
+    .heroText{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
       max-width: 72ch;
     }
-    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; }
+    .heroActions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
 
-    .btn{
-      text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 11px 14px;
-      border-radius: 14px;
-      font-weight: 900;
-      font-size: 13px;
-      border: 1px solid rgba(34,211,238,.34);
-      background: rgba(34,211,238,.14);
-      color: rgba(7,16,34,.94);
-      transition:.18s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 24px rgba(2,6,23,.10); }
-    .btn.secondary{
-      border-color: rgba(7,16,34,.14);
-      background: rgba(255,255,255,.78);
-      color: rgba(7,16,34,.82);
-    }
-
-    .heroArt{
-      border-radius: 22px;
-      border: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.70);
-      padding: 14px;
-      box-shadow: 0 12px 26px rgba(2,6,23,.10);
-      overflow:hidden;
-    }
-    .heroArt img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius: 18px;
-      box-shadow: 0 18px 44px rgba(2,6,23,.16);
-      background: rgba(255,255,255,.70);
-    }
-    .heroArt .cap{
-      margin-top: 10px;
-      font-size: 12px;
-      color: rgba(7,16,34,.60);
-      line-height: 1.6;
-    }
-
-    /* Sections */
-    .grid3{
-      margin-top: 14px;
+    .heroMedia{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+    .mediaCard{
+      padding: 18px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .svgFrame{
+      border-radius: 18px;
+      border: 1px solid rgba(7,16,34,.10);
+      background: rgba(255,255,255,.66);
+      overflow:hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .svgFrame img{
+      width: 100%;
+      height: auto;
+      display:block;
+    }
+
+    .sectionRow{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    @media (max-width: 980px){ .grid3{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 620px){ .grid3{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){ .sectionRow{ grid-template-columns: 1fr; } }
 
-    .card{
-      background: rgba(255,255,255,.84);
-      border: 1px solid rgba(7,16,34,.10);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 14px 34px rgba(2,6,23,.10);
-      transition:.18s ease;
-    }
-    .card:hover{ transform: translateY(-3px); box-shadow: 0 20px 48px rgba(2,6,23,.12); }
+    .tile{ padding: 18px; }
+    .tile h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
+    .tile p{ margin: 0 0 12px; color: var(--muted); line-height: 1.75; font-size: 14px; }
 
-    .card h2{
-      margin:0 0 8px;
-      font-size: 15px;
-      letter-spacing:-.01em;
+    .covers{
+      margin-top: 18px;
+      padding: 18px;
     }
-    .card p{
+    .coversHead{
+      display:flex; align-items:end; justify-content:space-between; gap: 10px; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .coversHead h2{
       margin:0;
-      color: rgba(7,16,34,.70);
-      font-size: 13px;
-      line-height: 1.75;
+      font-size: 18px;
+      letter-spacing: -0.01em;
     }
-    .card .mini{
-      margin-top: 12px;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-
-    /* Featured strip */
-    .strip{
-      margin-top: 14px;
-      border: 1px solid rgba(7,16,34,.10);
-      border-radius: 26px;
-      background: rgba(255,255,255,.70);
-      box-shadow: 0 16px 44px rgba(2,6,23,.10);
-      overflow:hidden;
-    }
-    .stripTop{
-      padding: 14px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      border-bottom: 1px solid rgba(7,16,34,.10);
-      background: linear-gradient(90deg, rgba(125,211,252,.18), rgba(52,211,153,.10));
-    }
-    .stripTop strong{ letter-spacing:-.01em; }
-    .miniGrid{
-      padding: 14px 16px 18px;
+    .coversGrid{
       display:grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
     }
-    @media (max-width: 980px){ .miniGrid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
-    @media (max-width: 620px){ .miniGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 1100px){ .coversGrid{ grid-template-columns: repeat(4, 1fr);} }
+    @media (max-width: 900px){ .coversGrid{ grid-template-columns: repeat(3, 1fr);} }
+    @media (max-width: 620px){ .coversGrid{ grid-template-columns: repeat(2, 1fr);} }
 
-    .miniBook{
-      display:flex; gap:10px;
-      align-items:center;
-      text-decoration:none;
-      border-radius: 18px;
+    .coverMini{
+      display:block;
+      border-radius: 16px;
+      overflow:hidden;
       border: 1px solid rgba(7,16,34,.10);
-      background: rgba(255,255,255,.80);
-      padding: 10px;
-      transition:.18s ease;
-      min-width:0;
-    }
-    .miniBook:hover{ transform: translateY(-2px); box-shadow: 0 16px 34px rgba(2,6,23,.12); }
-    .miniBook img{
-      width: 56px; height:auto;
-      border-radius: 12px;
-      box-shadow: 0 12px 24px rgba(2,6,23,.14);
       background: rgba(255,255,255,.70);
-      flex:0 0 auto;
+      box-shadow: var(--shadow-sm);
+      transition: .18s ease;
+      text-decoration:none;
     }
-    .miniBook .t{
-      font-weight: 900;
-      font-size: 12px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    .miniBook .s{
-      font-size: 12px;
-      color: rgba(7,16,34,.60);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
+    .coverMini:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+    .coverMini img{ width:100%; height:auto; display:block; }
 
-    .footer{
-      border-top: 1px solid rgba(7,16,34,.10);
-      color: rgba(7,16,34,.58);
-      font-size: 12px;
-      padding: 18px 0 26px;
-      margin-top: 26px;
-    }
+    .smallNote{ margin: 10px 0 0; color: rgba(7,16,34,.58); font-size: 12px; }
   </style>
 </head>
 
@@ -274,11 +131,11 @@
   <header class="topbar">
     <div class="wrap">
       <div class="navrow">
-        <a class="brand" href="/"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav>
-          <a class="active" href="/">Home</a>
-          <a href="/tree">Tree</a>
-          <a href="/books">Books</a>
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
+        <nav class="nav">
+          <a class="active" href="/index.html">Home</a>
+          <a href="/tree.html">Tree</a>
+          <a href="/books.html">Books</a>
           <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
         </nav>
       </div>
@@ -287,59 +144,76 @@
 
   <main class="wrap">
     <section class="hero">
-      <div class="heroInner">
-        <div>
-          <p class="eyebrow">Torah • Physics • The Living Diagram</p>
-          <h1>The Tree is the Interface.</h1>
-          <p class="lead">
-            Quantum Etz Chaim is a map of structure — the Sefirot as the ways reality appears, returns, and becomes knowable.
-          </p>
-          <div class="ctaRow">
-            <a class="btn" href="/tree">Open the Tree</a>
-            <a class="btn secondary" href="/books">Browse Volumes</a>
+      <div class="heroCard">
+        <p class="eyebrow">Torah • Physics • The Living Diagram</p>
+        <h1 class="heroTitle">The Tree is the Interface.</h1>
+        <p class="heroText">
+          Quantum Etz Chaim is a bright, navigable map of structure — the Sefirot as the ways one reality
+          appears, returns, and becomes knowable.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn" href="/tree.html">Open the Tree</a>
+          <a class="btn secondary" href="/books.html">Browse Volumes</a>
+        </div>
+
+        <p class="smallNote">Tip: click “Details” on any book to open the dedicated page.</p>
+      </div>
+
+      <div class="heroMedia">
+        <div class="mediaCard">
+          <p class="eyebrow">Diagram</p>
+          <div class="svgFrame" aria-label="Tree diagram preview">
+            <img src="/assets/tree.svg" alt="Tree diagram (preview)" />
           </div>
+          <p class="smallNote">SVG stays crisp at any size — ready to become clickable later.</p>
         </div>
-
-        <aside class="heroArt">
-          <img src="/assets/img/hero/hero-quantum-etz-chaim.png" alt="Quantum Etz Chaim hero image" loading="lazy" decoding="async" />
-          <div class="cap">A luminous diagram emerging from the field — calm, bright, and clickable.</div>
-        </aside>
       </div>
     </section>
 
-    <section class="grid3">
-      <div class="card">
-        <h2>Explore the Map</h2>
-        <p>Start with the Tree. Each sphere is a perspective; each path is a relationship.</p>
-        <div class="mini">
-          <a class="btn secondary" href="/tree">Enter</a>
-        </div>
+    <section class="sectionRow">
+      <div class="card tile">
+        <h3>Explore the Map</h3>
+        <p>Start with the Tree. Each sphere is a perspective. Each path is a relationship.</p>
+        <a class="btn secondary" href="/tree.html">Enter</a>
       </div>
-
-      <div class="card">
-        <h2>Read the Volumes</h2>
+      <div class="card tile">
+        <h3>Read the Volumes</h3>
         <p>Published titles are artifacts — crystallized gates connected to the diagram.</p>
-        <div class="mini">
-          <a class="btn secondary" href="/books">Browse</a>
-        </div>
+        <a class="btn secondary" href="/books.html">Browse</a>
       </div>
-
-      <div class="card">
-        <h2>Begin at Keter</h2>
+      <div class="card tile">
+        <h3>Begin at Keter</h3>
         <p>Adam Kadmon — a luminous gate into the Primordial Human.</p>
-        <div class="mini">
-          <a class="btn secondary" href="/book.html?id=adam-kadmon">Open</a>
-        </div>
+        <a class="btn secondary" href="/book.html?id=adam-kadmon">Open</a>
       </div>
     </section>
 
-    <!-- Featured row (fills via JS after books load) -->
-    <section class="strip" aria-label="Featured books">
-      <div class="stripTop">
-        <strong>Featured Gates</strong>
-        <a class="btn secondary" href="/books">See all</a>
+    <section class="panel covers" aria-label="Featured covers">
+      <div class="coversHead">
+        <h2>Featured covers</h2>
+        <a class="mini-link" href="/books.html" style="text-decoration:none;border-bottom:1px solid rgba(7,16,34,.18);color:rgba(7,16,34,.72);font-size:12px;font-weight:850;">
+          View all →
+        </a>
       </div>
-      <div class="miniGrid" id="featuredRow"></div>
+
+      <div class="coversGrid">
+        <a class="coverMini" href="/book.html?id=adam-kadmon" title="ADAM KADMON">
+          <img src="/assets/img/books/adam-kadmon.jpg" alt="ADAM KADMON cover" loading="lazy" decoding="async" />
+        </a>
+        <a class="coverMini" href="/book.html?id=quantum-etz-chaim" title="Quantum Etz Chaim">
+          <img src="/assets/img/books/Quantum_Etz_Chaim_cover.jpg" alt="Quantum Etz Chaim cover" loading="lazy" decoding="async" />
+        </a>
+        <a class="coverMini" href="/book.html?id=tiferet" title="Tiferet">
+          <img src="/assets/img/books/Tiferet_cover.jpg" alt="Tiferet cover" loading="lazy" decoding="async" />
+        </a>
+        <a class="coverMini" href="/book.html?id=tower-of-daat" title="The Tower of Da’at">
+          <img src="/assets/img/books/Tower_of_Da'at_cover.jpg" alt="The Tower of Da’at cover" loading="lazy" decoding="async" />
+        </a>
+        <a class="coverMini" href="/book.html?id=adversarys-prayer" title="Adversary’s Prayer">
+          <img src="/assets/img/books/Adversarys_Prayer_cover.jpg" alt="Adversary’s Prayer cover" loading="lazy" decoding="async" />
+        </a>
+      </div>
     </section>
 
     <footer class="footer">
@@ -349,28 +223,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Lightly populate Featured row from /data/books.json (no dependency on site.js)
-    (async function(){
-      try{
-        const res = await fetch("/data/books.json", { cache: "no-store" });
-        if(!res.ok) return;
-        const books = (await res.json()) || [];
-        const featured = books.filter(b => Array.isArray(b.tags) && b.tags.map(String).includes("featured")).slice(0, 5);
-        const mount = document.getElementById("featuredRow");
-        if(!mount) return;
-
-        mount.innerHTML = featured.map(b => `
-          <a class="miniBook" href="/book.html?id=${encodeURIComponent(b.id)}" aria-label="Open ${String(b.title||b.id)}">
-            <img src="${String(b.cover||"")}" alt="${String(b.title||b.id)} cover" loading="lazy" decoding="async" />
-            <div style="min-width:0">
-              <div class="t">${String(b.title||b.id)}</div>
-              <div class="s">${String(b.tagline||"")}</div>
-            </div>
-          </a>
-        `).join("");
-      }catch(e){}
-    })();
   </script>
 </body>
 </html>
