@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" role="img" aria-label="Tree of Life diagram">
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 1200"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-label="Tree of Life diagram (Etz Chaim)">
   <defs>
     <!-- Soft glow -->
     <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
@@ -14,177 +18,116 @@
       </feMerge>
     </filter>
 
-    <!-- Subtle gradient stroke for paths -->
-    <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.55"/>
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.45"/>
-    </linearGradient>
-
-    <!-- Node fill gradient -->
-    <radialGradient id="nodeGrad" cx="35%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-      <stop offset="55%" stop-color="#eaf6ff" stop-opacity="0.75"/>
-      <stop offset="100%" stop-color="#dff7ea" stop-opacity="0.55"/>
+    <!-- Orb fill (SVG-safe: hex + stop-opacity) -->
+    <radialGradient id="orb" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.70"/>
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.06"/>
     </radialGradient>
 
     <style>
-      /* Base look */
-      .path {
-        stroke: url(#pathGrad);
-        stroke-width: 3;
-        stroke-linecap: round;
-        stroke-opacity: 0.55;
-        fill: none;
-        filter: url(#glow);
-      }
-      .node {
-        fill: url(#nodeGrad);
-        stroke: rgba(14,165,233,0.55);
-        stroke-width: 3;
-        filter: url(#glow);
-      }
-      .node-ring {
-        fill: none;
-        stroke: rgba(255,255,255,0.55);
-        stroke-width: 2;
-        opacity: 0.9;
-        filter: url(#glow);
-      }
-      .label {
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        font-size: 16px;
-        letter-spacing: 0.04em;
-        fill: rgba(11,18,32,0.55);
-      }
-
-      /* Optional: if you embed inline and want hover interactivity later */
-      .hotspot { cursor: pointer; }
-      .hotspot:hover .node { stroke: rgba(34,197,94,0.75); }
-      .hotspot:hover .path { stroke-opacity: 0.85; }
+      .bg { fill: #FFFFFF; opacity: 0.02; }
+      .frame { fill: #FFFFFF; opacity: 0.03; stroke: #FFFFFF; stroke-opacity: 0.12; stroke-width: 2; }
+      .path { stroke: #8CBEFF; stroke-opacity: 0.55; stroke-width: 4; stroke-linecap: round; filter: url(#glow); }
+      .path2 { stroke: #FFD7A0; stroke-opacity: 0.35; stroke-width: 3; stroke-linecap: round; filter: url(#glow); }
+      .node { fill: url(#orb); stroke: #FFFFFF; stroke-opacity: 0.45; stroke-width: 2.2; filter: url(#glow); }
+      .label { font-family: Arial, Helvetica, sans-serif; fill: #FFFFFF; opacity: 0.88; font-size: 22px; letter-spacing: 0.02em; }
+      .he { font-size: 26px; font-weight: 700; }
+      .small { font-size: 16px; fill: #FFFFFF; opacity: 0.68; }
     </style>
   </defs>
 
-  <!-- Background "mist" -->
-  <rect x="0" y="0" width="800" height="1200" fill="#ffffff" opacity="0"/>
-  <circle cx="220" cy="180" r="260" fill="#0ea5e9" opacity="0.06"/>
-  <circle cx="610" cy="250" r="300" fill="#22c55e" opacity="0.05"/>
-  <circle cx="420" cy="980" r="360" fill="#0ea5e9" opacity="0.04"/>
+  <!-- Subtle background -->
+  <rect class="bg" x="0" y="0" width="800" height="1200" />
 
-  <!-- Coordinates (classic layout) -->
-  <!-- xLeft=270, xCenter=400, xRight=530 -->
-  <!-- y: 90, 210, 330, 480, 620, 780, 1020 -->
+  <!-- Optional frame (helps confirm scaling; keep or delete) -->
+  <rect class="frame" x="140" y="70" width="520" height="1060" rx="28" />
 
-  <!-- 22 paths (lines). Ordered top-down. -->
-  <g id="paths">
-    <!-- Top triad -->
-    <line id="path-01" class="path" x1="400" y1="90"  x2="270" y2="210"/>
-    <line id="path-02" class="path" x1="400" y1="90"  x2="530" y2="210"/>
-    <line id="path-03" class="path" x1="270" y1="210" x2="530" y2="210"/>
+  <!-- Paths -->
+  <g>
+    <!-- Vertical spine -->
+    <line class="path" x1="400" y1="120" x2="400" y2="1040"/>
+    <!-- Left pillar -->
+    <line class="path2" x1="270" y1="240" x2="270" y2="920"/>
+    <!-- Right pillar -->
+    <line class="path2" x1="530" y1="240" x2="530" y2="920"/>
 
-    <!-- Second to third -->
-    <line id="path-04" class="path" x1="270" y1="210" x2="270" y2="330"/>
-    <line id="path-05" class="path" x1="530" y1="210" x2="530" y2="330"/>
-    <line id="path-06" class="path" x1="270" y1="210" x2="400" y2="330"/>
-    <line id="path-07" class="path" x1="530" y1="210" x2="400" y2="330"/>
+    <!-- Cross links -->
+    <line class="path" x1="270" y1="240" x2="530" y2="240"/>
+    <line class="path" x1="270" y1="360" x2="530" y2="360"/>
+    <line class="path" x1="270" y1="520" x2="530" y2="520"/>
+    <line class="path" x1="270" y1="760" x2="530" y2="760"/>
 
-    <!-- Third to fourth (Chesed/Gevurah) -->
-    <line id="path-08" class="path" x1="270" y1="330" x2="270" y2="480"/>
-    <line id="path-09" class="path" x1="530" y1="330" x2="530" y2="480"/>
-    <line id="path-10" class="path" x1="270" y1="330" x2="400" y2="480"/>
-    <line id="path-11" class="path" x1="530" y1="330" x2="400" y2="480"/>
-    <line id="path-12" class="path" x1="270" y1="480" x2="530" y2="480"/>
+    <!-- Diagonals -->
+    <line class="path2" x1="400" y1="120" x2="270" y2="240"/>
+    <line class="path2" x1="400" y1="120" x2="530" y2="240"/>
 
-    <!-- Fourth to fifth (Tiferet) -->
-    <line id="path-13" class="path" x1="270" y1="480" x2="400" y2="620"/>
-    <line id="path-14" class="path" x1="530" y1="480" x2="400" y2="620"/>
-    <line id="path-15" class="path" x1="400" y1="480" x2="400" y2="620"/>
+    <line class="path2" x1="270" y1="240" x2="400" y2="360"/>
+    <line class="path2" x1="530" y1="240" x2="400" y2="360"/>
 
-    <!-- Fifth to sixth (Netzach/Hod) -->
-    <line id="path-16" class="path" x1="400" y1="620" x2="270" y2="780"/>
-    <line id="path-17" class="path" x1="400" y1="620" x2="530" y2="780"/>
-    <line id="path-18" class="path" x1="270" y1="780" x2="530" y2="780"/>
+    <line class="path2" x1="270" y1="360" x2="400" y2="520"/>
+    <line class="path2" x1="530" y1="360" x2="400" y2="520"/>
 
-    <!-- Sixth to seventh (Yesod) -->
-    <line id="path-19" class="path" x1="270" y1="780" x2="400" y2="900"/>
-    <line id="path-20" class="path" x1="530" y1="780" x2="400" y2="900"/>
-    <line id="path-21" class="path" x1="400" y1="620" x2="400" y2="900"/>
+    <line class="path2" x1="400" y1="520" x2="270" y2="640"/>
+    <line class="path2" x1="400" y1="520" x2="530" y2="640"/>
 
-    <!-- Yesod to Malkhut -->
-    <line id="path-22" class="path" x1="400" y1="900" x2="400" y2="1020"/>
+    <line class="path2" x1="270" y1="640" x2="400" y2="760"/>
+    <line class="path2" x1="530" y1="640" x2="400" y2="760"/>
+
+    <line class="path2" x1="270" y1="760" x2="400" y2="920"/>
+    <line class="path2" x1="530" y1="760" x2="400" y2="920"/>
+
+    <line class="path2" x1="400" y1="920" x2="400" y2="1040"/>
   </g>
 
-  <!-- Nodes (10 sephirot) -->
-  <g id="nodes">
-    <!-- Keter -->
-    <g id="keter" class="hotspot">
-      <circle class="node" cx="400" cy="90" r="34"/>
-      <circle class="node-ring" cx="400" cy="90" r="44"/>
-      <title>Keter</title>
-    </g>
+  <!-- Nodes -->
+  <g>
+    <circle class="node" cx="400" cy="120" r="34"/>
+    <circle class="node" cx="270" cy="240" r="30"/>
+    <circle class="node" cx="530" cy="240" r="30"/>
+    <circle class="node" cx="400" cy="360" r="28"/>
+    <circle class="node" cx="270" cy="520" r="30"/>
+    <circle class="node" cx="530" cy="520" r="30"/>
+    <circle class="node" cx="400" cy="640" r="34"/>
+    <circle class="node" cx="270" cy="760" r="30"/>
+    <circle class="node" cx="530" cy="760" r="30"/>
+    <circle class="node" cx="400" cy="920" r="30"/>
+    <circle class="node" cx="400" cy="1040" r="34"/>
+  </g>
 
-    <!-- Chokhmah / Binah -->
-    <g id="chokhmah" class="hotspot">
-      <circle class="node" cx="270" cy="210" r="30"/>
-      <circle class="node-ring" cx="270" cy="210" r="40"/>
-      <title>Chokhmah</title>
-    </g>
-    <g id="binah" class="hotspot">
-      <circle class="node" cx="530" cy="210" r="30"/>
-      <circle class="node-ring" cx="530" cy="210" r="40"/>
-      <title>Binah</title>
-    </g>
+  <!-- Labels -->
+  <g text-anchor="middle">
+    <text class="label he" x="400" y="165">כֶּתֶר</text>
+    <text class="label small" x="400" y="190">Keter</text>
 
-    <!-- Da'at (optional) -->
-    <g id="daat" class="hotspot" opacity="0.70">
-      <circle class="node" cx="400" cy="330" r="24" style="stroke: rgba(34,197,94,0.55);"/>
-      <circle class="node-ring" cx="400" cy="330" r="34"/>
-      <title>Da’at (optional)</title>
-    </g>
+    <text class="label he" x="270" y="285">חָכְמָה</text>
+    <text class="label small" x="270" y="310">Chokhmah</text>
 
-    <!-- Chesed / Gevurah -->
-    <g id="chesed" class="hotspot">
-      <circle class="node" cx="270" cy="480" r="30"/>
-      <circle class="node-ring" cx="270" cy="480" r="40"/>
-      <title>Chesed</title>
-    </g>
-    <g id="gevurah" class="hotspot">
-      <circle class="node" cx="530" cy="480" r="30"/>
-      <circle class="node-ring" cx="530" cy="480" r="40"/>
-      <title>Gevurah</title>
-    </g>
+    <text class="label he" x="530" y="285">בִּינָה</text>
+    <text class="label small" x="530" y="310">Binah</text>
 
-    <!-- Tiferet -->
-    <g id="tiferet" class="hotspot">
-      <circle class="node" cx="400" cy="620" r="34"/>
-      <circle class="node-ring" cx="400" cy="620" r="44"/>
-      <title>Tiferet</title>
-    </g>
+    <text class="label he" x="400" y="405">דַּעַת</text>
+    <text class="label small" x="400" y="430">Da’at</text>
 
-    <!-- Netzach / Hod -->
-    <g id="netzach" class="hotspot">
-      <circle class="node" cx="270" cy="780" r="30"/>
-      <circle class="node-ring" cx="270" cy="780" r="40"/>
-      <title>Netzach</title>
-    </g>
-    <g id="hod" class="hotspot">
-      <circle class="node" cx="530" cy="780" r="30"/>
-      <circle class="node-ring" cx="530" cy="780" r="40"/>
-      <title>Hod</title>
-    </g>
+    <text class="label he" x="270" y="565">חֶסֶד</text>
+    <text class="label small" x="270" y="590">Chesed</text>
 
-    <!-- Yesod -->
-    <g id="yesod" class="hotspot">
-      <circle class="node" cx="400" cy="900" r="30"/>
-      <circle class="node-ring" cx="400" cy="900" r="40"/>
-      <title>Yesod</title>
-    </g>
+    <text class="label he" x="530" y="565">גְּבוּרָה</text>
+    <text class="label small" x="530" y="590">Gevurah</text>
 
-    <!-- Malkhut -->
-    <g id="malkhut" class="hotspot">
-      <circle class="node" cx="400" cy="1020" r="34"/>
-      <circle class="node-ring" cx="400" cy="1020" r="44"/>
-      <title>Malkhut</title>
-    </g>
+    <text class="label he" x="400" y="690">תִּפְאֶרֶת</text>
+    <text class="label small" x="400" y="715">Tiferet</text>
+
+    <text class="label he" x="270" y="805">נֵצַח</text>
+    <text class="label small" x="270" y="830">Netzach</text>
+
+    <text class="label he" x="530" y="805">הוֹד</text>
+    <text class="label small" x="530" y="830">Hod</text>
+
+    <text class="label he" x="400" y="965">יְסוֹד</text>
+    <text class="label small" x="400" y="990">Yesod</text>
+
+    <text class="label he" x="400" y="1088">מַלְכוּת</text>
+    <text class="label small" x="400" y="1113">Malkhut</text>
   </g>
 </svg>
