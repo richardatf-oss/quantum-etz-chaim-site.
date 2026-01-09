@@ -4,9 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Tree — Quantum Etz Chaim</title>
-  <meta name="description" content="The Tree of Life as a living diagram — a navigable interface of structure, light, and return." />
-
-  <link rel="stylesheet" href="/css/styles.css" />
+  <meta name="description" content="The Tree of Life as a living diagram — scalable, precise, and ready for interaction." />
 
   <style>
     :root{
@@ -17,11 +15,12 @@
       --line:rgba(15, 23, 42, 0.12);
       --shadow:0 14px 40px rgba(2, 6, 23, 0.10);
       --shadow2:0 10px 22px rgba(2, 6, 23, 0.10);
-      --brand:#0ea5e9;
-      --brand2:#22c55e;
     }
 
+    *{ box-sizing:border-box; }
     body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
         radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.18), transparent 55%),
         radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,0.12), transparent 60%),
@@ -29,28 +28,34 @@
       color: var(--ink);
     }
 
+    a{ color: inherit; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:14px 18px; }
+
     .topbar{
-      position: sticky; top: 0; z-index: 50;
+      position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
-    .navrow{ display:flex; align-items:center; justify-content:space-between; gap: 14px; }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
     .brand{
       display:flex; align-items:center; gap:10px;
-      text-decoration:none; color: var(--ink);
-      font-weight: 800; letter-spacing: .2px;
+      text-decoration:none; font-weight:800;
+      letter-spacing:.2px;
     }
-    .brand .dot{
-      width: 10px; height: 10px; border-radius: 999px;
+    .dot{
+      width:10px; height:10px; border-radius:999px;
       background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
       box-shadow: 0 0 0 6px rgba(14,165,233,0.12);
+      flex:0 0 auto;
     }
-    .nav{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
+    .nav{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
     .nav a{
-      text-decoration:none; color: rgba(11,18,32,0.78);
-      padding: 8px 10px; border-radius: 10px; border: 1px solid transparent;
+      text-decoration:none;
+      color: rgba(11,18,32,0.78);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
     }
     .nav a:hover{
       background: rgba(14,165,233,0.08);
@@ -64,24 +69,22 @@
       font-weight: 650;
     }
 
-    .pageHead{
-      margin: 18px 0 12px;
-    }
+    .pageHead{ margin: 18px 0 12px; }
     .eyebrow{
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
       color: rgba(11,18,32,0.55);
       margin: 0 0 8px;
     }
     h1{
-      margin: 0;
+      margin:0;
       font-size: clamp(30px, 3.6vw, 44px);
-      letter-spacing: -0.02em;
-      line-height: 1.03;
+      letter-spacing:-0.02em;
+      line-height:1.03;
     }
     .lead{
-      margin: 10px 0 0;
+      margin:10px 0 0;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.75;
@@ -89,7 +92,7 @@
     }
 
     .stage{
-      margin-top: 14px;
+      margin-top:14px;
       background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -103,9 +106,7 @@
       gap: 14px;
       align-items:start;
     }
-    @media (max-width: 980px){
-      .stageInner{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 980px){ .stageInner{ grid-template-columns: 1fr; } }
 
     .diagram{
       background: radial-gradient(900px 520px at 50% 35%, rgba(255,255,255,0.98), rgba(255,255,255,0.55));
@@ -118,9 +119,9 @@
       min-height: 560px;
     }
     .diagram img{
-      width: 100%;
-      max-width: 720px;
-      height: auto;
+      width:100%;
+      max-width:720px;
+      height:auto;
       display:block;
       border-radius: 16px;
       box-shadow: 0 18px 44px rgba(2,6,23,0.14);
@@ -139,18 +140,10 @@
       padding: 14px;
       box-shadow: var(--shadow2);
     }
-    .card h2{
-      margin: 0 0 6px;
-      font-size: 15px;
-      letter-spacing: -0.01em;
-    }
-    .card p{
-      margin: 0;
-      color: rgba(11,18,32,0.66);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-    .ctaRow{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 10px; }
+    .card h2{ margin:0 0 6px; font-size:15px; letter-spacing:-0.01em; }
+    .card p{ margin:0; color: rgba(11,18,32,0.66); font-size:13px; line-height:1.7; }
+
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .btn{
       text-decoration:none;
       display:inline-flex; align-items:center; justify-content:center;
@@ -183,19 +176,12 @@
   <header class="topbar">
     <div class="wrap">
       <div class="navrow">
-        <a class="brand" href="/index.html" aria-label="Quantum Etz Chaim home">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Quantum Etz Chaim</span>
-        </a>
-
+        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
         <nav class="nav" aria-label="Primary navigation">
           <a href="/index.html">Home</a>
           <a class="active" href="/tree.html">Tree</a>
-          <a href="/trees.html">Trees</a>
-          <a href="/book.html">Book</a>
           <a href="/books.html">Books</a>
-          <a href="/about.html">About</a>
-          <a href="/contact.html">Contact</a>
+          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
         </nav>
       </div>
     </div>
@@ -206,31 +192,26 @@
       <p class="eyebrow">The Interface</p>
       <h1>The Tree</h1>
       <p class="lead">
-        This SVG is the foundation: scalable, precise, and ready to become interactive.
-        Next we can make nodes clickable (Keter → Adam Kadmon, Tiferet → Tiferet, Da’at → Tower of Da’at).
+        This is the foundation map. Because it’s SVG, every sphere and path can become clickable navigation.
+        Next: wire Keter → Adam Kadmon, Tiferet → Tiferet, Da’at → Tower of Da’at.
       </p>
     </div>
 
-    <section class="stage" aria-label="The Tree diagram">
+    <section class="stage">
       <div class="stageInner">
         <div class="diagram">
           <img src="/assets/tree.svg" alt="Tree of Life diagram (SVG)" loading="eager" decoding="async" />
         </div>
 
-        <aside class="side" aria-label="Guidance">
+        <aside class="side">
           <div class="card">
             <h2>Why SVG?</h2>
-            <p>
-              SVG is Scalable Vector Graphics — perfect for diagrams. Every sphere and path can become a clickable
-              element without losing sharpness.
-            </p>
+            <p>SVG is Scalable Vector Graphics: crisp at any size, and every node can be a real clickable element.</p>
           </div>
 
           <div class="card">
             <h2>Start with a gate</h2>
-            <p>
-              Begin at Keter with Adam Kadmon, then return to the Tree and travel downward.
-            </p>
+            <p>Begin at Keter: Adam Kadmon — then return and travel downward.</p>
             <div class="ctaRow">
               <a class="btn" href="/book.html?id=adam-kadmon">Adam Kadmon</a>
               <a class="btn secondary" href="/books.html">All Volumes</a>
@@ -239,20 +220,14 @@
 
           <div class="card">
             <h2>Next upgrade</h2>
-            <p>
-              If you want, I’ll give you a tiny JS file to make the SVG nodes clickable — no frameworks, just clean DOM.
-            </p>
-            <div class="ctaRow">
-              <a class="btn secondary" href="/contact.html">Contact</a>
-              <a class="btn secondary" href="/about.html">About</a>
-            </div>
+            <p>If you want, I’ll give you a tiny JS file that makes the SVG nodes clickable (no frameworks).</p>
           </div>
         </aside>
       </div>
     </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> Quantum Etz Chaim • Built for clarity and light.</div>
+      <div>© <span id="year"></span> Quantum Etz Chaim</div>
     </footer>
   </main>
 
