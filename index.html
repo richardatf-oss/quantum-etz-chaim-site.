@@ -2,125 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Quantum Etz Chaim</title>
-  <meta name="description" content="Torah • Physics • The Living Diagram. The Tree is the interface." />
-  <link rel="stylesheet" href="/css/global.css" />
-  <style>
-    .hero{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-    @media (max-width: 980px){ .hero{ grid-template-columns: 1fr; } }
-
-    .heroLeft{
-      padding: 18px;
-    }
-    .heroRight{
-      padding: 18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .heroRight img{
-      width:100%;
-      height:auto;
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.70);
-    }
-
-    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
-    .cards{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    @media (max-width: 980px){ .cards{ grid-template-columns: 1fr; } }
-
-    .card{
-      background: rgba(255,255,255,.86);
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow2);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .card h3{ margin:0; font-size: 16px; letter-spacing: -0.01em; }
-    .card p{ margin:0; color: var(--muted); line-height: 1.7; font-size: 14px; }
-  </style>
+  <meta name="description" content="Quantum Etz Chaim — a luminous framework where physics, Torah, and the Tree of Life meet." />
+  <link rel="stylesheet" href="./css/global.css" />
+  <script defer src="./js/site.js"></script>
 </head>
-
 <body>
   <header class="topbar">
-    <div class="wrap">
-      <div class="navrow">
-        <a class="brand" href="/index.html"><span class="dot"></span>Quantum Etz Chaim</a>
-        <nav class="nav">
-          <a class="active" href="/index.html">Home</a>
-          <a href="/tree.html">Tree</a>
-          <a href="/books.html">Books</a>
-          <a href="/book.html?id=adam-kadmon">Adam Kadmon</a>
-        </nav>
-      </div>
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">QEC</span>
+        <span class="brand-text">Quantum Etz Chaim</span>
+      </a>
+
+      <nav class="nav">
+        <a class="pill" href="./books.html">Books</a>
+        <a class="pill" href="./tree.html">Tree</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="panel hero">
-      <div class="heroLeft">
-        <p class="eyebrow">Torah • Physics • The Living Diagram</p>
-        <h1>The Tree is the Interface.</h1>
-        <p class="lead">
-          Quantum Etz Chaim is a map of structure — the Sefirot as the ways one reality appears, returns,
-          and becomes knowable.
-        </p>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Quantum Etz Chaim</h1>
+          <p class="lede">
+            A living map of light: Torah, mysticism, and modern physics — expressed through the architecture of the Tree of Life.
+          </p>
 
-        <div class="ctaRow">
-          <a class="btn" href="/tree.html">Open the Tree</a>
-          <a class="btn secondary" href="/books.html">Browse Volumes</a>
+          <div class="cta-row">
+            <a class="btn" href="./tree.html">Explore the Tree</a>
+            <a class="btn ghost" href="./books.html">View the Books</a>
+          </div>
+
+          <div class="meta-row">
+            <div class="badge">Static • Fast • Netlify-ready</div>
+            <div class="badge">SVG-safe scaling</div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <img
+            class="hero-img"
+            src="./assets/hero/hero-quantum-etz-chaim.png"
+            alt="Quantum Etz Chaim — hero image"
+            loading="eager"
+          />
         </div>
       </div>
+    </section>
 
-      <div class="heroRight">
-        <img src="/assets/img/hero/hero-quantum-etz-chaim.png" alt="Quantum Etz Chaim hero image" loading="eager" />
+    <section class="section">
+      <div class="wrap two-col">
+        <article class="card">
+          <h2>What is this?</h2>
+          <p>
+            A clean site shell for your expanding library — books, diagrams, and the Tree page as a sacred interface.
+          </p>
+          <p class="muted">
+            Everything is plain HTML/CSS/JS, with one JSON data file powering the book list and detail page.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Quick links</h2>
+          <ul class="list">
+            <li><a href="./books.html">Books library</a></li>
+            <li><a href="./tree.html">Tree diagram</a></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="cards">
-      <div class="card">
-        <h3>Explore the Map</h3>
-        <p>Start with the Tree. Each sphere is a perspective. Each path is a relationship.</p>
-        <div><a class="btn secondary" href="/tree.html">Enter</a></div>
-      </div>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Featured</h2>
+          <p class="muted">Pulled from <code>data/books.json</code>.</p>
+        </div>
 
-      <div class="card">
-        <h3>Read the Volumes</h3>
-        <p>Published titles are artifacts — crystallized gates connected to the diagram.</p>
-        <div><a class="btn secondary" href="/books.html">Browse</a></div>
-      </div>
-
-      <div class="card">
-        <h3>Begin at Keter</h3>
-        <p>Adam Kadmon — a luminous gate into the Primordial Human.</p>
-        <div><a class="btn secondary" href="/book.html?id=adam-kadmon">Open</a></div>
+        <div id="featured" class="grid"></div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div>© <span id="year"></span> Quantum Etz Chaim</div>
-    </footer>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-left">
+        <div class="footer-author">RICHARD ALLEN LEE</div>
+        <div class="footer-sub">LuminaNexus.org</div>
+      </div>
+      <div class="footer-right">
+        <img class="footer-tree" src="./assets/tree.svg" alt="Tree of Life emblem" />
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
