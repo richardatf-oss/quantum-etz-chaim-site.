@@ -6,10 +6,8 @@
   <title>Quantum Etz Chaim</title>
   <meta name="description" content="Quantum Etz Chaim — the Tree of Life as a living diagram: Torah-first language, modern physics metaphors, and a navigable map of Sefirot." />
 
-  <!-- Existing site styles -->
   <link rel="stylesheet" href="/css/styles.css" />
 
-  <!-- Bright, page-scoped overrides -->
   <style>
     :root{
       --bg0:#f6fbff;
@@ -31,54 +29,28 @@
       color: var(--ink);
     }
 
-    /* Top nav */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-    .wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px;
-    }
-    .navrow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-    }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; gap: 14px; }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color: var(--ink);
-      font-weight: 800;
-      letter-spacing: .2px;
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color: var(--ink);
+      font-weight: 800; letter-spacing: .2px;
     }
     .brand .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
+      width: 10px; height: 10px; border-radius: 999px;
       background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
       box-shadow: 0 0 0 6px rgba(14,165,233,0.12);
     }
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-    }
+    .nav{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
     .nav a{
-      text-decoration:none;
-      color: rgba(11,18,32,0.78);
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
+      text-decoration:none; color: rgba(11,18,32,0.78);
+      padding: 8px 10px; border-radius: 10px; border: 1px solid transparent;
     }
     .nav a:hover{
       background: rgba(14,165,233,0.08);
@@ -92,10 +64,7 @@
       font-weight: 650;
     }
 
-    /* Hero */
-    .hero{
-      padding: 26px 0 18px;
-    }
+    .hero{ padding: 26px 0 18px; }
     .heroCard{
       background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
@@ -106,83 +75,53 @@
     .heroGrid{
       display:grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 0;
       align-items: stretch;
     }
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-    }
-    .heroCopy{
-      padding: 22px 22px 18px;
-    }
+    @media (max-width: 980px){ .heroGrid{ grid-template-columns: 1fr; } }
+
+    .heroCopy{ padding: 22px 22px 18px; }
     .eyebrow{
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(11,18,32,0.55);
-      margin: 0 0 10px;
+      font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(11,18,32,0.55); margin: 0 0 10px;
     }
     h1{
       margin: 0 0 10px;
       font-size: clamp(34px, 4vw, 50px);
-      letter-spacing: -0.02em;
-      line-height: 1.03;
+      letter-spacing: -0.02em; line-height: 1.03;
     }
     .lead{
       margin: 0 0 16px;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 16px; line-height: 1.75;
       max-width: 72ch;
     }
-    .ctaRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
+    .ctaRow{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
     .btn{
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 13px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px; border-radius: 12px;
+      font-weight: 800; font-size: 13px;
       border: 1px solid rgba(14,165,233,0.28);
       background: rgba(14,165,233,0.12);
       color: rgba(11,18,32,0.92);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(14,165,233,0.42);
-      background: rgba(14,165,233,0.16);
-    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(14,165,233,0.42); background: rgba(14,165,233,0.16); }
     .btn.secondary{
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255,255,255,0.70);
       color: rgba(11,18,32,0.82);
     }
-    .btn.secondary:hover{
-      border-color: rgba(34,197,94,0.35);
-      background: rgba(34,197,94,0.10);
-    }
+    .btn.secondary:hover{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.10); }
 
     .heroArt{
-      position: relative;
-      background:
-        radial-gradient(800px 500px at 50% 40%, rgba(255,255,255,0.95), rgba(255,255,255,0.35));
+      background: radial-gradient(800px 500px at 50% 40%, rgba(255,255,255,0.95), rgba(255,255,255,0.35));
       border-left: 1px solid rgba(15, 23, 42, 0.10);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:flex; align-items:center; justify-content:center;
       padding: 14px;
     }
-    @media (max-width: 980px){
-      .heroArt{ border-left: none; border-top: 1px solid rgba(15, 23, 42, 0.10); }
-    }
+    @media (max-width: 980px){ .heroArt{ border-left: none; border-top: 1px solid rgba(15, 23, 42, 0.10); } }
+
     .heroArt img{
       width: 100%;
       max-width: 560px;
@@ -190,6 +129,7 @@
       display:block;
       border-radius: 18px;
       box-shadow: 0 18px 44px rgba(2,6,23,0.14);
+      background: rgba(255,255,255,0.55);
     }
     .caption{
       margin: 10px 0 0;
@@ -199,16 +139,13 @@
       text-align:center;
     }
 
-    /* Sections */
     .section{
       margin-top: 18px;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    @media (max-width: 980px){
-      .section{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 980px){ .section{ grid-template-columns: 1fr; } }
     .tile{
       background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
@@ -216,19 +153,9 @@
       box-shadow: var(--shadow2);
       padding: 16px;
     }
-    .tile h2{
-      margin: 0 0 8px;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-    }
-    .tile p{
-      margin: 0 0 12px;
-      color: rgba(11,18,32,0.66);
-      font-size: 13px;
-      line-height: 1.7;
-    }
+    .tile h2{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
+    .tile p{ margin: 0 0 12px; color: rgba(11,18,32,0.66); font-size: 13px; line-height: 1.7; }
 
-    /* Footer */
     .footer{
       border-top: 1px solid var(--line);
       color: rgba(11,18,32,0.55);
@@ -275,19 +202,14 @@
 
             <div class="ctaRow">
               <a class="btn" href="/tree.html">Open the Tree</a>
-              <a class="btn secondary" href="/books.html">See Published Titles</a>
+              <a class="btn secondary" href="/books.html">Browse Volumes</a>
             </div>
           </div>
 
           <div class="heroArt">
             <div>
-              <img
-                src="/assets/img/hero/hero-quantum-etz-chaim.png"
-                alt="A luminous Tree of Life diagram emerging into view"
-                loading="eager"
-                decoding="async"
-              />
-              <p class="caption">The Diagram Emerges — a quiet map of structure, light, and return.</p>
+              <img src="/assets/tree.svg" alt="Tree of Life diagram (SVG)" loading="eager" decoding="async" />
+              <p class="caption">A luminous SVG map — scalable, precise, and ready for interaction.</p>
             </div>
           </div>
         </div>
@@ -296,7 +218,7 @@
       <div class="section">
         <div class="tile">
           <h2>Explore the Map</h2>
-          <p>Begin with the Tree. Each sphere is a perspective. Each path is a relationship. The map is the lesson.</p>
+          <p>Start with the Tree. Each sphere is a perspective. Each path is a relationship. The map is the lesson.</p>
           <a class="btn secondary" href="/tree.html">Enter</a>
         </div>
 
@@ -307,9 +229,9 @@
         </div>
 
         <div class="tile">
-          <h2>Understand the Thesis</h2>
-          <p>A single canonical explanation of what Quantum Etz Chaim means — clear, restrained, and navigable.</p>
-          <a class="btn secondary" href="/about.html">Read About</a>
+          <h2>Begin with Adam Kadmon</h2>
+          <p>The Primordial Human — a luminous gate into the interface between Ein Sof and Creation.</p>
+          <a class="btn secondary" href="/book.html?id=adam-kadmon">Open</a>
         </div>
       </div>
     </section>
