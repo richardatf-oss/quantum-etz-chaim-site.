@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  id="etz-chaim"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 1300"
+  role="img"
+  aria-labelledby="etz-chaim-title etz-chaim-desc"
+>
+  <title id="etz-chaim-title">Etz Chaim – Tree of Life Diagram</title>
+  <desc id="etz-chaim-desc">
+    Schematic Tree of Life with ten sefirot, Da&apos;at, and connecting paths.
+  </desc>
+
+  <!-- ====== STYLES (V0, SIMPLE) ====== -->
+  <style>
+    .bg-rect {
+      fill: none;
+    }
+    .sefirah-path {
+      fill: none;
+      stroke: #cccccc;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+    .sefirah-node {
+      fill: #000000;
+      stroke: #ffffff;
+      stroke-width: 3;
+    }
+    .sefirah-node.daat {
+      stroke-dasharray: 6 4;
+    }
+    .label-hebrew {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 22px;
+      fill: #ffffff;
+    }
+    .label-english {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      fill: #cccccc;
+    }
+    .sefirah-glow {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 1;
+      opacity: 0;
+    }
+    .sefirah-glow.active {
+      opacity: 0.35;
+    }
+  </style>
+
+  <!-- ====== BACKGROUND LAYER ====== -->
+  <g id="bg-layer">
+    <rect
+      class="bg-rect"
+      x="0" y="0" width="1000" height="1300"
+    />
+  </g>
+
+  <!-- ====== PATHS (EDGES) ====== -->
+  <g id="paths">
+
+    <!-- Crown triad -->
+    <line
+      id="path-keter-chochmah"
+      class="sefirah-path"
+      x1="500" y1="120" x2="700" y2="260"
+      data-from="keter" data-to="chochmah"
+    />
+    <line
+      id="path-keter-binah"
+      class="sefirah-path"
+      x1="500" y1="120" x2="300" y2="260"
+      data-from="keter" data-to="binah"
+    />
+    <line
+      id="path-chochmah-binah"
+      class="sefirah-path"
+      x1="700" y1="260" x2="300" y2="260"
+      data-from="chochmah" data-to="binah"
+    />
+
+    <!-- Chochmah / Binah down to Chesed / Gevurah -->
+    <line
+      id="path-chochmah-chesed"
+      class="sefirah-path"
+      x1="700" y1="260" x2="700" y2="460"
+      data-from="chochmah" data-to="chesed"
+    />
+    <line
+      id="path-binah-gevurah"
+      class="sefirah-path"
+      x1="300" y1="260" x2="300" y2="460"
+      data-from="binah" data-to="gevurah"
+    />
+
+    <!-- Chesed – Gevurah horizontal -->
+    <line
+      id="path-chesed-gevurah"
+      class="sefirah-path"
+      x1="700" y1="460" x2="300" y2="460"
+      data-from="chesed" data-to="gevurah"
+    />
+
+    <!-- Middle column: Keter → Da'at → Tiferet → Yesod → Malchut -->
+    <line
+      id="path-keter-daat"
+      class="sefirah-path"
+      x1="500" y1="120" x2="500" y2="340"
+      data-from="keter" data-to="daat"
+    />
+    <line
+      id="path-daat-tiferet"
+      class="sefirah-path"
+      x1="500" y1="340" x2="500" y2="610"
+      data-from="daat" data-to="tiferet"
+    />
+    <line
+      id="path-tiferet-yesod"
+      class="sefirah-path"
+      x1="500" y1="610" x2="500" y2="910"
+      data-from="tiferet" data-to="yesod"
+    />
+    <line
+      id="path-yesod-malchut"
+      class="sefirah-path"
+      x1="500" y1="910" x2="500" y2="1120"
+      data-from="yesod" data-to="malchut"
+    />
+
+    <!-- Tiferet to Chesed / Gevurah -->
+    <line
+      id="path-chesed-tiferet"
+      class="sefirah-path"
+      x1="700" y1="460" x2="500" y2="610"
+      data-from="chesed" data-to="tiferet"
+    />
+    <line
+      id="path-gevurah-tiferet"
+      class="sefirah-path"
+      x1="300" y1="460" x2="500" y2="610"
+      data-from="gevurah" data-to="tiferet"
+    />
+
+    <!-- Tiferet to Netzach / Hod -->
+    <line
+      id="path-tiferet-netzach"
+      class="sefirah-path"
+      x1="500" y1="610" x2="700" y2="760"
+      data-from="tiferet" data-to="netzach"
+    />
+    <line
+      id="path-tiferet-hod"
+      class="sefirah-path"
+      x1="500" y1="610" x2="300" y2="760"
+      data-from="tiferet" data-to="hod"
+    />
+
+    <!-- Netzach / Hod down to Yesod -->
+    <line
+      id="path-netzach-yesod"
+      class="sefirah-path"
+      x1="700" y1="760" x2="500" y2="910"
+      data-from="netzach" data-to="yesod"
+    />
+    <line
+      id="path-hod-yesod"
+      class="sefirah-path"
+      x1="300" y1="760" x2="500" y2="910"
+      data-from="hod" data-to="yesod"
+    />
+
+    <!-- Netzach – Hod horizontal -->
+    <line
+      id="path-netzach-hod"
+      class="sefirah-path"
+      x1="700" y1="760" x2="300" y2="760"
+      data-from="netzach" data-to="hod"
+    />
+
+    <!-- Optional diagonals for additional classical paths (v0 keeps it readable) -->
+
+  </g>
+
+  <!-- ====== NODES (SEFIROT) ====== -->
+  <g id="nodes">
+
+    <!-- Level 0 -->
+    <circle
+      id="keter"
+      class="sefirah-node"
+      cx="500" cy="120" r="40"
+      data-level="0" data-column="center" data-index="1"
+    />
+
+    <!-- Level 1 -->
+    <circle
+      id="chochmah"
+      class="sefirah-node"
+      cx="700" cy="260" r="40"
+      data-level="1" data-column="right" data-index="2"
+    />
+    <circle
+      id="binah"
+      class="sefirah-node"
+      cx="300" cy="260" r="40"
+      data-level="1" data-column="left" data-index="3"
+    />
+
+    <!-- Level 1.5 (Da'at) -->
+    <circle
+      id="daat"
+      class="sefirah-node daat"
+      cx="500" cy="340" r="32"
+      data-level="1.5" data-column="center" data-index="4"
+    />
+
+    <!-- Level 2 -->
+    <circle
+      id="chesed"
+      class="sefirah-node"
+      cx="700" cy="460" r="40"
+      data-level="2" data-column="right" data-index="5"
+    />
+    <circle
+      id="gevurah"
+      class="sefirah-node"
+      cx="300" cy="460" r="40"
+      data-level="2" data-column="left" data-index="6"
+    />
+
+    <!-- Level 3 -->
+    <circle
+      id="tiferet"
+      class="sefirah-node"
+      cx="500" cy="610" r="40"
+      data-level="3" data-column="center" data-index="7"
+    />
+
+    <!-- Level 4 -->
+    <circle
+      id="netzach"
+      class="sefirah-node"
+      cx="700" cy="760" r="40"
+      data-level="4" data-column="right" data-index="8"
+    />
+    <circle
+      id="hod"
+      class="sefirah-node"
+      cx="300" cy="760" r="40"
+      data-level="4" data-column="left" data-index="9"
+    />
+
+    <!-- Level 5 -->
+    <circle
+      id="yesod"
+      class="sefirah-node"
+      cx="500" cy="910" r="40"
+      data-level="5" data-column="center" data-index="10"
+    />
+
+    <!-- Level 6 -->
+    <circle
+      id="malchut"
+      class="sefirah-node"
+      cx="500" cy="1120" r="40"
+      data-level="6" data-column="center" data-index="11"
+    />
+
+  </g>
+
+  <!-- ====== LABELS ====== -->
+  <g id="labels">
+
+    <!-- Keter -->
+    <g id="label-keter">
+      <text x="500" y="70" class="label-hebrew" text-anchor="middle">כתר</text>
+      <text x="500" y="95" class="label-english" text-anchor="middle">Keter</text>
+    </g>
+
+    <!-- Chochmah -->
+    <g id="label-chochmah">
+      <text x="700" y="230" class="label-hebrew" text-anchor="middle">חכמה</text>
+      <text x="700" y="255" class="label-english" text-anchor="middle">Chochmah</text>
+    </g>
+
+    <!-- Binah -->
+    <g id="label-binah">
+      <text x="300" y="230" class="label-hebrew" text-anchor="middle">בינה</text>
+      <text x="300" y="255" class="label-english" text-anchor="middle">Binah</text>
+    </g>
+
+    <!-- Da'at -->
+    <g id="label-daat">
+      <text x="500" y="320" class="label-hebrew" text-anchor="middle">דעת</text>
+      <text x="500" y="345" class="label-english" text-anchor="middle">Da&apos;at</text>
+    </g>
+
+    <!-- Chesed -->
+    <g id="label-chesed">
+      <text x="700" y="430" class="label-hebrew" text-anchor="middle">חסד</text>
+      <text x="700" y="455" class="label-english" text-anchor="middle">Chesed</text>
+    </g>
+
+    <!-- Gevurah -->
+    <g id="label-gevurah">
+      <text x="300" y="430" class="label-hebrew" text-anchor="middle">גבורה</text>
+      <text x="300" y="455" class="label-english" text-anchor="middle">Gevurah</text>
+    </g>
+
+    <!-- Tiferet -->
+    <g id="label-tiferet">
+      <text x="500" y="580" class="label-hebrew" text-anchor="middle">תפארת</text>
+      <text x="500" y="605" class="label-english" text-anchor="middle">Tiferet</text>
+    </g>
+
+    <!-- Netzach -->
+    <g id="label-netzach">
+      <text x="700" y="730" class="label-hebrew" text-anchor="middle">נצח</text>
+      <text x="700" y="755" class="label-english" text-anchor="middle">Netzach</text>
+    </g>
+
+    <!-- Hod -->
+    <g id="label-hod">
+      <text x="300" y="730" class="label-hebrew" text-anchor="middle">הוד</text>
+      <text x="300" y="755" class="label-english" text-anchor="middle">Hod</text>
+    </g>
+
+    <!-- Yesod -->
+    <g id="label-yesod">
+      <text x="500" y="880" class="label-hebrew" text-anchor="middle">יסוד</text>
+      <text x="500" y="905" class="label-english" text-anchor="middle">Yesod</text>
+    </g>
+
+    <!-- Malchut -->
+    <g id="label-malchut">
+      <text x="500" y="1090" class="label-hebrew" text-anchor="middle">מלכות</text>
+      <text x="500" y="1115" class="label-english" text-anchor="middle">Malchut</text>
+    </g>
+
+  </g>
+
+  <!-- ====== GLOW OVERLAYS (FOR FUTURE INTERACTION) ====== -->
+  <g id="glow-overlays">
+    <circle id="keter-glow"   class="sefirah-glow" cx="500" cy="120"  r="70" data-target="keter"   />
+    <circle id="chochmah-glow"class="sefirah-glow" cx="700" cy="260"  r="70" data-target="chochmah"/>
+    <circle id="binah-glow"   class="sefirah-glow" cx="300" cy="260"  r="70" data-target="binah"   />
+    <circle id="daat-glow"    class="sefirah-glow" cx="500" cy="340"  r="60" data-target="daat"    />
+    <circle id="chesed-glow"  class="sefirah-glow" cx="700" cy="460"  r="70" data-target="chesed"  />
+    <circle id="gevurah-glow" class="sefirah-glow" cx="300" cy="460"  r="70" data-target="gevurah" />
+    <circle id="tiferet-glow" class="sefirah-glow" cx="500" cy="610"  r="70" data-target="tiferet" />
+    <circle id="netzach-glow" class="sefirah-glow" cx="700" cy="760"  r="70" data-target="netzach" />
+    <circle id="hod-glow"     class="sefirah-glow" cx="300" cy="760"  r="70" data-target="hod"     />
+    <circle id="yesod-glow"   class="sefirah-glow" cx="500" cy="910"  r="70" data-target="yesod"   />
+    <circle id="malchut-glow" class="sefirah-glow" cx="500" cy="1120" r="70" data-target="malchut" />
+  </g>
+
+</svg>
