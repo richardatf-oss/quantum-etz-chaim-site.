@@ -217,7 +217,7 @@
       </div>
 
       <div class="tree-panel">
-        <!-- Inspired luminous Tree (inline SVG so it always renders) -->
+        <!-- Luminous Tree with labels OFF the spheres -->
         <svg
           id="etz-chaim-diagram"
           xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +226,7 @@
           aria-labelledby="etz-chaim-title etz-chaim-desc"
         >
           <title id="etz-chaim-title">Etz Chaim – Luminous Tree of Life</title>
-          <desc id="etz-chaim-desc">Golden luminous Tree of Life on a cosmic field, with a subtle trunk and roots.</desc>
+          <desc id="etz-chaim-desc">Golden luminous Tree of Life on a cosmic field, with trunk, roots, and side labels.</desc>
 
           <defs>
             <radialGradient id="bgGradient" cx="50%" cy="18%" r="85%">
@@ -253,7 +253,6 @@
               <stop offset="100%" stop-color="#f08a2d" stop-opacity="0.12"/>
             </linearGradient>
 
-            <!-- tiny star sparkle -->
             <circle id="spark" r="1.4" fill="rgba(255,230,170,0.55)"/>
           </defs>
 
@@ -276,15 +275,32 @@
             .trunk { fill:none; stroke: url(#trunkGradient); stroke-width: 18; opacity:0.65; stroke-linecap:round; }
             .roots { fill:none; stroke: url(#trunkGradient); stroke-width: 6; opacity:0.55; stroke-linecap:round; }
 
-            .h-he { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 22px; fill: rgba(255,245,210,0.95); }
-            .h-en { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; fill: rgba(255,240,210,0.78); }
+            .label-pill {
+              fill: rgba(5,5,15,0.88);
+              stroke: rgba(255,230,190,0.35);
+              stroke-width: 1;
+              rx: 14;
+              ry: 14;
+            }
+
+            .t-he {
+              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+              font-size: 20px;
+              fill: #fff8d5;
+            }
+
+            .t-en {
+              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+              font-size: 14px;
+              fill: #f3e0aa;
+            }
           </style>
 
-          <!-- cosmic field -->
+          <!-- background -->
           <rect x="0" y="0" width="1000" height="1300" class="bg"/>
           <rect x="70" y="70" width="860" height="1160" rx="26" class="frame"/>
 
-          <!-- star specks (simple + light) -->
+          <!-- stars -->
           <g opacity="0.9">
             <use href="#spark" x="160" y="160"/><use href="#spark" x="220" y="210"/><use href="#spark" x="810" y="210"/>
             <use href="#spark" x="760" y="150"/><use href="#spark" x="640" y="140"/><use href="#spark" x="540" y="210"/>
@@ -293,9 +309,12 @@
             <use href="#spark" x="760" y="860"/><use href="#spark" x="520" y="1040"/><use href="#spark" x="620" y="1120"/>
           </g>
 
-          <!-- trunk + roots (behind) -->
+          <!-- trunk + roots -->
           <g>
-            <path class="trunk" d="M500 610 C 500 720 500 820 500 910 C 500 980 500 1040 500 1120 C 500 1180 500 1220 500 1260"/>
+            <path class="trunk"
+              d="M500 610 C 500 720 500 820 500 910
+                 C 500 980 500 1040 500 1120
+                 C 500 1180 500 1220 500 1260"/>
             <path class="roots"
               d="M500 1120 C 460 1160 430 1190 410 1240
                  M500 1120 C 540 1160 570 1190 590 1240
@@ -345,72 +364,103 @@
             <line class="path" x1="700" y1="760" x2="300" y2="760"/>
           </g>
 
-          <!-- nodes -->
+          <!-- nodes (no text on them) -->
           <g id="nodes">
-            <circle id="keter" class="node" cx="500" cy="120" r="40"/>
+            <circle id="keter"   class="node" cx="500" cy="120"  r="40"/>
             <circle id="chochmah" class="node" cx="700" cy="260" r="40"/>
-            <circle id="binah" class="node" cx="300" cy="260" r="40"/>
+            <circle id="binah"   class="node" cx="300" cy="260" r="40"/>
 
-            <circle id="daat" class="node daat" cx="500" cy="340" r="32"/>
+            <circle id="daat"    class="node daat" cx="500" cy="340" r="32"/>
 
-            <circle id="chesed" class="node" cx="700" cy="460" r="40"/>
+            <circle id="chesed"  class="node" cx="700" cy="460" r="40"/>
             <circle id="gevurah" class="node" cx="300" cy="460" r="40"/>
 
             <circle id="tiferet" class="node" cx="500" cy="610" r="40"/>
 
             <circle id="netzach" class="node" cx="700" cy="760" r="40"/>
-            <circle id="hod" class="node" cx="300" cy="760" r="40"/>
+            <circle id="hod"     class="node" cx="300" cy="760" r="40"/>
 
-            <circle id="yesod" class="node" cx="500" cy="910" r="40"/>
+            <circle id="yesod"   class="node" cx="500" cy="910"  r="40"/>
             <circle id="malchut" class="node" cx="500" cy="1120" r="40"/>
           </g>
 
-          <!-- labels -->
-          <g id="labels">
-            <g>
-              <text x="500" y="70" class="h-he" text-anchor="middle">כתר</text>
-              <text x="500" y="95" class="h-en" text-anchor="middle">Keter</text>
-            </g>
-            <g>
-              <text x="700" y="230" class="h-he" text-anchor="middle">חכמה</text>
-              <text x="700" y="255" class="h-en" text-anchor="middle">Chochmah</text>
-            </g>
-            <g>
-              <text x="300" y="230" class="h-he" text-anchor="middle">בינה</text>
-              <text x="300" y="255" class="h-en" text-anchor="middle">Binah</text>
-            </g>
-            <g>
-              <text x="500" y="320" class="h-he" text-anchor="middle">דעת</text>
-              <text x="500" y="345" class="h-en" text-anchor="middle">Da&apos;at</text>
-            </g>
-            <g>
-              <text x="700" y="430" class="h-he" text-anchor="middle">חסד</text>
-              <text x="700" y="455" class="h-en" text-anchor="middle">Chesed</text>
-            </g>
-            <g>
-              <text x="300" y="430" class="h-he" text-anchor="middle">גבורה</text>
-              <text x="300" y="455" class="h-en" text-anchor="middle">Gevurah</text>
-            </g>
-            <g>
-              <text x="500" y="580" class="h-he" text-anchor="middle">תפארת</text>
-              <text x="500" y="605" class="h-en" text-anchor="middle">Tiferet</text>
-            </g>
-            <g>
-              <text x="700" y="730" class="h-he" text-anchor="middle">נצח</text>
-              <text x="700" y="755" class="h-en" text-anchor="middle">Netzach</text>
-            </g>
-            <g>
-              <text x="300" y="730" class="h-he" text-anchor="middle">הוד</text>
-              <text x="300" y="755" class="h-en" text-anchor="middle">Hod</text>
-            </g>
-            <g>
-              <text x="500" y="880" class="h-he" text-anchor="middle">יסוד</text>
-              <text x="500" y="905" class="h-en" text-anchor="middle">Yesod</text>
-            </g>
-            <g>
-              <text x="500" y="1090" class="h-he" text-anchor="middle">מלכות</text>
-              <text x="500" y="1115" class="h-en" text-anchor="middle">Malchut</text>
-            </g>
+          <!-- LABELS OFF THE SPHERES -->
+
+          <!-- Keter (center, above tree) -->
+          <g>
+            <rect x="420" y="30" width="160" height="48" class="label-pill"/>
+            <text x="500" y="58" class="t-he" text-anchor="middle">כתר</text>
+            <text x="500" y="78" class="t-en" text-anchor="middle">Keter</text>
+          </g>
+
+          <!-- Chochmah (right side) -->
+          <g>
+            <rect x="740" y="230" width="160" height="48" class="label-pill"/>
+            <text x="820" y="258" class="t-he" text-anchor="middle">חכמה</text>
+            <text x="820" y="278" class="t-en" text-anchor="middle">Chochmah</text>
+          </g>
+
+          <!-- Binah (left side) -->
+          <g>
+            <rect x="100" y="230" width="160" height="48" class="label-pill"/>
+            <text x="180" y="258" class="t-he" text-anchor="middle">בינה</text>
+            <text x="180" y="278" class="t-en" text-anchor="middle">Binah</text>
+          </g>
+
+          <!-- Da'at (center right a bit) -->
+          <g>
+            <rect x="540" y="318" width="160" height="48" class="label-pill"/>
+            <text x="620" y="346" class="t-he" text-anchor="middle">דעת</text>
+            <text x="620" y="366" class="t-en" text-anchor="middle">Da&apos;at</text>
+          </g>
+
+          <!-- Chesed (right side) -->
+          <g>
+            <rect x="740" y="430" width="160" height="48" class="label-pill"/>
+            <text x="820" y="458" class="t-he" text-anchor="middle">חסד</text>
+            <text x="820" y="478" class="t-en" text-anchor="middle">Chesed</text>
+          </g>
+
+          <!-- Gevurah (left side) -->
+          <g>
+            <rect x="100" y="430" width="160" height="48" class="label-pill"/>
+            <text x="180" y="458" class="t-he" text-anchor="middle">גבורה</text>
+            <text x="180" y="478" class="t-en" text-anchor="middle">Gevurah</text>
+          </g>
+
+          <!-- Tiferet (right of center) -->
+          <g>
+            <rect x="540" y="588" width="160" height="48" class="label-pill"/>
+            <text x="620" y="616" class="t-he" text-anchor="middle">תפארת</text>
+            <text x="620" y="636" class="t-en" text-anchor="middle">Tiferet</text>
+          </g>
+
+          <!-- Netzach (right side) -->
+          <g>
+            <rect x="740" y="730" width="160" height="48" class="label-pill"/>
+            <text x="820" y="758" class="t-he" text-anchor="middle">נצח</text>
+            <text x="820" y="778" class="t-en" text-anchor="middle">Netzach</text>
+          </g>
+
+          <!-- Hod (left side) -->
+          <g>
+            <rect x="100" y="730" width="160" height="48" class="label-pill"/>
+            <text x="180" y="758" class="t-he" text-anchor="middle">הוד</text>
+            <text x="180" y="778" class="t-en" text-anchor="middle">Hod</text>
+          </g>
+
+          <!-- Yesod (right of center) -->
+          <g>
+            <rect x="540" y="888" width="160" height="48" class="label-pill"/>
+            <text x="620" y="916" class="t-he" text-anchor="middle">יסוד</text>
+            <text x="620" y="936" class="t-en" text-anchor="middle">Yesod</text>
+          </g>
+
+          <!-- Malchut (right of center, a bit lower) -->
+          <g>
+            <rect x="540" y="1090" width="160" height="48" class="label-pill"/>
+            <text x="620" y="1118" class="t-he" text-anchor="middle">מלכות</text>
+            <text x="620" y="1138" class="t-en" text-anchor="middle">Malchut</text>
           </g>
         </svg>
       </div>
