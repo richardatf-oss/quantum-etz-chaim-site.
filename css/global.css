@@ -378,3 +378,15 @@ code{
 @media (max-width: 520px){
   .grid{ grid-template-columns: 1fr; }
 }
+.tree-panel::after{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  background: radial-gradient(circle at 40% 35%, rgba(230,213,138,0.18), transparent 55%),
+              radial-gradient(circle at 70% 65%, rgba(160,190,255,0.10), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events:none;
+}
+.tree-panel svg{ z-index: 2; }
