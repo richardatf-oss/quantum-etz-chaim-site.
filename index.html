@@ -4,221 +4,170 @@
   <meta charset="UTF-8" />
   <title>Quantum Etz Chaim – The Tree of Life as Quantum Architecture</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Quantum Etz Chaim explores the Tree of Life as a precise architecture for physics, computation, and consciousness."
-  />
+  <meta name="description" content="Quantum Etz Chaim explores the Tree of Life as a precise architecture for physics, computation, and consciousness." />
 
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
+    body{
+      margin:0;
+      min-height:100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #161827 0%, #050509 55%, #000 100%);
-      color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
+      color:#f5f5f5;
+      display:flex;
+      flex-direction:column;
+      scroll-behavior:smooth;
     }
 
-    header {
+    header{
       padding: 1.25rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
+    .brand{ display:flex; flex-direction:column; gap:0.15rem; }
+    .brand-title{ font-size:1.05rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .brand-subtitle{ font-size:0.8rem; opacity:0.7; }
+
+    nav{ display:flex; flex-wrap:wrap; gap:0.5rem; font-size:0.85rem; }
+    nav a{
+      text-decoration:none;
+      color:#e0e0ff;
+      opacity:0.85;
+      padding:0.25rem 0.6rem;
+      border-radius:999px;
+      border:1px solid rgba(224,224,255,0.18);
+    }
+    nav a:hover{
+      opacity:1;
+      border-color: rgba(224,224,255,0.4);
+      background: rgba(224,224,255,0.06);
     }
 
-    .brand-title {
-      font-size: 1.05rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    main{ flex:1; }
 
-    .brand-subtitle {
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #e0e0ff;
-      opacity: 0.85;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(224, 224, 255, 0.18);
-    }
-
-    nav a:hover {
-      opacity: 1;
-      border-color: rgba(224, 224, 255, 0.4);
-      background: rgba(224, 224, 255, 0.06);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
+    .hero{
+      max-width:1200px;
+      margin:0 auto;
       padding: 2.5rem 1.5rem 3rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-      align-items: center;
+      display:grid;
+      grid-template-columns: minmax(0,1.15fr) minmax(0,1.1fr);
+      gap:2.5rem;
+      align-items:center;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: minmax(0,1fr); }
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .eyebrow{
+      font-size:0.8rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      opacity:0.7;
+      margin-bottom:0.75rem;
     }
 
-    .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 0.75rem;
-    }
-
-    h1 {
+    h1{
       font-size: clamp(2.2rem, 3.1vw, 3rem);
-      line-height: 1.08;
-      margin: 0 0 1rem;
+      line-height:1.08;
+      margin:0 0 1rem;
+    }
+    h1 .accent{ color:#e6d58a; }
+
+    .hero-text p{
+      margin:0 0 1.1rem;
+      font-size:0.98rem;
+      line-height:1.7;
+      color:#d0d3e6;
+    }
+    .hero-text p.subtle{ font-size:0.9rem; opacity:0.75; }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.7rem;
+      margin-top:1.4rem;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0.55rem 1.1rem;
+      border-radius:999px;
+      border:1px solid rgba(230,213,138,0.5);
+      background: radial-gradient(circle at top, rgba(230,213,138,0.16), transparent);
+      color:#fff;
+      font-size:0.9rem;
+      text-decoration:none;
+    }
+    .btn:hover{
+      border-color: rgba(230,213,138,0.9);
+      background: radial-gradient(circle at top, rgba(230,213,138,0.23), transparent);
+    }
+    .btn-secondary{
+      border-color: rgba(224,224,255,0.3);
+      background: rgba(224,224,255,0.04);
+      color:#e0e0ff;
+    }
+    .btn-secondary:hover{
+      background: rgba(224,224,255,0.08);
+      border-color: rgba(224,224,255,0.5);
     }
 
-    h1 span.accent {
-      color: #e6d58a;
-    }
-
-    .hero-text p {
-      margin: 0 0 1.1rem;
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: #d0d3e6;
-    }
-
-    .hero-text p.subtle {
-      font-size: 0.9rem;
-      opacity: 0.75;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.4rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(230, 213, 138, 0.5);
-      background: radial-gradient(circle at top, rgba(230, 213, 138, 0.16), transparent);
-      color: #fff;
-      font-size: 0.9rem;
-      text-decoration: none;
-      gap: 0.4rem;
-    }
-
-    .btn:hover {
-      border-color: rgba(230, 213, 138, 0.9);
-      background: radial-gradient(circle at top, rgba(230, 213, 138, 0.23), transparent);
-    }
-
-    .btn-secondary {
-      border-color: rgba(224, 224, 255, 0.3);
-      background: rgba(224, 224, 255, 0.04);
-      color: #e0e0ff;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(224, 224, 255, 0.08);
-      border-color: rgba(224, 224, 255, 0.5);
-    }
-
-    .tree-panel {
-      position: relative;
-      border-radius: 1.5rem;
-      padding: 1.25rem;
-      background: radial-gradient(circle at top, rgba(230, 213, 138, 0.08), rgba(12, 15, 36, 0.85));
+    .tree-panel{
+      position:relative;
+      border-radius:1.5rem;
+      padding:1.25rem;
+      background: radial-gradient(circle at top, rgba(230,213,138,0.08), rgba(12,15,36,0.85));
       box-shadow:
-        0 22px 60px rgba(0, 0, 0, 0.8),
-        0 0 120px rgba(230, 213, 138, 0.08);
-      overflow: hidden;
-      min-height: 420px;
+        0 22px 60px rgba(0,0,0,0.8),
+        0 0 120px rgba(230,213,138,0.08);
+      overflow:hidden;
+      min-height:420px;
+    }
+    .tree-panel::before{
+      content:"";
+      position:absolute;
+      inset:6%;
+      border-radius:1.2rem;
+      border:1px solid rgba(255,255,255,0.08);
+      pointer-events:none;
+      z-index:1;
+    }
+    .tree-panel svg{
+      position:relative;
+      z-index:2;
+      width:100%;
+      height:auto;
+      max-height:560px;
+      display:block;
     }
 
-    .tree-panel::before {
-      content: "";
-      position: absolute;
-      inset: 6%;
-      border-radius: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      pointer-events: none;
+    section.content-section{
+      max-width:900px;
+      margin:0 auto;
+      padding:2rem 1.5rem 2.5rem;
+      border-top:1px solid rgba(255,255,255,0.08);
     }
+    section.content-section h2{ margin-top:0; font-size:1.4rem; }
+    section.content-section p{ font-size:0.96rem; color:#d0d3e6; line-height:1.7; }
 
-    .tree-panel svg {
-      position: relative;
-      width: 100%;
-      height: auto;
-      max-height: 560px;
-      display: block;
-    }
-
-    /* SECTION STUBS BELOW HERO */
-
-    section.content-section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 2.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    section.content-section h2 {
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
-
-    section.content-section p {
-      font-size: 0.96rem;
-      color: #d0d3e6;
-      line-height: 1.7;
-    }
-
-    footer {
-      padding: 0.9rem 1.5rem 1.4rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    footer{
+      padding:0.9rem 1.5rem 1.4rem;
+      font-size:0.8rem;
+      opacity:0.7;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.06);
     }
   </style>
 </head>
@@ -241,19 +190,20 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <div class="eyebrow">A precise model, not a metaphor</div>
         <h1 id="hero-title">
-          <span class="accent">Etz Chaim</span> as a living diagram<br />
+          <span class="accent">Etz Chaim</span> as a living diagram<br/>
           of physics, computation, and consciousness.
         </h1>
+
         <p>
           Quantum Etz Chaim treats the Tree of Life as an exact architecture:
           nodes as registers, paths as operations, and the descent from Keter to
           Malchut as the transition from infinite potential to measured reality.
         </p>
+
         <p class="subtle">
           This is not a replacement for physics and not a reduction of Kabbalah.
           It is a bridge: a shared language between sacred geometry and modern
@@ -267,7 +217,7 @@
       </div>
 
       <div class="tree-panel">
-        <!-- INLINE TREE SVG -->
+        <!-- Inspired luminous Tree (inline SVG so it always renders) -->
         <svg
           id="etz-chaim-diagram"
           xmlns="http://www.w3.org/2000/svg"
@@ -275,184 +225,184 @@
           role="img"
           aria-labelledby="etz-chaim-title etz-chaim-desc"
         >
-          <title id="etz-chaim-title">Etz Chaim – Tree of Life Diagram</title>
-          <desc id="etz-chaim-desc">
-            Schematic Tree of Life with ten sefirot, Da&apos;at, and connecting paths.
-          </desc>
+          <title id="etz-chaim-title">Etz Chaim – Luminous Tree of Life</title>
+          <desc id="etz-chaim-desc">Golden luminous Tree of Life on a cosmic field, with a subtle trunk and roots.</desc>
+
+          <defs>
+            <radialGradient id="bgGradient" cx="50%" cy="18%" r="85%">
+              <stop offset="0%"  stop-color="#2b2f5f" stop-opacity="0.95"/>
+              <stop offset="45%" stop-color="#141528" stop-opacity="0.98"/>
+              <stop offset="100%" stop-color="#050509" stop-opacity="1"/>
+            </radialGradient>
+
+            <radialGradient id="nodeGradient" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#fffbe0"/>
+              <stop offset="35%" stop-color="#ffe9a8"/>
+              <stop offset="100%" stop-color="#f0b857"/>
+            </radialGradient>
+
+            <radialGradient id="haloGradient" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#ffd39a" stop-opacity="0.85"/>
+              <stop offset="55%" stop-color="#f0b857" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="#f08a2d" stop-opacity="0"/>
+            </radialGradient>
+
+            <linearGradient id="trunkGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#fce9a4" stop-opacity="0.7"/>
+              <stop offset="40%" stop-color="#f0b857" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#f08a2d" stop-opacity="0.12"/>
+            </linearGradient>
+
+            <!-- tiny star sparkle -->
+            <circle id="spark" r="1.4" fill="rgba(255,230,170,0.55)"/>
+          </defs>
 
           <style>
-            .sefirah-path {
-              fill: none;
-              stroke: rgba(255, 255, 255, 0.35);
-              stroke-width: 3;
+            .bg { fill: url(#bgGradient); }
+            .frame { fill:none; stroke: rgba(255,255,255,0.06); stroke-width:2; }
+
+            .path {
+              fill:none;
+              stroke: rgba(255, 215, 160, 0.72);
+              stroke-width: 4;
               stroke-linecap: round;
             }
-            .sefirah-node {
-              fill: rgba(0, 0, 0, 0.55);
-              stroke: rgba(255, 255, 255, 0.9);
-              stroke-width: 3;
-            }
-            .sefirah-node.daat {
-              stroke-dasharray: 6 4;
-              stroke: rgba(230, 213, 138, 0.95);
-            }
-            .label-hebrew {
-              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-              font-size: 22px;
-              fill: rgba(255, 255, 255, 0.92);
-            }
-            .label-english {
-              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-              font-size: 16px;
-              fill: rgba(255, 255, 255, 0.65);
-            }
-            .panel-outline {
-              fill: none;
-              stroke: rgba(255, 255, 255, 0.08);
-              stroke-width: 2;
-            }
+
+            .node { fill: url(#nodeGradient); stroke: rgba(255,255,255,0.92); stroke-width:3; }
+            .node.daat { stroke-dasharray: 6 4; stroke: rgba(255, 240, 180, 0.98); }
+
+            .halo { fill: url(#haloGradient); opacity: 0.55; }
+
+            .trunk { fill:none; stroke: url(#trunkGradient); stroke-width: 18; opacity:0.65; stroke-linecap:round; }
+            .roots { fill:none; stroke: url(#trunkGradient); stroke-width: 6; opacity:0.55; stroke-linecap:round; }
+
+            .h-he { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 22px; fill: rgba(255,245,210,0.95); }
+            .h-en { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; fill: rgba(255,240,210,0.78); }
           </style>
 
-          <!-- faint frame -->
-          <rect x="40" y="40" width="920" height="1220" rx="26" class="panel-outline" />
+          <!-- cosmic field -->
+          <rect x="0" y="0" width="1000" height="1300" class="bg"/>
+          <rect x="70" y="70" width="860" height="1160" rx="26" class="frame"/>
 
-          <!-- PATHS -->
+          <!-- star specks (simple + light) -->
+          <g opacity="0.9">
+            <use href="#spark" x="160" y="160"/><use href="#spark" x="220" y="210"/><use href="#spark" x="810" y="210"/>
+            <use href="#spark" x="760" y="150"/><use href="#spark" x="640" y="140"/><use href="#spark" x="540" y="210"/>
+            <use href="#spark" x="420" y="180"/><use href="#spark" x="350" y="320"/><use href="#spark" x="720" y="330"/>
+            <use href="#spark" x="820" y="520"/><use href="#spark" x="180" y="560"/><use href="#spark" x="270" y="880"/>
+            <use href="#spark" x="760" y="860"/><use href="#spark" x="520" y="1040"/><use href="#spark" x="620" y="1120"/>
+          </g>
+
+          <!-- trunk + roots (behind) -->
+          <g>
+            <path class="trunk" d="M500 610 C 500 720 500 820 500 910 C 500 980 500 1040 500 1120 C 500 1180 500 1220 500 1260"/>
+            <path class="roots"
+              d="M500 1120 C 460 1160 430 1190 410 1240
+                 M500 1120 C 540 1160 570 1190 590 1240
+                 M500 1140 C 470 1180 450 1210 440 1260
+                 M500 1140 C 530 1180 550 1210 560 1260"/>
+          </g>
+
+          <!-- halos -->
+          <g>
+            <circle class="halo" cx="500" cy="120" r="78"/>
+            <circle class="halo" cx="700" cy="260" r="76"/>
+            <circle class="halo" cx="300" cy="260" r="76"/>
+            <circle class="halo" cx="500" cy="340" r="66"/>
+            <circle class="halo" cx="700" cy="460" r="76"/>
+            <circle class="halo" cx="300" cy="460" r="76"/>
+            <circle class="halo" cx="500" cy="610" r="80"/>
+            <circle class="halo" cx="700" cy="760" r="76"/>
+            <circle class="halo" cx="300" cy="760" r="76"/>
+            <circle class="halo" cx="500" cy="910" r="78"/>
+            <circle class="halo" cx="500" cy="1120" r="82"/>
+          </g>
+
+          <!-- paths -->
           <g id="paths">
-            <line class="sefirah-path" x1="500" y1="120" x2="700" y2="260" />
-            <line class="sefirah-path" x1="500" y1="120" x2="300" y2="260" />
-            <line class="sefirah-path" x1="700" y1="260" x2="300" y2="260" />
+            <line class="path" x1="500" y1="120" x2="700" y2="260"/>
+            <line class="path" x1="500" y1="120" x2="300" y2="260"/>
+            <line class="path" x1="700" y1="260" x2="300" y2="260"/>
 
-            <line class="sefirah-path" x1="700" y1="260" x2="700" y2="460" />
-            <line class="sefirah-path" x1="300" y1="260" x2="300" y2="460" />
-            <line class="sefirah-path" x1="700" y1="460" x2="300" y2="460" />
+            <line class="path" x1="700" y1="260" x2="700" y2="460"/>
+            <line class="path" x1="300" y1="260" x2="300" y2="460"/>
+            <line class="path" x1="700" y1="460" x2="300" y2="460"/>
 
-            <line class="sefirah-path" x1="500" y1="120" x2="500" y2="340" />
-            <line class="sefirah-path" x1="500" y1="340" x2="500" y2="610" />
-            <line class="sefirah-path" x1="500" y1="610" x2="500" y2="910" />
-            <line class="sefirah-path" x1="500" y1="910" x2="500" y2="1120" />
+            <line class="path" x1="500" y1="120" x2="500" y2="340"/>
+            <line class="path" x1="500" y1="340" x2="500" y2="610"/>
+            <line class="path" x1="500" y1="610" x2="500" y2="910"/>
+            <line class="path" x1="500" y1="910" x2="500" y2="1120"/>
 
-            <line class="sefirah-path" x1="700" y1="460" x2="500" y2="610" />
-            <line class="sefirah-path" x1="300" y1="460" x2="500" y2="610" />
+            <line class="path" x1="700" y1="460" x2="500" y2="610"/>
+            <line class="path" x1="300" y1="460" x2="500" y2="610"/>
 
-            <line class="sefirah-path" x1="500" y1="610" x2="700" y2="760" />
-            <line class="sefirah-path" x1="500" y1="610" x2="300" y2="760" />
+            <line class="path" x1="500" y1="610" x2="700" y2="760"/>
+            <line class="path" x1="500" y1="610" x2="300" y2="760"/>
 
-            <line class="sefirah-path" x1="700" y1="760" x2="500" y2="910" />
-            <line class="sefirah-path" x1="300" y1="760" x2="500" y2="910" />
+            <line class="path" x1="700" y1="760" x2="500" y2="910"/>
+            <line class="path" x1="300" y1="760" x2="500" y2="910"/>
 
-            <line class="sefirah-path" x1="700" y1="760" x2="300" y2="760" />
+            <line class="path" x1="700" y1="760" x2="300" y2="760"/>
           </g>
 
-          <!-- NODES -->
+          <!-- nodes -->
           <g id="nodes">
-            <circle id="keter" class="sefirah-node" cx="500" cy="120" r="40" />
-            <circle id="chochmah" class="sefirah-node" cx="700" cy="260" r="40" />
-            <circle id="binah" class="sefirah-node" cx="300" cy="260" r="40" />
+            <circle id="keter" class="node" cx="500" cy="120" r="40"/>
+            <circle id="chochmah" class="node" cx="700" cy="260" r="40"/>
+            <circle id="binah" class="node" cx="300" cy="260" r="40"/>
 
-            <circle id="daat" class="sefirah-node daat" cx="500" cy="340" r="32" />
+            <circle id="daat" class="node daat" cx="500" cy="340" r="32"/>
 
-            <circle id="chesed" class="sefirah-node" cx="700" cy="460" r="40" />
-            <circle id="gevurah" class="sefirah-node" cx="300" cy="460" r="40" />
+            <circle id="chesed" class="node" cx="700" cy="460" r="40"/>
+            <circle id="gevurah" class="node" cx="300" cy="460" r="40"/>
 
-            <circle id="tiferet" class="sefirah-node" cx="500" cy="610" r="40" />
+            <circle id="tiferet" class="node" cx="500" cy="610" r="40"/>
 
-            <circle id="netzach" class="sefirah-node" cx="700" cy="760" r="40" />
-            <circle id="hod" class="sefirah-node" cx="300" cy="760" r="40" />
+            <circle id="netzach" class="node" cx="700" cy="760" r="40"/>
+            <circle id="hod" class="node" cx="300" cy="760" r="40"/>
 
-            <circle id="yesod" class="sefirah-node" cx="500" cy="910" r="40" />
-            <circle id="malchut" class="sefirah-node" cx="500" cy="1120" r="40" />
+            <circle id="yesod" class="node" cx="500" cy="910" r="40"/>
+            <circle id="malchut" class="node" cx="500" cy="1120" r="40"/>
           </g>
 
-          <!-- LABELS -->
+          <!-- labels -->
           <g id="labels">
             <g>
-              <text x="500" y="70" class="label-hebrew" text-anchor="middle">כתר</text>
-              <text x="500" y="95" class="label-english" text-anchor="middle">Keter</text>
+              <text x="500" y="70" class="h-he" text-anchor="middle">כתר</text>
+              <text x="500" y="95" class="h-en" text-anchor="middle">Keter</text>
             </g>
             <g>
-              <text x="700" y="230" class="label-hebrew" text-anchor="middle">חכמה</text>
-              <text x="700" y="255" class="label-english" text-anchor="middle">Chochmah</text>
+              <text x="700" y="230" class="h-he" text-anchor="middle">חכמה</text>
+              <text x="700" y="255" class="h-en" text-anchor="middle">Chochmah</text>
             </g>
             <g>
-              <text x="300" y="230" class="label-hebrew" text-anchor="middle">בינה</text>
-              <text x="300" y="255" class="label-english" text-anchor="middle">Binah</text>
+              <text x="300" y="230" class="h-he" text-anchor="middle">בינה</text>
+              <text x="300" y="255" class="h-en" text-anchor="middle">Binah</text>
             </g>
             <g>
-              <text x="500" y="320" class="label-hebrew" text-anchor="middle">דעת</text>
-              <text x="500" y="345" class="label-english" text-anchor="middle">Da&apos;at</text>
+              <text x="500" y="320" class="h-he" text-anchor="middle">דעת</text>
+              <text x="500" y="345" class="h-en" text-anchor="middle">Da&apos;at</text>
             </g>
             <g>
-              <text x="700" y="430" class="label-hebrew" text-anchor="middle">חסד</text>
-              <text x="700" y="455" class="label-english" text-anchor="middle">Chesed</text>
+              <text x="700" y="430" class="h-he" text-anchor="middle">חסד</text>
+              <text x="700" y="455" class="h-en" text-anchor="middle">Chesed</text>
             </g>
             <g>
-              <text x="300" y="430" class="label-hebrew" text-anchor="middle">גבורה</text>
-              <text x="300" y="455" class="label-english" text-anchor="middle">Gevurah</text>
+              <text x="300" y="430" class="h-he" text-anchor="middle">גבורה</text>
+              <text x="300" y="455" class="h-en" text-anchor="middle">Gevurah</text>
             </g>
             <g>
-              <text x="500" y="580" class="label-hebrew" text-anchor="middle">תפארת</text>
-              <text x="500" y="605" class="label-english" text-anchor="middle">Tiferet</text>
+              <text x="500" y="580" class="h-he" text-anchor="middle">תפארת</text>
+              <text x="500" y="605" class="h-en" text-anchor="middle">Tiferet</text>
             </g>
             <g>
-              <text x="700" y="730" class="label-hebrew" text-anchor="middle">נצח</text>
-              <text x="700" y="755" class="label-english" text-anchor="middle">Netzach</text>
+              <text x="700" y="730" class="h-he" text-anchor="middle">נצח</text>
+              <text x="700" y="755" class="h-en" text-anchor="middle">Netzach</text>
             </g>
             <g>
-              <text x="300" y="730" class="label-hebrew" text-anchor="middle">הוד</text>
-              <text x="300" y="755" class="label-english" text-anchor="middle">Hod</text>
+              <text x="300" y="730" class="h-he" text-anchor="middle">הוד</text>
+              <text x="300" y="755" class="h-en" text-anchor="middle">Hod</text>
             </g>
             <g>
-              <text x="500" y="880" class="label-hebrew" text-anchor="middle">יסוד</text>
-              <text x="500" y="905" class="label-english" text-anchor="middle">Yesod</text>
-            </g>
-            <g>
-              <text x="500" y="1090" class="label-hebrew" text-anchor="middle">מלכות</text>
-              <text x="500" y="1115" class="label-english" text-anchor="middle">Malchut</text>
-            </g>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- STUB SECTIONS SO BUTTONS HAVE TARGETS -->
-    <section id="the-tree" class="content-section">
-      <h2>The Tree</h2>
-      <p>Here we will describe the overall structure of the Tree as an architecture: columns, levels, and the flow from Ein Sof down to Malchut.</p>
-    </section>
-
-    <section id="sefirot" class="content-section">
-      <h2>The Sefirot</h2>
-      <p>Each node becomes a register of consciousness and computation. This section will eventually link to a page for every individual sefirah.</p>
-    </section>
-
-    <section id="quantum-mapping" class="content-section">
-      <h2>Quantum Mapping</h2>
-      <p>Superposition, entanglement, and measurement mapped to Keter, the connective paths, and Da&apos;at as the act of observation.</p>
-    </section>
-
-    <section id="architecture" class="content-section">
-      <h2>Architecture</h2>
-      <p>The Tree as a machine design: data flow, gates, coherence, and how an Etz-Chaim-native computer might be structured.</p>
-    </section>
-
-    <section id="ivritcode" class="content-section">
-      <h2>IvritCode</h2>
-      <p>Letters as opcodes, niqqud as modifiers, and cantillation as control flow — the instruction set that speaks the geometry of the Tree.</p>
-    </section>
-
-    <section id="library" class="content-section">
-      <h2>Library</h2>
-      <p>A future home for essays, diagrams, draft chapters, and formal papers expanding this framework.</p>
-    </section>
-
-    <section id="about" class="content-section">
-      <h2>About</h2>
-      <p>A quiet account of the intent behind Quantum Etz Chaim and how this work is being offered.</p>
-    </section>
-  </main>
-
-  <footer>
-    Quantum Etz Chaim · Offered as a working model for study, contemplation, and future architectures.
-  </footer>
-</body>
-</html>
+              <text x="500" y="880" class="h-he" text-anchor="middle">יסוד</text>
+              <text x="500" y="905" class="h-en" text-anchor="middle">Yes
