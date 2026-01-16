@@ -4,232 +4,153 @@
   <meta charset="UTF-8" />
   <title>Quantum Etz Chaim – The Tree of Life as Quantum Architecture</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Quantum Etz Chaim explores the Tree of Life as a precise architecture for physics, computation, and consciousness." />
 
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
 
-    body{
-      margin:0;
-      min-height:100vh;
+    body {
+      margin: 0;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #161827 0%, #050509 55%, #000 100%);
-      color:#f5f5f5;
-      display:flex;
-      flex-direction:column;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
     }
 
-    header{
+    header {
       padding: 1.25rem 1.5rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent);
-      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
     }
 
-    .brand{ display:flex; flex-direction:column; gap:0.1rem; }
-    .brand-title{ font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase; }
-    .brand-subtitle{ font-size:0.8rem; opacity:0.7; }
-
-    nav{ display:flex; flex-wrap:wrap; gap:0.5rem; font-size:0.85rem; }
-    nav a{
-      text-decoration:none;
-      color:#e0e0ff;
-      opacity:0.85;
-      padding:0.25rem 0.6rem;
-      border-radius:999px;
-      border:1px solid rgba(224,224,255,0.18);
-    }
-    nav a:hover{
-      opacity:1;
-      border-color: rgba(224,224,255,0.4);
-      background: rgba(224,224,255,0.06);
+    .brand-title {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.05rem;
     }
 
-    main{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      padding: 2.5rem 1.5rem 3rem;
+    .brand-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.7;
     }
 
-    .hero{
-      width:100%;
-      max-width:1200px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: minmax(0,1.15fr) minmax(0,1.1fr);
-      gap:2.5rem;
-      align-items:center;
-    }
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: minmax(0,1fr); }
+    nav {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.85rem;
     }
 
-    .eyebrow{
-      font-size:0.8rem;
-      letter-spacing:0.2em;
-      text-transform:uppercase;
-      opacity:0.7;
-      margin-bottom:0.75rem;
+    nav a {
+      color: #e0e0ff;
+      text-decoration: none;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(224,224,255,0.2);
     }
 
-    h1{
-      font-size: clamp(2.2rem, 3.1vw, 3rem);
-      line-height:1.08;
-      margin:0 0 1rem;
-    }
-    h1 .accent{ color:#e6d58a; }
-
-    p{
-      margin:0 0 1.1rem;
-      font-size:0.98rem;
-      line-height:1.7;
-      color:#d0d3e6;
-    }
-    p.subtle{ font-size:0.9rem; opacity:0.75; }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.7rem;
-      margin-top:1.4rem;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0.55rem 1.1rem;
-      border-radius:999px;
-      border:1px solid rgba(230,213,138,0.5);
-      background: radial-gradient(circle at top, rgba(230,213,138,0.16), transparent);
-      color:#fff;
-      font-size:0.9rem;
-      text-decoration:none;
-    }
-    .btn:hover{
-      border-color: rgba(230,213,138,0.9);
-      background: radial-gradient(circle at top, rgba(230,213,138,0.23), transparent);
-    }
-    .btn-secondary{
-      border-color: rgba(224,224,255,0.3);
-      background: rgba(224,224,255,0.04);
-      color:#e0e0ff;
-    }
-    .btn-secondary:hover{
-      background: rgba(224,224,255,0.08);
-      border-color: rgba(224,224,255,0.5);
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
     }
 
-    .hero-tree-panel{
-      position:relative;
-      border-radius:1.5rem;
-      padding:1.25rem;
+    .hero {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 1.1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    h1 span {
+      color: #e6d58a;
+    }
+
+    p {
+      line-height: 1.7;
+      color: #d0d3e6;
+    }
+
+    .tree-panel {
+      border-radius: 1.5rem;
+      padding: 1.25rem;
       background: radial-gradient(circle at top, rgba(230,213,138,0.08), rgba(12,15,36,0.85));
-      box-shadow:
-        0 22px 60px rgba(0,0,0,0.8),
-        0 0 120px rgba(230,213,138,0.08);
-      overflow:hidden;
-    }
-    .hero-tree-panel::before{
-      content:"";
-      position:absolute;
-      inset:6%;
-      border-radius:1.2rem;
-      border:1px solid rgba(255,255,255,0.08);
-      pointer-events:none;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.8);
     }
 
-    .tree-wrapper{
-      position:relative;
-      aspect-ratio: 3 / 4;
-      max-height: min(540px, 75vh);
+    .tree-panel svg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    /* Object embed */
-    .tree-wrapper object{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-
-    /* Fallback (if embed fails) */
-    .svg-fallback{
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.65;
       padding: 1rem;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
-    }
-
-    footer{
-      padding:0.9rem 1.5rem 1.4rem;
-      font-size:0.8rem;
-      opacity:0.7;
-      text-align:center;
-      border-top:1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="brand">
-      <div class="brand-title">Quantum Etz Chaim</div>
-      <div class="brand-subtitle">The Tree of Life as Quantum Architecture</div>
+
+<header>
+  <div>
+    <div class="brand-title">Quantum Etz Chaim</div>
+    <div class="brand-subtitle">The Tree of Life as Quantum Architecture</div>
+  </div>
+  <nav>
+    <a href="#">The Tree</a>
+    <a href="#">The Sefirot</a>
+    <a href="#">Quantum Mapping</a>
+    <a href="#">Architecture</a>
+    <a href="#">IvritCode</a>
+    <a href="#">Library</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1><span>Etz Chaim</span> as a living diagram<br/>of physics, computation, and consciousness.</h1>
+      <p>
+        Quantum Etz Chaim treats the Tree of Life as an exact architecture:
+        nodes as registers, paths as operations, and the descent from Keter to
+        Malchut as the transition from infinite potential to measured reality.
+      </p>
     </div>
-    <nav>
-      <a href="#the-tree">The Tree</a>
-      <a href="#sefirot">The Sefirot</a>
-      <a href="#quantum-mapping">Quantum Mapping</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#ivritcode">IvritCode</a>
-      <a href="#library">Library</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <div class="eyebrow">A precise model, not a metaphor</div>
-        <h1 id="hero-title"><span class="accent">Etz Chaim</span> as a living diagram<br/>of physics, computation, and consciousness.</h1>
+    <div class="tree-panel">
+      <!-- INLINE SVG (paste directly) -->
 
-        <p>
-          Quantum Etz Chaim treats the Tree of Life as an exact architecture:
-          nodes as registers, paths as operations, and the vertical descent as
-          the story of how unbounded potential becomes measured reality.
-        </p>
+      <!-- PASTE THE ENTIRE CONTENTS OF etz-chaim.svg HERE -->
+      <!-- starting from <svg ...> to </svg> -->
 
-        <p class="subtle">
-          This is not a replacement for physics and not a reduction of Kabbalah.
-          It is a bridge: a shared language between sacred geometry and modern
-          models of information and mind.
-        </p>
+    </div>
+  </section>
+</main>
 
-        <div class="hero-actions">
-          <a class="btn" href="#the-tree">Enter the Tree</a>
-          <a class="btn btn-secondary" href="#library">Read the framework</a>
-        </div>
-      </div>
+<footer>
+  Quantum Etz Chaim · Offered as a working model for study, contemplation, and future architectures.
+</footer>
 
-      <div class="hero-tree-panel">
-        <div class="tree-wrapper">
-          <object data="assets/svg/etz-chaim.svg" type="image/svg+xml">
-            <div class="svg-fallback">
-              The Tree diagram did not load. Open it directly:
-              <a href="assets/svg/etz-chaim.svg">assets/svg/etz-chaim.svg</a>
-            </div>
-          </object>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Quantum Etz Chaim · Offered as a working model for study, contemplation, and future architectures.
-  </footer>
 </body>
 </html>
